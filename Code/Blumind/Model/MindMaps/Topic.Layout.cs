@@ -77,6 +77,10 @@ namespace Blumind.Model.MindMaps
                 {
                     rect = Rectangle.Union(rect, RemarkIconBounds);
                 }
+                Rectangle globalTextBounds = TextBounds;
+                globalTextBounds.X += Bounds.X;
+                globalTextBounds.Y += Bounds.Y;
+                rect = Rectangle.Union(globalTextBounds, Bounds);
                 return rect;
             }
         }

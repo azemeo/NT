@@ -251,13 +251,13 @@ namespace Blumind
         {
             MindMap map = new MindMap();
             map.Name = string.Format("{0} 1", Lang._("New Chart"));
-            map.Root.Text = Lang._("Center Topic");
-            map.Author = System.Environment.UserName;
+            //map.Root.Text = Lang._("Center Topic"); // datnq TODO update theme database
+            //map.Author = System.Environment.UserName;
 
-            if (ChartThemeManage.Default.DefaultTheme != null)
-            {
-                map.ApplyTheme(ChartThemeManage.Default.DefaultTheme);
-            }
+            //if (ChartThemeManage.Default.DefaultTheme != null)
+            //{
+            //    map.ApplyTheme(ChartThemeManage.Default.DefaultTheme);
+            //}
 
             Document doc = new Document();
             doc.Name = Lang._("New Document");

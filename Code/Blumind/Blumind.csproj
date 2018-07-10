@@ -481,6 +481,7 @@
     <Compile Include="Model\IExtendActionProvider.cs" />
     <Compile Include="Model\IRemark.cs" />
     <Compile Include="Model\ISerializable.cs" />
+    <Compile Include="Model\MindMaps\TopicType.cs" />
     <Compile Include="Model\PageOrientation.cs" />
     <Compile Include="Core\Delegates\ChartObjectPropertyEventArgs.cs" />
     <Compile Include="Model\Styles\ChartStyle.cs" />

@@ -524,15 +524,16 @@ namespace Blumind.Controls.MapViews
 
         HitTestResult HitTest(Topic topic, int x, int y)
         {
+            Rectangle topicFullBound = topic.FullBounds;
             if (topic.FoldingButtonVisible && topic.FoldingButton.Contains(x, y))
             {
                 return new HitTestResult(topic, null, true, false);
             }
-            else if (topic.Bounds.Contains(x, y))
+            else if (topicFullBound.Contains(x, y))
             {
                 foreach (Widget widget in topic.Widgets)
                 {
-                    if (/*widget.Visible &&*/ widget.Bounds.Contains(x - topic.Bounds.X, y - topic.Bounds.Y))
+                    if (/*widget.Visible &&*/ widget.Bounds.Contains(x - topicFullBound.X, y - topicFullBound.Y))
                         return new HitTestResult(topic, widget, false, false);
                 }
 

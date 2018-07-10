@@ -209,6 +209,8 @@ namespace Blumind.Controls.MapViews
             if (!string.IsNullOrEmpty(topic.Text))
             {
                 var rectText = topic.TextBounds;
+                DrawTextRectangle(e.Graphics, rectText);
+
                 //rectText.Offset(topic.Left, topic.Top); // 原点已经在调用时转换
                 IBrush brushFore = style.ForeColor.IsEmpty ? BrushNodeFore : (e.Graphics.SolidBrush(style.ForeColor));
                 var sf = PaintHelper.SFCenter;
@@ -245,11 +247,15 @@ namespace Blumind.Controls.MapViews
 
         void DrawSelectRectangle(IGraphics graphics, Color color, Rectangle rectangle)
         {
-            //Pen pen = new Pen(color);
             rectangle.Inflate(1, 1);
-            graphics.DrawRectangle(graphics.Pen(Color.White), rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
+            graphics.DrawRectangle(graphics.Pen(Color.White, (float)2), graphics.SolidBrush(Color.White), rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
             rectangle.Inflate(1, 1);
-            graphics.DrawRectangle(graphics.Pen(Color.Black), rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
+            graphics.DrawRoundRectangle(graphics.Pen(Color.FromArgb(63, 255, 240), (float) 2), graphics.SolidBrush(Color.FromArgb(128, 63, 255, 240)), rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, 3);
+        }
+
+        void DrawTextRectangle(IGraphics graphics, Rectangle rectangle)
+        {
+            graphics.DrawRectangle(graphics.Pen(Color.Black), graphics.SolidBrush(Color.White), rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
         }
 
         void PaintLinkLines(Topic topic, RenderArgs e)
@@ -288,9 +294,23 @@ namespace Blumind.Controls.MapViews
 
             Shape shaper = Shape.GetShaper(topic.Style.Shape, topic.Style.RoundRadius);
 
-            // draw shadow
-            //if (ShadowSize != 0)// && hover)
-            //    PaintNodeShadow(topic, e, round);
+            // draw border
+            Rectangle rectBoundary = Rectangle.Union(rect, topic.TextBounds);
+            rectBoundary.Inflate(2, 2);
+            if (hover)
+                shaper.DrawBorder(e.Graphics, PenNodeBorderHover, rectBoundary);
+            //else
+            //{
+            //    if (topic.Style.BorderColor.IsEmpty)
+            //        shaper.DrawBorder(e.Graphics, PenNodeBorder, rectBoundary);
+            //    else
+            //        shaper.DrawBorder(e.Graphics, e.Graphics.Pen(topic.Style.BorderColor, PenNodeBorder.Width), rectBoundary);
+            //}
+
+            if (active || select)
+            {
+                DrawSelectRectangle(e.Graphics, e.Chart.SelectColor, rectBoundary);
+            }
 
             // draw background
             Color backColor = topic.Style.BackColor;
@@ -298,37 +318,7 @@ namespace Blumind.Controls.MapViews
                 backColor = e.Chart.NodeBackColor;
             var ft = FillType.GetFillType(topic.Style.FillType);
             IBrush brushBack = ft.CreateBrush(e.Graphics, backColor, rect);
-
-            //IBrush brushBack;
-            //if (!topic.Style.BackColor.IsEmpty)
-            //{
-            //    brushBack = e.Graphics.SolidBrush(topic.Style.BackColor);
-            //}
-            //else
-            //{
-            //    brushBack = topic.IsRoot ? BrushRootNodeBack : BrushNodeBack;
-            //}
             shaper.Fill(e.Graphics, brushBack, rect);
-
-            // draw border
-            if (hover)
-                shaper.DrawBorder(e.Graphics, PenNodeBorderHover, rect);
-            else
-            {
-                if (topic.Style.BorderColor.IsEmpty)
-                    shaper.DrawBorder(e.Graphics, PenNodeBorder, rect);
-                else
-                    shaper.DrawBorder(e.Graphics, e.Graphics.Pen(topic.Style.BorderColor, PenNodeBorder.Width), rect);
-            }
-
-            if (active || select)
-            {
-                //Pen pen = active ? PenNodeBorderActive : PenNodeBorderSelect;
-                //Rectangle rectOut = rect;
-                //rectOut.Inflate(OutBoxSpace, OutBoxSpace);
-                //shaper.DrawOutBox(e.Graphics, pen, rect, OutBoxSpace);
-                DrawSelectRectangle(e.Graphics, e.Chart.SelectColor, rect);
-            }
 
             shaper.Dispose();
         }

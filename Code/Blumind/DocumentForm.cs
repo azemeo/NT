@@ -544,12 +544,12 @@ namespace Blumind
             var map = new MindMap();
             map.Name = GetNewChartName(null);
             map.Author = System.Environment.UserName;
-            map.Root.Text = Lang._("Center Topic");
+            //map.Root.Text = Lang._("Center Topic"); // datnq TODO should be removed
 
-            if (ChartThemeManage.Default.DefaultTheme != null)
-            {
-                map.ApplyTheme(ChartThemeManage.Default.DefaultTheme);
-            }
+            //if (ChartThemeManage.Default.DefaultTheme != null) // datnq TODO update theme database
+            //{
+            //    map.ApplyTheme(ChartThemeManage.Default.DefaultTheme);
+            //}
 
             return map;
         }

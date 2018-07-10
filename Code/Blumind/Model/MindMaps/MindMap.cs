@@ -26,6 +26,8 @@ namespace Blumind.Model.MindMaps
             _PictureLibrary = new PictureLibrary();
 
             Root = new Topic();
+            Root.Type = TopicType.TopEvent;
+            // Root.Type = TopicType.Barrier; // Just for testing
             Root.ResetPadding();
         }
 

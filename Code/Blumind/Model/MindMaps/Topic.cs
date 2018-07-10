@@ -31,6 +31,7 @@ namespace Blumind.Model.MindMaps
             Links = new XList<Link>();
             Children = new XList<Topic>();
             Widgets = new XList<Widget>();
+            Type = TopicType.None;
         }
 
         public Topic(string text)
@@ -50,6 +51,7 @@ namespace Blumind.Model.MindMaps
         Vector4 _Vector;
         //string _Description;
         TopicStyle _Style;
+        TopicType _Type;
         List<TopicLine> _Lines;
         XList<Link> _Links;
         XList<Widget> _Widgets;
@@ -284,6 +286,47 @@ namespace Blumind.Model.MindMaps
                 {
                     _Style = value;
                     OnStyleChanged();
+                }
+            }
+        }
+
+        public TopicType Type
+        {
+            get { return _Type; }
+            set
+            {
+                if (_Type != value)
+                {
+                    _Type = value;
+                    switch (value)
+                    {
+                        case TopicType.TopEvent:
+                            Style.Shape = TopicShape.Ellipse;
+                            Style.BackColor = Color.FromArgb(255, 0, 0);
+                            Style.BorderColor = Color.FromArgb(255, 0, 0);
+                            Style.FillType = "Modern";
+                            Text = "Top Event";
+                            Bounds = new Rectangle(Bounds.Location, new Size(100, 100));
+                            TextBounds = new Rectangle(new Point(15, 15), new Size(70, 70));
+                            break;
+                        case TopicType.Hazard:
+                            break;
+                        case TopicType.Barrier:
+                            Style.Shape = TopicShape.Rectangle;
+                            Style.BackColor = Color.FromArgb(64, 64, 64);
+                            Style.BorderColor = Color.FromArgb(64, 64, 64);
+                            Style.FillType = "Modern";
+                            Text = "New Barrier";
+                            Bounds = new Rectangle(Bounds.Location, new Size(30, 60));
+                            TextBounds = new Rectangle(new Point(-45, 65), new Size(120, 50));
+                            break;
+                        case TopicType.Consequence:
+                            break;
+                        case TopicType.Threat:
+                            break;
+                        case TopicType.Escalation:
+                            break;
+                    }
                 }
             }
         }

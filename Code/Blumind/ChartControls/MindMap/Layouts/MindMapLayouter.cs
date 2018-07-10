@@ -20,7 +20,7 @@ namespace Blumind.Controls.MapViews
 
         Rectangle LayoutRoot(Topic root, MindMapLayoutArgs args)
         {
-            Size size = CalculateNodeSize(root, args);
+            Size size = root.Bounds.Size; // CalculateNodeSize(root, args); // datnq TODO Update calculateNodeSize
             Point pt = new Point(0, 0);
             root.Bounds = new Rectangle(pt.X - size.Width / 2, pt.Y - size.Height / 2, size.Width, size.Height);
             var rootFullSize = LayoutAttachments(root, args);
