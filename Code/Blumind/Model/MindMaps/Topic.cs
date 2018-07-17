@@ -168,6 +168,23 @@ namespace Blumind.Model.MindMaps
             }
         }
 
+        public XList<Topic> getChildrenByType(TopicType type)
+        {
+            XList<Topic> threats = new XList<Topic>();
+            if (IsRoot)
+            {
+                for (int i = 0, n = Children.Count; i < n; ++i)
+                {
+                    Topic child = Children[i];
+                    if (child.Type == type)
+                    {
+                        threats.Add(child);
+                    }
+                }
+            }
+            return threats;
+        }
+
         [DefaultValue(null)]
         [LocalDisplayName("Icon"), LocalCategory("Data")]
         public Blumind.Model.Widgets.PictureWidget.PictureDesign Icon
@@ -321,10 +338,31 @@ namespace Blumind.Model.MindMaps
                             TextBounds = new Rectangle(new Point(-45, 65), new Size(120, 50));
                             break;
                         case TopicType.Consequence:
+                            Style.Shape = TopicShape.Rectangle;
+                            Style.BackColor = Color.FromArgb(255, 0, 0);
+                            Style.BorderColor = Color.FromArgb(255, 0, 0);
+                            Style.FillType = "Modern";
+                            Text = "New Consequence";
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 70));
                             break;
                         case TopicType.Threat:
+                            Style.Shape = TopicShape.Rectangle;
+                            Style.BackColor = Color.FromArgb(0, 0, 255);
+                            Style.BorderColor = Color.FromArgb(0, 0, 255);
+                            Style.FillType = "Modern";
+                            Text = "New Threat";
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 70));
                             break;
                         case TopicType.Escalation:
+                            Style.Shape = TopicShape.Rectangle;
+                            Style.BackColor = Color.FromArgb(255, 255, 0);
+                            Style.BorderColor = Color.FromArgb(255, 255, 0);
+                            Style.FillType = "Modern";
+                            Text = "New Escalation Factor";
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 80));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 70));
                             break;
                     }
                 }

@@ -85,6 +85,19 @@ namespace Blumind.Model.MindMaps
             }
         }
 
+        public Rectangle ContentBounds
+        {
+            get
+            {
+                var rect = Bounds;
+                Rectangle globalTextBounds = TextBounds;
+                globalTextBounds.X += Bounds.X;
+                globalTextBounds.Y += Bounds.Y;
+                rect = Rectangle.Union(globalTextBounds, Bounds);
+                return rect;
+            }
+        }
+
         [Browsable(false)]
         public Rectangle FoldingButton { get; set; }
 

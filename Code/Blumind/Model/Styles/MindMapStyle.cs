@@ -10,7 +10,7 @@ namespace Blumind.Model.Styles
 {
     class MindMapStyle : ChartStyle
     {
-        public const int DefaultLayerSpace = 80;
+        public const int DefaultLayerSpace = 60;
         public const int DefaultItemsSpace = 10;
 
         Color _NodeBackColor = Color.White;

@@ -27,7 +27,6 @@ namespace Blumind.Model.MindMaps
 
             Root = new Topic();
             Root.Type = TopicType.TopEvent;
-            // Root.Type = TopicType.Barrier; // Just for testing
             Root.ResetPadding();
         }
 
@@ -499,7 +498,7 @@ namespace Blumind.Model.MindMaps
         #endregion
 
         #region Style
-        public const int DefaultLayerSpace = 80;
+        public const int DefaultLayerSpace = 60;
         public const int DefaultItemsSpace = 10;
 
         Color _NodeBackColor = Color.White;

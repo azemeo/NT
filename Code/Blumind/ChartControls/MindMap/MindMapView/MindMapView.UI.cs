@@ -90,7 +90,8 @@ namespace Blumind.Controls.MapViews
 
         void TsbAddTopic_Click(object sender, EventArgs e)
         {
-            AddTopic();
+            // AddTopic();
+            AddThreat();
         }
 
         void TsbAddSubTopic_Click(object sender, EventArgs e)

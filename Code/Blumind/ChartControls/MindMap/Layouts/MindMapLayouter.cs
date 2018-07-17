@@ -26,41 +26,26 @@ namespace Blumind.Controls.MapViews
             var rootFullSize = LayoutAttachments(root, args);
 
             Vector4[] vectors = new Vector4[] { Vector4.Left, Vector4.Right };
-            int def = 0;
-            int sideCount = Math.DivRem(root.Children.Count, vectors.Length, out def);
+            //int def = 0;
+            //int sideCount = Math.DivRem(root.Children.Count, vectors.Length, out def);
 
             Rectangle allBounds = root.Bounds;
-            int subTopicIndex = 0;
+            //int subTopicIndex = 0;
             root.Lines.Clear();
             Hashtable layoutInfos = new Hashtable();
             for (int vi = 0; vi < vectors.Length; vi++)
             {
-                int mySideCount = sideCount;
-                if (vi < def)
-                    mySideCount++;
+                TopicType type = vi == (int)Vector4.Left ? TopicType.Threat : TopicType.Consequence;
 
-                int[] subSizes = new int[mySideCount];
-                Topic[] subTopics = new Topic[mySideCount];
-                for (int ti = 0; ti < mySideCount; ti++)
+                XList<Topic> children = root.getChildrenByType(type);
+                Topic[] subTopics = new Topic[children.Count];
+                for (int ti = 0, n = children.Count; ti < n; ti++)
                 {
-                    subTopics[ti] = root.Children[subTopicIndex + ti];
+                    subTopics[ti] = children[ti];
                 }
 
                 Size fullSize = CalculateSizes(root, rootFullSize, subTopics, args, vectors[vi], layoutInfos);
                 Rectangle rectFull = LayoutSubTopics(root, subTopics, vectors[vi], layoutInfos, args);
-                //Rectangle fullRectangle;
-                //switch(vectors[vi])
-                //{
-                //    case HorizontalVector.Left:
-                //        fullRectangle = new Rectangle(pt.X - fullSize.Width, pt.Y - fullSize.Height/2, fullSize.Width, fullSize.Height);
-                //        break;
-                //    case HorizontalVector.Right:
-                //    default:
-                //        fullRectangle = new Rectangle(pt.X, pt.Y - fullSize.Height/2, fullSize.Width, fullSize.Height);
-                //        break;
-                //}
-
-                subTopicIndex += mySideCount;
                 if (!rectFull.IsEmpty)
                     allBounds = Rectangle.Union(allBounds, rectFull);
             }
@@ -77,7 +62,7 @@ namespace Blumind.Controls.MapViews
                 bool first = true;
                 foreach (Topic subTopic in subTopics)
                 {
-                    subTopic.Size = CalculateNodeSize(subTopic, e);
+                    // subTopic.Size =  // CalculateNodeSize(subTopic, e); // datnq
                     var subTopicFullSize = LayoutAttachments(subTopic, e);
                     Size subSize = CalculateSizes(subTopic, subTopicFullSize, e, vector, layoutInfos);
                     if (first)
@@ -125,14 +110,19 @@ namespace Blumind.Controls.MapViews
                 nodeSpace = GetRootItemsSpace(parent, subTopics, layoutInfos, e);
             }
 
+            Topic root = parent.GetRoot();
+
             // get full height
             //int nodeSpace = (int)((parent.IsRoot ? NodeSpaceRoot_V : NodeSpace_V) * args.Zoom);
             int fullHeight = 0;
-            for (int i = 0; i < subTopics.Length; i++)
+            if (parent.IsRoot)
             {
-                if (i > 0)
-                    fullHeight += nodeSpace;
-                fullHeight += ((TopicLayoutInfo)layoutInfos[subTopics[i]]).FullSize.Height;
+                for (int i = 0; i < subTopics.Length; i++)
+                {
+                    if (i > 0)
+                        fullHeight += nodeSpace;
+                    fullHeight += ((TopicLayoutInfo)layoutInfos[subTopics[i]]).FullSize.Height;
+                }
             }
 
             //
@@ -141,6 +131,8 @@ namespace Blumind.Controls.MapViews
             int y = pp.Y - (fullHeight / 2);
             //int space = (int)(NodeSpace_H * args.Zoom);
             int space = e.LayerSpace;
+            int barrierSpace = 10;
+            Topic previous = root;
             foreach (var subTopic in subTopics)
             {
                 var subTif = (TopicLayoutInfo)layoutInfos[subTopic];
@@ -149,49 +141,96 @@ namespace Blumind.Controls.MapViews
                 switch (vector)
                 {
                     case Vector4.Left:
-                        pt = new Point(parent.Bounds.Left - space - subTopic.Bounds.Width, y + (subTif.FullSize.Height) / 2);
+                        if (parent.Type == TopicType.Threat)
+                        {
+                            pt = new Point(previous.Bounds.Left - barrierSpace - subTopic.ContentBounds.Width, parent.Location.Y + subTopic.Size.Height / 2);
+                        }
+                        else
+                        {
+                            pt = new Point(parent.Bounds.Left - space - subTopic.Bounds.Width, y + (subTif.FullSize.Height) / 2);
+                        }
                         break;
                     case Vector4.Right:
                     default:
-                        pt = new Point(parent.Bounds.Right + space, y + (subTif.FullSize.Height) / 2);
+                        if (parent.Type == TopicType.Consequence)
+                        {
+                            pt = new Point(previous.Bounds.Right + barrierSpace + subTopic.ContentBounds.Width, parent.Location.Y + subTopic.Size.Height / 2);
+                        }
+                        else
+                        {
+                            pt = new Point(parent.Bounds.Right + space, y + (subTif.FullSize.Height) / 2);
+                        }
                         break;
                 }
                 subTopic.Location = new Point(pt.X, pt.Y - subTopic.Size.Height / 2);
 
-                int foldBtnSize = FoldingButtonSize;
-                switch (vector)
-                {
-                    case Vector4.Left:
-                        subTopic.FoldingButton = new Rectangle(subTopic.Left - foldBtnSize - 1,
-                            subTopic.Top + (int)Math.Round((subTopic.Height - foldBtnSize) / 2.0f, MidpointRounding.AwayFromZero), 
-                            foldBtnSize,
-                            foldBtnSize);
-                        break;
-                    case Vector4.Right:
-                    default:
-                        subTopic.FoldingButton = new Rectangle(subTopic.Right + 1,
-                            subTopic.Top + (int)Math.Round((subTopic.Height - foldBtnSize) / 2.0f, MidpointRounding.AwayFromZero), 
-                            foldBtnSize, 
-                            foldBtnSize);
-                        break;
-                }
-
                 // line
-                var line = CreateTopicLine(e, parent, subTopic, vector, GetReverseVector(vector));
-                if (line != null)
+                if (!parent.Folded && subTopic.Type == TopicType.Barrier)
                 {
-                    parent.Lines.Add(line);
+                    var line = CreateTopicLine(e, previous, subTopic, vector, GetReverseVector(vector));
+                    if (line != null)
+                    {
+                        parent.Lines.Add(line);
+                    }
                 }
-                //parent.Lines.Add(new TopicLine(subTopic, vector, GetReverseVector(vector)));
-
                 subTopic.Lines.Clear();
-                Rectangle rectFullSub = LayoutSubTopics(subTopic, subTopic.Children.ToArray(), vector, layoutInfos, e);
 
-                rectFull = Rectangle.Union(rectFull, subTopic.Bounds);
+                Rectangle rectFullSub = LayoutSubTopics(subTopic, subTopic.Children.ToArray(), vector, layoutInfos, e);
+                // Threat topic will be drawn as the last element
+                if (subTopic.Type == TopicType.Threat || subTopic.Type == TopicType.Consequence)
+                {
+                    Topic beginNode, endNode;
+                    if (subTopic.HasChildren && !subTopic.Folded)
+                    {
+                        Topic lastChild = subTopic.Children[subTopic.Children.Count - 1];
+                        if (subTopic.Type == TopicType.Threat)
+                        {
+                            subTopic.Location = new Point(rectFullSub.X - 2 * space - lastChild.ContentBounds.Width, subTopic.Location.Y);
+                        }
+                        else if (subTopic.Type == TopicType.Consequence)
+                        {
+                            subTopic.Location = new Point(rectFullSub.Right + space, subTopic.Location.Y);
+                        }
+                        beginNode = lastChild;
+                        endNode = subTopic;
+                    }
+                    else
+                    {
+                        beginNode = root;
+                        endNode = subTopic;
+                    }
+                    var line = CreateTopicLine(e, beginNode, endNode, vector, GetReverseVector(vector));
+                    if (line != null)
+                    {
+                        beginNode.Lines.Add(line);
+                    }
+
+                    if (subTopic.HasChildren)
+                    {
+                        int foldBtnSize = FoldingButtonSize;
+                        if (subTopic.Type == TopicType.Threat)
+                        {
+                            subTopic.FoldingButton = new Rectangle(subTopic.Right - foldBtnSize + 4,
+                                                            subTopic.Top + (int)Math.Round((subTopic.Height - foldBtnSize) / 2.0f, MidpointRounding.AwayFromZero),
+                                                            foldBtnSize,
+                                                            foldBtnSize);
+                        }
+                        else if (subTopic.Type == TopicType.Consequence)
+                        {
+                            subTopic.FoldingButton = new Rectangle(subTopic.Left - foldBtnSize + 4,
+                                                            subTopic.Top + (int)Math.Round((subTopic.Height - foldBtnSize) / 2.0f, MidpointRounding.AwayFromZero),
+                                                            foldBtnSize,
+                                                            foldBtnSize);
+                        }
+                    }
+                }
+
+                rectFull = Rectangle.Union(rectFull, subTopic.ContentBounds);
                 if (!rectFullSub.IsEmpty)
                     rectFull = Rectangle.Union(rectFull, rectFullSub);
 
                 y += subTif.FullSize.Height + nodeSpace;
+                previous = subTopic;
             }
 
             return rectFull;

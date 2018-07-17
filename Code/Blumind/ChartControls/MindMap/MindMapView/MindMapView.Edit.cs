@@ -129,7 +129,7 @@ namespace Blumind.Controls.MapViews
             {
                 if (SelectedTopic.ParentTopic != null)
                 {
-                    return AddSubTopic(SelectedTopic.ParentTopic, SelectedTopic, atFront);
+                    return AddSubTopic(SelectedTopic.ParentTopic, SelectedTopic, TopicType.None, atFront);
                 }
                 else
                 {
@@ -140,6 +140,24 @@ namespace Blumind.Controls.MapViews
             {
                 return null;
             }
+        }
+
+        public virtual Topic AddThreat()
+        {
+            if (SelectedTopic != null)
+            {
+                return AddSubTopic(SelectedTopic.GetRoot(), SelectedTopic, TopicType.Threat, false);
+            }
+            return null;
+        }
+
+        public virtual Topic AddConsequence()
+        {
+            if (SelectedTopic != null)
+            {
+                return AddSubTopic(SelectedTopic.GetRoot(), SelectedTopic, TopicType.Consequence, false);
+            }
+            return null;
         }
 
         public Topic AddTopic()
@@ -156,7 +174,19 @@ namespace Blumind.Controls.MapViews
         {
             if (SelectedTopic != null)
             {
-                return AddSubTopic(SelectedTopic, null, false);
+                return AddSubTopic(SelectedTopic, null, TopicType.None, false);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public virtual Topic AddBarrier()
+        {
+            if (SelectedTopic != null)
+            {
+                return AddSubTopic(SelectedTopic, null, TopicType.Barrier, false);
             }
             else
             {
@@ -171,7 +201,7 @@ namespace Blumind.Controls.MapViews
         /// <param name="reference"></param>
         /// <param name="atFront"></param>
         /// <returns></returns>
-        Topic AddSubTopic(Topic parentTopic, Topic reference, bool atFront)
+        Topic AddSubTopic(Topic parentTopic, Topic reference, TopicType type, bool atFront)
         {
             var index = -1;
             if (reference != null)
@@ -180,6 +210,7 @@ namespace Blumind.Controls.MapViews
                 index++;
 
             Topic subTopic = new Topic(GetNewSubTopicText(parentTopic));
+            subTopic.Type = type;
             AddTopic(parentTopic, subTopic, index);
             Select(subTopic);
             return subTopic;
