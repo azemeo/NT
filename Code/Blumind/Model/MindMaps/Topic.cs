@@ -361,7 +361,7 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(255, 255, 0);
                             Style.FillType = "Modern";
                             Text = "New Escalation Factor";
-                            Bounds = new Rectangle(Bounds.Location, new Size(160, 80));
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
                             TextBounds = new Rectangle(new Point(5, 5), new Size(150, 70));
                             break;
                     }

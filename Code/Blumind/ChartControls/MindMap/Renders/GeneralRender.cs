@@ -247,10 +247,8 @@ namespace Blumind.Controls.MapViews
 
         void DrawSelectRectangle(IGraphics graphics, Color color, Rectangle rectangle)
         {
-            rectangle.Inflate(1, 1);
-            graphics.DrawRectangle(graphics.Pen(Color.White, (float)2), graphics.SolidBrush(Color.White), rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
-            rectangle.Inflate(1, 1);
-            graphics.DrawRoundRectangle(graphics.Pen(Color.FromArgb(63, 255, 240), (float) 2), graphics.SolidBrush(Color.FromArgb(128, 63, 255, 240)), rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, 3);
+            rectangle.Inflate(2, 2);
+            graphics.DrawRoundRectangle(graphics.Pen(Color.FromArgb(63, 255, 240), (float) 2), graphics.SolidBrush(Color.FromArgb(63, 63, 255, 240)), rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, 3);
         }
 
         void DrawTextRectangle(IGraphics graphics, Rectangle rectangle)

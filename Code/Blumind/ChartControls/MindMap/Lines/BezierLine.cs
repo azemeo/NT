@@ -135,10 +135,26 @@ namespace Blumind.ChartControls.MindMap.Lines
             }
 
             Point? startPoint;
-            if(shapeFrom == TopicShape.Ellipse)
-                startPoint = PaintHelper.GetPointForPointIntersectEllipse(rectFrom, pts[3]);
+            if (shapeFrom == TopicShape.Ellipse)
+                switch (vector)
+                {
+                    case Vector4.Left:
+                        startPoint = new Point(rectFrom.X, rectFrom.Y + rectFrom.Height / 2);
+                        break;
+                    case Vector4.Right:
+                        startPoint = new Point(rectFrom.Right, rectFrom.Y + rectFrom.Height / 2);
+                        break;
+                    case Vector4.Top:
+                    case Vector4.Bottom:
+                    default:
+                        startPoint = PaintHelper.GetPointForPointIntersectEllipse(rectFrom, pts[3]);
+                        break;
+                }
             else
+            {
                 startPoint = PaintHelper.GetPointForLineIntersectRectangle(rectFrom, pts[3]);
+            }
+             // PaintHelper.GetPointForLineIntersectRectangle(rectFrom, pts[3]);
             if (!startPoint.HasValue)
                 return null;
             pts[0] = startPoint.Value;

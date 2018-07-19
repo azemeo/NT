@@ -164,6 +164,7 @@ namespace Blumind.ChartPageView
             MenuAddThreat.ShortcutKeyDisplayString = KeyMap.AddTopic.ToString(); // datnq
             MenuAddConsequence.ShortcutKeyDisplayString = KeyMap.AddTopic.ToString();
             MenuAddBarrier.ShortcutKeyDisplayString = KeyMap.AddSubTopic.ToString();
+            MenuAddEscalation.ShortcutKeyDisplayString = KeyMap.AddSubTopic.ToString();
 
             MenuCollapseFolding.ShortcutKeyDisplayString = KeyMap.Collapse.ToString();
             MenuExpandFolding.ShortcutKeyDisplayString = KeyMap.Expand.ToString();
@@ -188,6 +189,7 @@ namespace Blumind.ChartPageView
             MenuAddThreat.Text = Lang._("Add Threat");
             MenuAddConsequence.Text = Lang._("Add Consequence");
             MenuAddBarrier.Text = Lang._("Add Barrier");
+            MenuAddEscalation.Text = Lang._("Add Escalation Factor");
             MenuAdd.Text = Lang._("Add");
             MenuAddIcon.Text = Lang.GetTextWithEllipsis("Icon");
             MenuAddProgressBar.Text = Lang.GetTextWithEllipsis("Progress Bar");
@@ -223,6 +225,7 @@ namespace Blumind.ChartPageView
         ToolStripMenuItem MenuAddThreat;
         ToolStripMenuItem MenuAddConsequence;
         ToolStripMenuItem MenuAddBarrier;
+        ToolStripMenuItem MenuAddEscalation;
         ToolStripMenuItem MenuAdd;
         ToolStripMenuItem MenuAddIcon;
         ToolStripMenuItem MenuAddProgressBar;
@@ -268,6 +271,7 @@ namespace Blumind.ChartPageView
             MenuAddThreat = new ToolStripMenuItem();
             MenuAddConsequence = new ToolStripMenuItem();
             MenuAddBarrier = new ToolStripMenuItem();
+            MenuAddEscalation = new ToolStripMenuItem();
             MenuAdd = new ToolStripMenuItem();
             MenuAddIcon = new ToolStripMenuItem();
             MenuAddProgressBar = new ToolStripMenuItem();
@@ -301,6 +305,7 @@ namespace Blumind.ChartPageView
                 MenuAddThreat,
                 MenuAddConsequence,
                 MenuAddBarrier,
+                MenuAddEscalation,
                 MenuAdd,
                 toolStripSeparator5,
                 MenuLink,
@@ -344,6 +349,13 @@ namespace Blumind.ChartPageView
             MenuAddBarrier.ShortcutKeyDisplayString = "Tab/Insert";
             MenuAddBarrier.Text = "Add Barrier";
             MenuAddBarrier.Click += new System.EventHandler(MenuAddBarrier_Click);
+
+            // MenuAddEscalation
+            MenuAddEscalation.Image = Blumind.Properties.Resources.add_sub_topic;
+            MenuAddEscalation.Name = "MenuAddEscalation";
+            MenuAddEscalation.ShortcutKeyDisplayString = "Tab/Insert";
+            MenuAddEscalation.Text = "Add Escalation Factor";
+            MenuAddEscalation.Click += new System.EventHandler(MenuAddEscalationFactor_Click);
 
             // MenuAdd
             MenuAdd.DropDownItems.AddRange(new ToolStripItem[] {
@@ -512,7 +524,8 @@ namespace Blumind.ChartPageView
 
                 MenuAddThreat.Enabled = !ReadOnly && count == 1 && topicCount > 0 && topic.IsRoot;
                 MenuAddConsequence.Enabled = !ReadOnly && count == 1 && topicCount > 0 && topic.IsRoot;
-                MenuAddBarrier.Enabled = !ReadOnly && count == 1 && topicCount > 0 && !topic.IsRoot && (topic.Type == TopicType.Threat || topic.Type == TopicType.Consequence);
+                MenuAddBarrier.Enabled = !ReadOnly && count == 1 && topicCount > 0 && !topic.IsRoot && (topic.Type == TopicType.Threat || topic.Type == TopicType.Consequence || topic.Type == TopicType.Escalation);
+                MenuAddEscalation.Enabled = !ReadOnly && count == 1 && topicCount > 0 && topic.Type == TopicType.Barrier;
                 MenuFolding.Available = topicCount > 0 && count == 1 && topic.HasChildren;
                 MenuExpandFolding.Enabled = topicCount > 0 && count == 1 && topic.Folded && !topic.IsRoot;
                 MenuCollapseFolding.Enabled = topicCount > 0 && count == 1 && !topic.Folded && !topic.IsRoot;
@@ -543,6 +556,7 @@ namespace Blumind.ChartPageView
                 MenuAddThreat.Enabled = false;
                 MenuAddConsequence.Enabled = false;
                 MenuAddBarrier.Enabled = false;
+                MenuAddEscalation.Enabled = false;
                 MenuFolding.Available = false;
                 MenuAdd.Enabled = false;
                 MenuLink.Available = false;
@@ -638,6 +652,11 @@ namespace Blumind.ChartPageView
         {
             // mindMapView1.AddSubTopic();
             mindMapView1.AddBarrier();
+        }
+
+        void MenuAddEscalationFactor_Click(object sender, EventArgs e)
+        {
+            mindMapView1.AddEscalationFactor();
         }
 
         void MenuAddIcon_Click(object sender, EventArgs e)

@@ -146,7 +146,7 @@ namespace Blumind.Controls.MapViews
         {
             if (SelectedTopic != null)
             {
-                return AddSubTopic(SelectedTopic.GetRoot(), SelectedTopic, TopicType.Threat, false);
+                return AddSubTopic(SelectedTopic.GetRoot(), SelectedTopic, TopicType.Threat, true);
             }
             return null;
         }
@@ -155,7 +155,7 @@ namespace Blumind.Controls.MapViews
         {
             if (SelectedTopic != null)
             {
-                return AddSubTopic(SelectedTopic.GetRoot(), SelectedTopic, TopicType.Consequence, false);
+                return AddSubTopic(SelectedTopic.GetRoot(), SelectedTopic, TopicType.Consequence, true);
             }
             return null;
         }
@@ -186,7 +186,7 @@ namespace Blumind.Controls.MapViews
         {
             if (SelectedTopic != null)
             {
-                return AddSubTopic(SelectedTopic, null, TopicType.Barrier, false);
+                return AddSubTopic(SelectedTopic, null, TopicType.Barrier, true);
             }
             else
             {
@@ -194,6 +194,17 @@ namespace Blumind.Controls.MapViews
             }
         }
 
+        public virtual Topic AddEscalationFactor()
+        {
+            if (SelectedTopic != null)
+            {
+                return AddSubTopic(SelectedTopic, null, TopicType.Escalation, true);
+            }
+            else
+            {
+                return null;
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
