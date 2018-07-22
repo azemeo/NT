@@ -150,10 +150,10 @@ namespace Blumind.Core
         public static readonly ShortcutKey Copy = new ShortcutKey("Copy", Keys.Control | Keys.C, Properties.Resources.copy);
         public static readonly ShortcutKey Cut = new ShortcutKey("Cut", Keys.Control | Keys.X, Properties.Resources.cut);
         public static readonly ShortcutKey Paste = new ShortcutKey("Paste", Keys.Control | Keys.V, Properties.Resources.paste);
-        public static readonly ShortcutKey AddTopic = new ShortcutKey("Add Topic", Keys.Enter, Properties.Resources.add_topic);
-        public static readonly ShortcutKey AddTopicFront = new ShortcutKey("Add Topic Front", Keys.Enter | Keys.Shift, Properties.Resources.add_topic_front);
-        public static readonly ShortcutKey AddSubTopic = new ShortcutKey("Add Sub Topic", Keys.Tab, Properties.Resources.add_sub_topic);
-        public static readonly ShortcutKey AddSubTopic2 = new ShortcutKey("Add Sub Topic", Keys.Insert, Properties.Resources.add_sub_topic);
+        //public static readonly ShortcutKey AddTopic = new ShortcutKey("Add Topic", Keys.Enter, Properties.Resources.add_topic);
+        //public static readonly ShortcutKey AddTopicFront = new ShortcutKey("Add Topic Front", Keys.Enter | Keys.Shift, Properties.Resources.add_topic_front);
+        //public static readonly ShortcutKey AddSubTopic = new ShortcutKey("Add Sub Topic", Keys.Tab, Properties.Resources.add_sub_topic);
+        //public static readonly ShortcutKey AddSubTopic2 = new ShortcutKey("Add Sub Topic", Keys.Insert, Properties.Resources.add_sub_topic);
         public static readonly ShortcutKey Edit = new ShortcutKey("Edit", Keys.Space, Properties.Resources.edit);
         public static readonly ShortcutKey Edit2 = new ShortcutKey("Edit", Keys.F2, Properties.Resources.edit);
         public static readonly ShortcutKey Delete = new ShortcutKey("Delete", Keys.Delete, Properties.Resources.delete);
@@ -161,6 +161,12 @@ namespace Blumind.Core
         public static readonly ShortcutKey Replace = new ShortcutKey("Replace", Keys.Control | Keys.H, Properties.Resources.replace);
         public static readonly ShortcutKey MoveUp = new ShortcutKey("Move Up", Keys.Control | Keys.Up, Properties.Resources.up);
         public static readonly ShortcutKey MoveDown = new ShortcutKey("Move Down", Keys.Control | Keys.Down, Properties.Resources.down);
+
+
+        public static readonly ShortcutKey AddThreat = new ShortcutKey("Thêm Nguyên Nhân", Keys.Enter, Properties.Resources.threat);
+        public static readonly ShortcutKey AddConsequence = new ShortcutKey("Thêm Hậu Quả", Keys.Enter | Keys.Shift, Properties.Resources.consequence);
+        public static readonly ShortcutKey AddBarrier = new ShortcutKey("Thêm Biện Pháp", Keys.Tab, Properties.Resources.barrier);
+        public static readonly ShortcutKey AddEscalation = new ShortcutKey("Add Escalation", Keys.Insert, Properties.Resources.escalation);
 
         // selection
         public static readonly ShortcutKey SelectAll = new ShortcutKey("Select All", Keys.Control | Keys.A);

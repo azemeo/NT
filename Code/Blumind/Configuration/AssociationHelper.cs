@@ -22,7 +22,7 @@ namespace Blumind.Configuration
 
         const string DOC_TYPE_BMD_EXT = Document.Extension;
         const string DOC_TYPE_BMD_NAME = "Blumind.MindMap";
-        const string DOC_TYPE_BMD_DESC = "Blumind Mind Map Document";
+        const string DOC_TYPE_BMD_DESC = "BowTie Presenter Document";
 
         public static bool TestBmdAssociation()
         {

@@ -161,10 +161,10 @@ namespace Blumind.ChartPageView
 
         protected override void OnKeyMapChanged()
         {
-            MenuAddThreat.ShortcutKeyDisplayString = KeyMap.AddTopic.ToString(); // datnq
-            MenuAddConsequence.ShortcutKeyDisplayString = KeyMap.AddTopic.ToString();
-            MenuAddBarrier.ShortcutKeyDisplayString = KeyMap.AddSubTopic.ToString();
-            MenuAddEscalation.ShortcutKeyDisplayString = KeyMap.AddSubTopic.ToString();
+            MenuAddThreat.ShortcutKeyDisplayString = KeyMap.AddThreat.ToString();
+            MenuAddConsequence.ShortcutKeyDisplayString = KeyMap.AddConsequence.ToString();
+            MenuAddBarrier.ShortcutKeyDisplayString = KeyMap.AddBarrier.ToString();
+            MenuAddEscalation.ShortcutKeyDisplayString = KeyMap.AddEscalation.ToString();
 
             MenuCollapseFolding.ShortcutKeyDisplayString = KeyMap.Collapse.ToString();
             MenuExpandFolding.ShortcutKeyDisplayString = KeyMap.Expand.ToString();
@@ -186,9 +186,9 @@ namespace Blumind.ChartPageView
                 return;
 
             MenuOpenHyperlink.Text = Lang._("Open Hyperlink");
-            MenuAddThreat.Text = Lang._("Add Threat");
-            MenuAddConsequence.Text = Lang._("Add Consequence");
-            MenuAddBarrier.Text = Lang._("Add Barrier");
+            MenuAddThreat.Text = Lang._("Thêm Nguyên Nhân");
+            MenuAddConsequence.Text = Lang._("Thêm Hậu Quả");
+            MenuAddBarrier.Text = Lang._("Thêm Biện Pháp");
             MenuAddEscalation.Text = Lang._("Add Escalation Factor");
             MenuAdd.Text = Lang._("Add");
             MenuAddIcon.Text = Lang.GetTextWithEllipsis("Icon");
@@ -305,12 +305,12 @@ namespace Blumind.ChartPageView
                 MenuAddThreat,
                 MenuAddConsequence,
                 MenuAddBarrier,
-                MenuAddEscalation,
-                MenuAdd,
+                //MenuAddEscalation,
+                //MenuAdd,
                 toolStripSeparator5,
                 MenuLink,
                 MenuFolding,
-                MenuAdvance,
+                //MenuAdvance,
                 toolStripMenuItem2,
                 MenuCut,
                 MenuCopy,
@@ -330,30 +330,30 @@ namespace Blumind.ChartPageView
             toolStripSeparator15.Name = "toolStripSeparator15";
 
             // MenuAddThreat
-            MenuAddThreat.Image = Blumind.Properties.Resources.add_topic; // datnq
+            MenuAddThreat.Image = Blumind.Properties.Resources.threat;
             MenuAddThreat.Name = "MenuAddThreat";
             MenuAddThreat.ShortcutKeyDisplayString = "Enter";
-            MenuAddThreat.Text = "Add Threat";
+            MenuAddThreat.Text = "Thêm Nguyên Nhân";
             MenuAddThreat.Click += new System.EventHandler(MenuAddThreat_Click);
 
             // MenuAddConsequence
-            MenuAddConsequence.Image = Blumind.Properties.Resources.add_topic;
+            MenuAddConsequence.Image = Blumind.Properties.Resources.consequence;
             MenuAddConsequence.Name = "MenuAddConsequence";
             MenuAddConsequence.ShortcutKeyDisplayString = "Enter";
-            MenuAddConsequence.Text = "Add Consequence";
+            MenuAddConsequence.Text = "Thêm Hậu Quả";
             MenuAddConsequence.Click += new System.EventHandler(MenuAddConsequence_Click);
 
-            // MenuAddSubTopic
-            MenuAddBarrier.Image = Blumind.Properties.Resources.add_sub_topic;
+            // MenuAddBarrier
+            MenuAddBarrier.Image = Blumind.Properties.Resources.barrier;
             MenuAddBarrier.Name = "MenuAddBarrier";
-            MenuAddBarrier.ShortcutKeyDisplayString = "Tab/Insert";
-            MenuAddBarrier.Text = "Add Barrier";
+            MenuAddBarrier.ShortcutKeyDisplayString = "Tab";
+            MenuAddBarrier.Text = "Thêm Biện Pháp";
             MenuAddBarrier.Click += new System.EventHandler(MenuAddBarrier_Click);
 
             // MenuAddEscalation
-            MenuAddEscalation.Image = Blumind.Properties.Resources.add_sub_topic;
+            MenuAddEscalation.Image = Blumind.Properties.Resources.escalation;
             MenuAddEscalation.Name = "MenuAddEscalation";
-            MenuAddEscalation.ShortcutKeyDisplayString = "Tab/Insert";
+            MenuAddEscalation.ShortcutKeyDisplayString = "Insert";
             MenuAddEscalation.Text = "Add Escalation Factor";
             MenuAddEscalation.Click += new System.EventHandler(MenuAddEscalationFactor_Click);
 
@@ -579,12 +579,12 @@ namespace Blumind.ChartPageView
 
             if (mindMapView1.CanPasteAsRemark && Clipboard.ContainsText())
             {
-                actions.Add(new ExtendActionInfo("Paste as Note", Properties.Resources.paste_as_remark, MenuPasteAsNote_Click));
+                //actions.Add(new ExtendActionInfo("Paste as Note", Properties.Resources.paste_as_remark, MenuPasteAsNote_Click));
             }
 
             if (mindMapView1.CanPaste && Clipboard.ContainsImage())
             {
-                actions.Add(new ExtendActionInfo("Paste as Image", Properties.Resources.paste_as_image, MenuPasteAsImage_Click));
+                //actions.Add(new ExtendActionInfo("Paste as Image", Properties.Resources.paste_as_image, MenuPasteAsImage_Click));
             }
 
             Topic topic = mindMapView1.SelectedTopic;
@@ -602,7 +602,7 @@ namespace Blumind.ChartPageView
 
                 if (SelectedObjects.Length == 1 && topic.Children.Count > 1)
                 {
-                    actions.Add(new ExtendActionInfo(Lang.GetTextWithEllipsis("Custom Sort"), null, MenuCustomSort_Click));
+                    //actions.Add(new ExtendActionInfo(Lang.GetTextWithEllipsis("Custom Sort"), null, MenuCustomSort_Click));
                 }
             }
 

@@ -9,10 +9,10 @@ namespace Blumind.Controls.MapViews
 {
     partial class MindMapView
     {
-        ToolStripButton TsbAddTopic;
-        ToolStripButton TsbAddSubTopic;
-        ToolStripButton TsbAddLink;
-        ToolStripButton TsbAddIcon;
+        ToolStripButton TsbAddThreat;
+        ToolStripButton TsbAddConsequence;
+        ToolStripButton TsbAddBarrier;
+        ToolStripButton TsbAddEscalation;
         ToolStripButton TsbAddRemark;
         ToolStripButton TsbAddProgressBar;
         ToolStripSeparator toolStripSeparator1;
@@ -28,9 +28,10 @@ namespace Blumind.Controls.MapViews
 
             return new ToolStripItem[]
             {
-                TsbAddTopic,
-                TsbAddSubTopic,
-                TsbAddLink,
+                TsbAddThreat,
+                TsbAddConsequence,
+                TsbAddBarrier,
+                //TsbAddEscalation,
                 //TsbAddIcon,
                 //TsbAddRemark,
                 //TsbAddProgressBar,
@@ -39,37 +40,37 @@ namespace Blumind.Controls.MapViews
 
         void InitializeToolStripItems()
         {
-            TsbAddTopic = new ToolStripButton();
-            TsbAddSubTopic = new ToolStripButton();
-            TsbAddLink = new ToolStripButton();
-            TsbAddIcon = new ToolStripButton();
+            TsbAddThreat = new ToolStripButton();
+            TsbAddConsequence = new ToolStripButton();
+            TsbAddBarrier = new ToolStripButton();
+            TsbAddEscalation = new ToolStripButton();
             TsbAddRemark = new ToolStripButton();
             TsbAddProgressBar = new ToolStripButton();
-            toolStripSeparator1 = new ToolStripSeparator(); 
+            toolStripSeparator1 = new ToolStripSeparator();
 
-            // TsbAddTopic
-            TsbAddTopic.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            TsbAddTopic.Image = Properties.Resources.threat;
-            TsbAddTopic.Text = Lang._("Add Threat");
-            TsbAddTopic.Click += new System.EventHandler(this.TsbAddTopic_Click);
+            // TsbAddThreat
+            TsbAddThreat.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            TsbAddThreat.Image = Properties.Resources.threat;
+            TsbAddThreat.Text = Lang._("Thêm Nguyên Nhân");
+            TsbAddThreat.Click += new System.EventHandler(this.TsbAddThreat_Click);
 
-            // TsbAddSubTopic
-            TsbAddSubTopic.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            TsbAddSubTopic.Image = Properties.Resources.consequence;
-            TsbAddSubTopic.Text = Lang._("Add Consequence");
-            TsbAddSubTopic.Click += new System.EventHandler(this.TsbAddSubTopic_Click);
+            // TsbAddConsequence
+            TsbAddConsequence.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            TsbAddConsequence.Image = Properties.Resources.consequence;
+            TsbAddConsequence.Text = Lang._("Thêm Hậu Quả");
+            TsbAddConsequence.Click += new System.EventHandler(this.TsbAddConsequence_Click);
 
-            // TsbAddLink
-            TsbAddLink.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            TsbAddLink.Image = Properties.Resources.barrier;
-            TsbAddLink.Text = Lang._("Add Barrier");
-            TsbAddLink.Click += new System.EventHandler(this.TsbAddLink_Click);
+            // TsbAddBarrier
+            TsbAddBarrier.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            TsbAddBarrier.Image = Properties.Resources.barrier;
+            TsbAddBarrier.Text = Lang._("Thêm Biện Pháp");
+            TsbAddBarrier.Click += new System.EventHandler(this.TsbAddBarrier_Click);
 
-            // TsbAddIcon
-            TsbAddIcon.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            TsbAddIcon.Image = Properties.Resources.image;
-            TsbAddIcon.Text = Lang._("Add Icon");
-            TsbAddIcon.Click += new System.EventHandler(this.TsbAddIcon_Click);
+            // TsbAddEscalation
+            TsbAddEscalation.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            TsbAddEscalation.Image = Properties.Resources.escalation;
+            TsbAddEscalation.Text = Lang._("Add Escalation");
+            TsbAddEscalation.Click += new System.EventHandler(this.TsbAddEscalation_Click);
 
             // TsbAddRemark
             TsbAddRemark.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -87,19 +88,17 @@ namespace Blumind.Controls.MapViews
             ResetControlStatus();
         }
 
-        void TsbAddTopic_Click(object sender, EventArgs e)
+        void TsbAddThreat_Click(object sender, EventArgs e)
         {
-            // AddTopic();
             AddThreat();
         }
 
-        void TsbAddSubTopic_Click(object sender, EventArgs e)
+        void TsbAddConsequence_Click(object sender, EventArgs e)
         {
-            //AddSubTopic();
             AddConsequence();
         }
 
-        void TsbAddLink_Click(object sender, EventArgs e)
+        void TsbAddBarrier_Click(object sender, EventArgs e)
         {
             //AddLink();
             AddBarrier();
@@ -110,9 +109,9 @@ namespace Blumind.Controls.MapViews
             AddProgressBar();
         }
 
-        void TsbAddIcon_Click(object sender, EventArgs e)
+        void TsbAddEscalation_Click(object sender, EventArgs e)
         {
-            AddIcon();
+            AddEscalationFactor();
         }
 
         void TsbAddRemark_Click(object sender, EventArgs e)
@@ -128,10 +127,10 @@ namespace Blumind.Controls.MapViews
             {
                 bool hasSelected = HasSelected() && SelectedTopic != null;
 
-                TsbAddLink.Enabled = hasSelected && (SelectedTopic.Type == Model.MindMaps.TopicType.Consequence || SelectedTopic.Type == Model.MindMaps.TopicType.Threat);
-                TsbAddSubTopic.Enabled = hasSelected && SelectedTopic.IsRoot;
-                TsbAddTopic.Enabled = hasSelected && SelectedTopic.IsRoot;
-                TsbAddIcon.Enabled = hasSelected;
+                TsbAddBarrier.Enabled = hasSelected && (SelectedTopic.Type == Model.MindMaps.TopicType.Consequence || SelectedTopic.Type == Model.MindMaps.TopicType.Threat);
+                TsbAddConsequence.Enabled = hasSelected && SelectedTopic.IsRoot;
+                TsbAddThreat.Enabled = hasSelected && SelectedTopic.IsRoot;
+                TsbAddEscalation.Enabled = hasSelected && (SelectedTopic.Type == Model.MindMaps.TopicType.Barrier);
                 TsbAddRemark.Enabled = hasSelected;
                 TsbAddProgressBar.Enabled = hasSelected;
             }
@@ -141,10 +140,10 @@ namespace Blumind.Controls.MapViews
         {
             base.OnCurrentLanguageChanged();
 
-            TsbAddTopic.Text = Lang._("Add Topic", KeyMap.AddTopic.Keys);
-            TsbAddSubTopic.Text = Lang._("Add Sub Topic", KeyMap.AddSubTopic.Keys);
-            TsbAddLink.Text = Lang._("Add Link");
-            TsbAddIcon.Text = Lang._("Add Icon");
+            TsbAddThreat.Text = Lang._("Add Topic", KeyMap.AddThreat.Keys);
+            TsbAddConsequence.Text = Lang._("Add Consequence", KeyMap.AddConsequence.Keys);
+            TsbAddBarrier.Text = Lang._("Add Barrier", KeyMap.AddBarrier.Keys);
+            TsbAddEscalation.Text = Lang._("Add Escalation", KeyMap.AddEscalation.Keys);
             TsbAddProgressBar.Text = Lang._("Add Progress Bar");
             TsbAddRemark.Text = Lang._("Add Remark");
         }

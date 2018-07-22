@@ -494,7 +494,7 @@ namespace Blumind
 
             // All Support Format (*.bmd, *.mm)|*.bmd,*.mm|
             openFileDialog1.Filter = string.Format("{0} (*{1})|*{1};|{2} (*.*)|*.*",
-                Lang._("Blumind Mind Map File"),
+                Lang._("BowTie Presenter File"),
                 DocumentType.Blumind.DefaultExtension,
                 Lang._("All Files"));
         }
