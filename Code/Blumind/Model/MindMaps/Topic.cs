@@ -292,6 +292,19 @@ namespace Blumind.Model.MindMaps
             }
         }
 
+        public bool IsParentOf(Topic child)
+        {
+            for (int i = 0, n = this.Children.Count; i < n; ++i)
+            {
+                Topic child1 = Children[i];
+                if (child1 == child || child1.IsParentOf(child))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         [DefaultValue(null)]
         [Browsable(false), LocalDisplayName("Style")]
         public TopicStyle Style
@@ -323,8 +336,8 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(255, 0, 0);
                             Style.FillType = "Modern";
                             Text = "Top Event";
-                            Bounds = new Rectangle(Bounds.Location, new Size(100, 100));
-                            TextBounds = new Rectangle(new Point(15, 15), new Size(70, 70));
+                            Bounds = new Rectangle(Bounds.Location, new Size(120, 120));
+                            TextBounds = new Rectangle(new Point(20, 20), new Size(80, 80));
                             break;
                         case TopicType.Hazard:
                             break;
@@ -343,8 +356,8 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(255, 0, 0);
                             Style.FillType = "Modern";
                             Text = "New Consequence";
-                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 70));
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
                             break;
                         case TopicType.Threat:
                             Style.Shape = TopicShape.Rectangle;
@@ -352,8 +365,8 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(0, 0, 255);
                             Style.FillType = "Modern";
                             Text = "New Threat";
-                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 70));
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
                             break;
                         case TopicType.Escalation:
                             Style.Shape = TopicShape.Rectangle;
@@ -361,8 +374,8 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(255, 255, 0);
                             Style.FillType = "Modern";
                             Text = "New Escalation Factor";
-                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 70));
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
                             break;
                     }
                 }

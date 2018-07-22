@@ -73,7 +73,7 @@ namespace Blumind.Controls.MapViews
                     else
                     {
                         fullSize.Width = Math.Max(fullSize.Width, subSize.Width);
-                        fullSize.Height += subSize.Height + e.ItemsSpace;
+                        // fullSize.Height += subSize.Height + e.ItemsSpace;
                         //fullSize.Height += subSize.Height + (int)((parent.IsRoot ? NodeSpaceRoot_V : NodeSpace_V) * args.Zoom);
                     }
                 }
@@ -147,14 +147,10 @@ namespace Blumind.Controls.MapViews
                         }
                         else
                         {
-                            int localY;
+                            int localY = y + (subTif.FullSize.Height) / 2;
                             if (parent != root && subTopic.Type == TopicType.Escalation)
                             {
-                                localY = parent.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2;
-                            }
-                            else
-                            {
-                                localY = y + (subTif.FullSize.Height) / 2;
+                                localY = Math.Max(parent.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2, localY);
                             }
                             pt = new Point(parent.Bounds.Left - space - subTopic.Bounds.Width, localY);
                         }
@@ -167,14 +163,10 @@ namespace Blumind.Controls.MapViews
                         }
                         else
                         {
-                            int localY;
+                            int localY = y + (subTif.FullSize.Height) / 2;
                             if (parent != root && subTopic.Type == TopicType.Escalation)
                             {
-                                localY = parent.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2;
-                            }
-                            else
-                            {
-                                localY = y + (subTif.FullSize.Height) / 2;
+                                localY = Math.Max( parent.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2, localY);
                             }
                             pt = new Point(parent.Bounds.Right + space, localY);
                         }
@@ -185,10 +177,10 @@ namespace Blumind.Controls.MapViews
                 // line
                 if (!parent.Folded && subTopic.Type == TopicType.Barrier)
                 {
-                    var line = CreateTopicLine(e, previous, subTopic, vector, GetReverseVector(vector));
-                    if (line != null)
+                    var lines = CreateTopicLines(e, previous, subTopic, vector, GetReverseVector(vector));
+                    if (lines != null)
                     {
-                        parent.Lines.Add(line);
+                        parent.Lines.AddRange(lines);
                     }
                 }
                 subTopic.Lines.Clear();
@@ -217,10 +209,10 @@ namespace Blumind.Controls.MapViews
                         beginNode = parent;
                         endNode = subTopic;
                     }
-                    var line = CreateTopicLine(e, beginNode, endNode, vector, GetReverseVector(vector));
-                    if (line != null)
+                    var lines = CreateTopicLines(e, beginNode, endNode, vector, GetReverseVector(vector));
+                    if (lines != null)
                     {
-                        beginNode.Lines.Add(line);
+                        beginNode.Lines.AddRange(lines);
                     }
 
                     if (subTopic.HasChildren)
@@ -229,14 +221,14 @@ namespace Blumind.Controls.MapViews
                         if (vector == Vector4.Left)
                         {
                             subTopic.FoldingButton = new Rectangle(subTopic.Right - foldBtnSize + 4,
-                                                            subTopic.Top + (int)Math.Round((subTopic.Height - foldBtnSize) / 2.0f, MidpointRounding.AwayFromZero),
+                                                            subTopic.Top + (int)Math.Round((60 - foldBtnSize) / 2.0f, MidpointRounding.AwayFromZero),
                                                             foldBtnSize,
                                                             foldBtnSize);
                         }
                         else if (vector == Vector4.Right)
                         {
                             subTopic.FoldingButton = new Rectangle(subTopic.Left - foldBtnSize + 4,
-                                                            subTopic.Top + (int)Math.Round((subTopic.Height - foldBtnSize) / 2.0f, MidpointRounding.AwayFromZero),
+                                                            subTopic.Top + (int)Math.Round((60 - foldBtnSize) / 2.0f, MidpointRounding.AwayFromZero),
                                                             foldBtnSize,
                                                             foldBtnSize);
                         }
@@ -300,11 +292,11 @@ namespace Blumind.Controls.MapViews
                 switch (beginSide)
                 {
                     case Vector4.Left:
-                        beginRect.X -= foldBtnSize;
-                        beginRect.Width += foldBtnSize;
+                        //beginRect.X -= foldBtnSize;
+                        //beginRect.Width += foldBtnSize;
                         break;
                     case Vector4.Right:
-                        beginRect.Width += foldBtnSize;
+                        // beginRect.Width += foldBtnSize;
                         break;
                     case Vector4.Top:
                         beginRect.Y -= foldBtnSize;
@@ -316,13 +308,110 @@ namespace Blumind.Controls.MapViews
                 }
             }
 
-            if (endTopic != null && endTopic.Style.Shape == TopicShape.BaseLine)
+            if (beginTopic != null && endTopic != null &&
+                beginTopic.Type == TopicType.Barrier &&
+                beginTopic.IsParentOf(endTopic))
             {
-                endRect.Y = endRect.Bottom;
-                endRect.Height = 0;
+                beginRect.Y = beginTopic.ContentBounds.Bottom;
+                beginRect.Height = 0;
+            }
+
+            if (endTopic != null)
+            {
+                if (endTopic.Type == TopicType.Threat ||
+                    endTopic.Type == TopicType.Consequence ||
+                    endTopic.Type == TopicType.Escalation)
+                {
+                    endRect.Height = 60; // 60 is barrier height
+                }
+                else if (endTopic.Style.Shape == TopicShape.BaseLine)
+                {
+                    endRect.Y = endRect.Bottom;
+                    endRect.Height = 0;
+                }
             }
 
             return new TopicLine(endTopic, beginSide, endSide, beginRect, endRect);
+        }
+
+        protected override XList<TopicLine> CreateTopicLines(MindMapLayoutArgs e, Topic beginTopic, Topic endTopic, Vector4 beginSide, Vector4 endSide)
+        {
+            XList<TopicLine> lines = new XList<TopicLine>();
+            var beginRect = beginTopic.Bounds;
+            var endRect = endTopic.Bounds;
+
+            if (e.ShowLineArrowCap)
+            {
+                endRect.Inflate(LineAnchorSize, LineAnchorSize);
+            }
+
+            if (beginTopic != null && !beginTopic.IsRoot)
+            {
+                int foldBtnSize = endTopic.FoldingButton.Width;
+                switch (beginSide)
+                {
+                    case Vector4.Left:
+                        break;
+                    case Vector4.Right:
+                        break;
+                    case Vector4.Top:
+                        beginRect.Y -= foldBtnSize;
+                        beginRect.Height += foldBtnSize;
+                        break;
+                    case Vector4.Bottom:
+                        beginRect.Height += foldBtnSize;
+                        break;
+                }
+            }
+
+            if (beginTopic != null && endTopic != null &&
+                beginTopic.Type == TopicType.Barrier &&
+                beginTopic.IsParentOf(endTopic))
+            {
+                beginRect.Y = beginTopic.ContentBounds.Bottom;
+                beginRect.Height = 0;
+            }
+
+            if (endTopic != null)
+            {
+                if (endTopic.Type == TopicType.Threat ||
+                    endTopic.Type == TopicType.Consequence ||
+                    endTopic.Type == TopicType.Escalation)
+                {
+                    endRect.Height = 60; // 60 is barrier height
+                }
+                else if (endTopic.Style.Shape == TopicShape.BaseLine)
+                {
+                    endRect.Y = endRect.Bottom;
+                    endRect.Height = 0;
+                }
+            }
+
+            TopicLine line;
+            if (endTopic != null && beginTopic != null && endTopic.Type == TopicType.Barrier && beginTopic.IsRoot)
+            {
+                endRect = endTopic.ContentBounds;
+                endRect.Height = endTopic.Bounds.Height;
+                line = new TopicLine(endTopic, beginSide, endSide, beginRect, endRect);
+                lines.Add(line);
+
+                beginRect = endRect;
+                int left = beginRect.Left;
+                if (beginSide == Vector4.Left)
+                {
+                    left += beginRect.Width;
+                }
+                else if (beginSide == Vector4.Right)
+                {
+                    left -= beginRect.Width;
+                }
+
+                beginRect.Location = new Point(left, beginRect.Y);
+                endRect = endTopic.Bounds;
+            }
+            line = new TopicLine(endTopic, beginSide, endSide, beginRect, endRect);
+            lines.Add(line);
+            return lines;
         }
 
         //public override void AdjustLineRect(TopicLine line, Topic fromTopic, ref Rectangle rectFrom, ref Rectangle rectTo)

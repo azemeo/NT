@@ -428,6 +428,11 @@ namespace Blumind.Controls.MapViews
             return null;
         }
 
+        protected virtual XList<TopicLine> CreateTopicLines(MindMapLayoutArgs e, Topic beginTopic, Topic endTopic, Vector4 beginSide, Vector4 endSide)
+        {
+            return null;
+        }
+
         protected Rectangle GetLinksFullBounds(MindMap map)
         {
             if (map == null)
