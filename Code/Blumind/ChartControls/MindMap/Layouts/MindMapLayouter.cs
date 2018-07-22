@@ -25,7 +25,7 @@ namespace Blumind.Controls.MapViews
             root.Bounds = new Rectangle(pt.X - size.Width / 2, pt.Y - size.Height / 2, size.Width, size.Height);
             var rootFullSize = LayoutAttachments(root, args);
 
-            Vector4[] vectors = new Vector4[] { Vector4.Left, Vector4.Right };
+            Vector4[] vectors = new Vector4[] { Vector4.Left, Vector4.Top, Vector4.Right };
             //int def = 0;
             //int sideCount = Math.DivRem(root.Children.Count, vectors.Length, out def);
 
@@ -35,7 +35,19 @@ namespace Blumind.Controls.MapViews
             Hashtable layoutInfos = new Hashtable();
             for (int vi = 0; vi < vectors.Length; vi++)
             {
-                TopicType type = vi == (int)Vector4.Left ? TopicType.Threat : TopicType.Consequence;
+                TopicType type;
+                if (vi == (int)Vector4.Left)
+                {
+                    type = TopicType.Threat;
+                }
+                else if (vi == (int)Vector4.Right)
+                {
+                    type = TopicType.Consequence;
+                }
+                else
+                {
+                    type = TopicType.Hazard;
+                }
 
                 XList<Topic> children = root.getChildrenByType(type);
                 Topic[] subTopics = new Topic[children.Count];
@@ -113,7 +125,6 @@ namespace Blumind.Controls.MapViews
             Topic root = parent.GetRoot();
 
             // get full height
-            //int nodeSpace = (int)((parent.IsRoot ? NodeSpaceRoot_V : NodeSpace_V) * args.Zoom);
             int fullHeight = 0;
             if (parent.IsRoot)
             {
@@ -136,10 +147,13 @@ namespace Blumind.Controls.MapViews
             foreach (var subTopic in subTopics)
             {
                 var subTif = (TopicLayoutInfo)layoutInfos[subTopic];
-                subTopic.Vector = vector == Vector4.Left ? Vector4.Left : Vector4.Right;
+                subTopic.Vector = vector;
                 Point pt;
                 switch (vector)
                 {
+                    case Vector4.Top:
+                        pt = new Point(root.Bounds.Left - (subTopic.Width - root.Width) / 2, parent.Location.Y - space - subTopic.Size.Height / 2);
+                        break;
                     case Vector4.Left:
                         if (parent.Type == TopicType.Threat || parent.Type == TopicType.Escalation)
                         {
@@ -195,11 +209,11 @@ namespace Blumind.Controls.MapViews
                         Topic lastChild = subTopic.Children[subTopic.Children.Count - 1];
                         if (vector == Vector4.Left)
                         {
-                            subTopic.Location = new Point(rectFullSub.X - 2 * space - lastChild.ContentBounds.Width, subTopic.Location.Y);
+                            subTopic.Location = new Point(rectFullSub.X - barrierSpace - lastChild.ContentBounds.Width, subTopic.Location.Y);
                         }
                         else if (vector == Vector4.Right)
                         {
-                            subTopic.Location = new Point(rectFullSub.Right + space, subTopic.Location.Y);
+                            subTopic.Location = new Point(rectFullSub.Right + barrierSpace, subTopic.Location.Y);
                         }
                         beginNode = lastChild;
                         endNode = subTopic;
@@ -232,6 +246,14 @@ namespace Blumind.Controls.MapViews
                                                             foldBtnSize,
                                                             foldBtnSize);
                         }
+                    }
+                }
+                else if (subTopic.Type == TopicType.Hazard)
+                {
+                    var lines = CreateTopicLines(e, root, subTopic, vector, GetReverseVector(vector));
+                    if (lines != null)
+                    {
+                        root.Lines.AddRange(lines);
                     }
                 }
 

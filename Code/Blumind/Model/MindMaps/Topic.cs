@@ -170,7 +170,7 @@ namespace Blumind.Model.MindMaps
 
         public XList<Topic> getChildrenByType(TopicType type)
         {
-            XList<Topic> threats = new XList<Topic>();
+            XList<Topic> topics = new XList<Topic>();
             if (IsRoot)
             {
                 for (int i = 0, n = Children.Count; i < n; ++i)
@@ -178,11 +178,11 @@ namespace Blumind.Model.MindMaps
                     Topic child = Children[i];
                     if (child.Type == type)
                     {
-                        threats.Add(child);
+                        topics.Add(child);
                     }
                 }
             }
-            return threats;
+            return topics;
         }
 
         [DefaultValue(null)]
@@ -340,6 +340,13 @@ namespace Blumind.Model.MindMaps
                             TextBounds = new Rectangle(new Point(20, 20), new Size(80, 80));
                             break;
                         case TopicType.Hazard:
+                            Style.Shape = TopicShape.Rectangle;
+                            Style.BackColor = Color.FromArgb(255, 255, 0);
+                            Style.BorderColor = Color.FromArgb(255, 255, 0);
+                            Style.FillType = "Modern";
+                            Text = "New Hazard";
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
                             break;
                         case TopicType.Barrier:
                             Style.Shape = TopicShape.Rectangle;
@@ -348,7 +355,7 @@ namespace Blumind.Model.MindMaps
                             Style.FillType = "Modern";
                             Text = "New Barrier";
                             Bounds = new Rectangle(Bounds.Location, new Size(30, 60));
-                            TextBounds = new Rectangle(new Point(-45, 65), new Size(120, 50));
+                            TextBounds = new Rectangle(new Point(-65, 65), new Size(160, 50));
                             break;
                         case TopicType.Consequence:
                             Style.Shape = TopicShape.Rectangle;

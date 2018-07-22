@@ -74,7 +74,7 @@ namespace Blumind.Controls.MapViews
         {
             get
             {
-                return !ReadOnly && Selection.Count > 0 && (SelectedTopic == null || !SelectedTopic.IsRoot);
+                return !ReadOnly && Selection.Count > 0 && (SelectedTopic == null || (!SelectedTopic.IsRoot && SelectedTopic.Type != TopicType.Hazard));
             }
         }
 

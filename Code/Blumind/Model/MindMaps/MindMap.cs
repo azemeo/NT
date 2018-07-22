@@ -28,6 +28,10 @@ namespace Blumind.Model.MindMaps
             Root = new Topic();
             Root.Type = TopicType.TopEvent;
             Root.ResetPadding();
+
+            Topic hazardTopic = new Topic();
+            hazardTopic.Type = TopicType.Hazard;
+            Root.Children.Add(hazardTopic);
         }
 
         public MindMap(string name)
