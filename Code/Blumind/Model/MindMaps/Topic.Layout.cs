@@ -46,6 +46,17 @@ namespace Blumind.Model.MindMaps
         [Browsable(false)]
         public Rectangle TextBounds { get; set; }
 
+        public Rectangle GlobalTextBounds
+        {
+            get
+            {
+                Rectangle globalTextBounds = TextBounds;
+                globalTextBounds.X += Bounds.X;
+                globalTextBounds.Y += Bounds.Y;
+                return globalTextBounds;
+            }
+        }
+
         /// <summary>
         /// 已经经过坐标转换
         /// 相对 Topic 左上角

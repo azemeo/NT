@@ -581,16 +581,21 @@ namespace Blumind.Controls.MapViews
             if (tobj == null)
                 throw new ArgumentNullException();
 
-            Rectangle rect = PaintHelper.Zoom(tobj.Bounds, Zoom);
+            Rectangle rect;
+            if (tobj is Topic)
+            {
+                rect = ((Topic)tobj).GlobalTextBounds;
+            }
+            else
+            {
+                rect = PaintHelper.Zoom(tobj.Bounds, Zoom);
+            }
 
             if (HorizontalScroll.Enabled)
                 rect.X -= HorizontalScroll.Value;
 
             if (VerticalScroll.Enabled)
                 rect.Y -= VerticalScroll.Value;
-
-            //rect.X += Margin.Left;
-            //rect.Y += Margin.Top;
 
             rect.X += TranslatePoint.X;
             rect.Y += TranslatePoint.Y;
