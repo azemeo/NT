@@ -93,7 +93,8 @@
             this.multiChartsView1.Location = new System.Drawing.Point(0, 0);
             this.multiChartsView1.Name = "multiChartsView1";
             this.multiChartsView1.SelectedIndex = -1;
-            this.multiChartsView1.Size = new System.Drawing.Size(593, 407);
+            this.multiChartsView1.SelectedPage = null;
+            this.multiChartsView1.Size = new System.Drawing.Size(593, 448);
             this.multiChartsView1.TabIndex = 0;
             this.multiChartsView1.TabsMenuStrip = this.MenuStripChartTab;
             this.multiChartsView1.NewChartPage += new System.EventHandler(this.multiChartsView1_NewChartPage);
@@ -108,12 +109,12 @@
             this.toolStripMenuItem1,
             this.MenuRenameTab});
             this.MenuStripChartTab.Name = "MenuStripChartTab";
-            this.MenuStripChartTab.Size = new System.Drawing.Size(133, 76);
+            this.MenuStripChartTab.Size = new System.Drawing.Size(127, 76);
             // 
             // MenuInsertTab
             // 
             this.MenuInsertTab.Name = "MenuInsertTab";
-            this.MenuInsertTab.Size = new System.Drawing.Size(132, 22);
+            this.MenuInsertTab.Size = new System.Drawing.Size(126, 22);
             this.MenuInsertTab.Text = "&Insert";
             this.MenuInsertTab.Click += new System.EventHandler(this.MenuInsertTab_Click);
             // 
@@ -121,27 +122,26 @@
             // 
             this.MenuDeleteTab.Image = global::Blumind.Properties.Resources.delete;
             this.MenuDeleteTab.Name = "MenuDeleteTab";
-            this.MenuDeleteTab.Size = new System.Drawing.Size(132, 22);
+            this.MenuDeleteTab.Size = new System.Drawing.Size(126, 22);
             this.MenuDeleteTab.Text = "&Delete...";
             this.MenuDeleteTab.Click += new System.EventHandler(this.MenuDeleteTab_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(129, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(123, 6);
             // 
             // MenuRenameTab
             // 
             this.MenuRenameTab.Image = global::Blumind.Properties.Resources.edit;
             this.MenuRenameTab.Name = "MenuRenameTab";
-            this.MenuRenameTab.Size = new System.Drawing.Size(132, 22);
+            this.MenuRenameTab.Size = new System.Drawing.Size(126, 22);
             this.MenuRenameTab.Text = "&Rename...";
             this.MenuRenameTab.Click += new System.EventHandler(this.MenuRenameTab_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(90)))), ((int)(((byte)(177)))));
-
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsbSave,
             this.toolStripSeparator1,
@@ -172,7 +172,7 @@
             this.TsbSidebar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(804, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(804, 27);
             this.toolStrip1.TabIndex = 2;
             // 
             // TsbSave
@@ -182,7 +182,7 @@
             this.TsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbSave.Name = "TsbSave";
             this.TsbSave.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbSave.Size = new System.Drawing.Size(24, 25);
+            this.TsbSave.Size = new System.Drawing.Size(24, 24);
             this.TsbSave.Text = "&Save";
             this.TsbSave.Click += new System.EventHandler(this.TsbSave_Click);
             // 
@@ -190,7 +190,7 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // TsbUndo
             // 
@@ -200,7 +200,7 @@
             this.TsbUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbUndo.Name = "TsbUndo";
             this.TsbUndo.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbUndo.Size = new System.Drawing.Size(24, 25);
+            this.TsbUndo.Size = new System.Drawing.Size(24, 24);
             this.TsbUndo.Text = "Undo";
             this.TsbUndo.Click += new System.EventHandler(this.TsbUndo_Click);
             // 
@@ -212,7 +212,7 @@
             this.TsbRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbRedo.Name = "TsbRedo";
             this.TsbRedo.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbRedo.Size = new System.Drawing.Size(24, 25);
+            this.TsbRedo.Size = new System.Drawing.Size(24, 24);
             this.TsbRedo.Text = "Redo";
             this.TsbRedo.Click += new System.EventHandler(this.TsbRedo_Click);
             // 
@@ -220,7 +220,7 @@
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 27);
             // 
             // TsbCut
             // 
@@ -229,7 +229,7 @@
             this.TsbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbCut.Name = "TsbCut";
             this.TsbCut.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbCut.Size = new System.Drawing.Size(24, 25);
+            this.TsbCut.Size = new System.Drawing.Size(24, 24);
             this.TsbCut.Text = "C&ut";
             this.TsbCut.Click += new System.EventHandler(this.TsbCut_Click);
             // 
@@ -240,7 +240,7 @@
             this.TsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbCopy.Name = "TsbCopy";
             this.TsbCopy.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbCopy.Size = new System.Drawing.Size(24, 25);
+            this.TsbCopy.Size = new System.Drawing.Size(24, 24);
             this.TsbCopy.Text = "&Copy";
             this.TsbCopy.Click += new System.EventHandler(this.TsbCopy_Click);
             // 
@@ -251,7 +251,7 @@
             this.TsbPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbPaste.Name = "TsbPaste";
             this.TsbPaste.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbPaste.Size = new System.Drawing.Size(24, 25);
+            this.TsbPaste.Size = new System.Drawing.Size(24, 24);
             this.TsbPaste.Text = "&Paste";
             this.TsbPaste.Click += new System.EventHandler(this.TsbPaste_Click);
             // 
@@ -262,7 +262,7 @@
             this.TsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbDelete.Name = "TsbDelete";
             this.TsbDelete.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbDelete.Size = new System.Drawing.Size(24, 25);
+            this.TsbDelete.Size = new System.Drawing.Size(24, 24);
             this.TsbDelete.Text = "Delete";
             this.TsbDelete.Click += new System.EventHandler(this.TsbDelete_Click);
             // 
@@ -270,7 +270,7 @@
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 27);
             // 
             // TsbFind
             // 
@@ -280,8 +280,9 @@
             this.TsbFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbFind.Name = "TsbFind";
             this.TsbFind.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbFind.Size = new System.Drawing.Size(24, 25);
+            this.TsbFind.Size = new System.Drawing.Size(24, 24);
             this.TsbFind.Text = "Find";
+            this.TsbFind.Visible = false;
             this.TsbFind.Click += new System.EventHandler(this.TsbFind_Click);
             // 
             // TsbReplace
@@ -292,15 +293,17 @@
             this.TsbReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbReplace.Name = "TsbReplace";
             this.TsbReplace.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbReplace.Size = new System.Drawing.Size(24, 25);
+            this.TsbReplace.Size = new System.Drawing.Size(24, 24);
             this.TsbReplace.Text = "Replace";
+            this.TsbReplace.Visible = false;
             this.TsbReplace.Click += new System.EventHandler(this.TsbReplace_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator6.Visible = false;
             // 
             // TsbFormatPainter
             // 
@@ -310,15 +313,17 @@
             this.TsbFormatPainter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbFormatPainter.Name = "TsbFormatPainter";
             this.TsbFormatPainter.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbFormatPainter.Size = new System.Drawing.Size(24, 25);
+            this.TsbFormatPainter.Size = new System.Drawing.Size(24, 24);
             this.TsbFormatPainter.Text = "Format Painter";
+            this.TsbFormatPainter.Visible = false;
             this.TsbFormatPainter.Click += new System.EventHandler(this.TsbFormatPainter_Click);
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
             this.toolStripSeparator12.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator12.Visible = false;
             // 
             // TsbThemes
             // 
@@ -332,15 +337,16 @@
             this.TsbThemes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbThemes.Name = "TsbThemes";
             this.TsbThemes.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbThemes.Size = new System.Drawing.Size(33, 25);
+            this.TsbThemes.Size = new System.Drawing.Size(33, 24);
             this.TsbThemes.Text = "Themes";
+            this.TsbThemes.Visible = false;
             this.TsbThemes.DropDownOpening += new System.EventHandler(this.TsbThemes_DropDownOpening);
             // 
             // MenuThemes
             // 
             this.MenuThemes.Image = global::Blumind.Properties.Resources.theme_manage;
             this.MenuThemes.Name = "MenuThemes";
-            this.MenuThemes.Size = new System.Drawing.Size(202, 22);
+            this.MenuThemes.Size = new System.Drawing.Size(190, 22);
             this.MenuThemes.Text = "Themes...";
             this.MenuThemes.Click += new System.EventHandler(this.MenuThemes_Click);
             // 
@@ -348,7 +354,7 @@
             // 
             this.MenuSaveThemeAs.Image = global::Blumind.Properties.Resources.save;
             this.MenuSaveThemeAs.Name = "MenuSaveThemeAs";
-            this.MenuSaveThemeAs.Size = new System.Drawing.Size(202, 22);
+            this.MenuSaveThemeAs.Size = new System.Drawing.Size(190, 22);
             this.MenuSaveThemeAs.Text = "Save Current Theme...";
             this.MenuSaveThemeAs.Click += new System.EventHandler(this.MenuSaveThemeAs_Click);
             // 
@@ -356,20 +362,21 @@
             // 
             this.MenuRefreshThemes.Image = global::Blumind.Properties.Resources.refresh;
             this.MenuRefreshThemes.Name = "MenuRefreshThemes";
-            this.MenuRefreshThemes.Size = new System.Drawing.Size(202, 22);
+            this.MenuRefreshThemes.Size = new System.Drawing.Size(190, 22);
             this.MenuRefreshThemes.Text = "&Refresh";
             this.MenuRefreshThemes.Click += new System.EventHandler(this.MenuRefreshThemes_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(199, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(187, 6);
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
             this.toolStripSeparator11.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator11.Visible = false;
             // 
             // TsbSelectMode
             // 
@@ -378,7 +385,7 @@
             this.TsbSelectMode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbSelectMode.Name = "TsbSelectMode";
             this.TsbSelectMode.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbSelectMode.Size = new System.Drawing.Size(24, 25);
+            this.TsbSelectMode.Size = new System.Drawing.Size(24, 24);
             this.TsbSelectMode.Text = "Select Mode";
             this.TsbSelectMode.Click += new System.EventHandler(this.TsbSelectMode_Click);
             // 
@@ -389,7 +396,7 @@
             this.TsbScrollMode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbScrollMode.Name = "TsbScrollMode";
             this.TsbScrollMode.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbScrollMode.Size = new System.Drawing.Size(24, 25);
+            this.TsbScrollMode.Size = new System.Drawing.Size(24, 24);
             this.TsbScrollMode.Text = "Scroll Mode";
             this.TsbScrollMode.Click += new System.EventHandler(this.TsbScrollMode_Click);
             // 
@@ -403,26 +410,27 @@
             this.TsbTimer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbTimer.Name = "TsbTimer";
             this.TsbTimer.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbTimer.Size = new System.Drawing.Size(33, 25);
+            this.TsbTimer.Size = new System.Drawing.Size(33, 24);
             this.TsbTimer.Text = "Timer";
+            this.TsbTimer.Visible = false;
             // 
             // MenuStartTimer
             // 
             this.MenuStartTimer.Name = "MenuStartTimer";
-            this.MenuStartTimer.Size = new System.Drawing.Size(149, 22);
+            this.MenuStartTimer.Size = new System.Drawing.Size(152, 22);
             this.MenuStartTimer.Text = "Start Timer...";
             this.MenuStartTimer.Click += new System.EventHandler(this.MenuStartTimer_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(146, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
             // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
             this.toolStripSeparator14.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripSeparator14.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator14.Size = new System.Drawing.Size(6, 27);
             // 
             // TsbZoomOut
             // 
@@ -431,7 +439,7 @@
             this.TsbZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbZoomOut.Name = "TsbZoomOut";
             this.TsbZoomOut.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbZoomOut.Size = new System.Drawing.Size(24, 25);
+            this.TsbZoomOut.Size = new System.Drawing.Size(24, 24);
             this.TsbZoomOut.Text = "Zoom Out";
             this.TsbZoomOut.Click += new System.EventHandler(this.TsbZoomOut_Click);
             // 
@@ -447,34 +455,34 @@
             this.TsbZoom.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbZoom.Name = "TsbZoom";
             this.TsbZoom.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbZoom.Size = new System.Drawing.Size(57, 25);
+            this.TsbZoom.Size = new System.Drawing.Size(52, 24);
             this.TsbZoom.Text = "100%";
             // 
             // MenuZoomFitPage
             // 
             this.MenuZoomFitPage.Name = "MenuZoomFitPage";
-            this.MenuZoomFitPage.Size = new System.Drawing.Size(131, 22);
+            this.MenuZoomFitPage.Size = new System.Drawing.Size(126, 22);
             this.MenuZoomFitPage.Text = "&Fit Page";
             this.MenuZoomFitPage.Click += new System.EventHandler(this.MenuZoomFitPage_Click);
             // 
             // MenuZoomFitWidth
             // 
             this.MenuZoomFitWidth.Name = "MenuZoomFitWidth";
-            this.MenuZoomFitWidth.Size = new System.Drawing.Size(131, 22);
+            this.MenuZoomFitWidth.Size = new System.Drawing.Size(126, 22);
             this.MenuZoomFitWidth.Text = "Fit Width";
             this.MenuZoomFitWidth.Click += new System.EventHandler(this.MenuZoomFitWidth_Click);
             // 
             // MenuZoomFitHeight
             // 
             this.MenuZoomFitHeight.Name = "MenuZoomFitHeight";
-            this.MenuZoomFitHeight.Size = new System.Drawing.Size(131, 22);
+            this.MenuZoomFitHeight.Size = new System.Drawing.Size(126, 22);
             this.MenuZoomFitHeight.Text = "Fit Height";
             this.MenuZoomFitHeight.Click += new System.EventHandler(this.MenuZoomFitHeight_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(123, 6);
             // 
             // TsbZoomIn
             // 
@@ -483,7 +491,7 @@
             this.TsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbZoomIn.Name = "TsbZoomIn";
             this.TsbZoomIn.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbZoomIn.Size = new System.Drawing.Size(24, 25);
+            this.TsbZoomIn.Size = new System.Drawing.Size(24, 24);
             this.TsbZoomIn.Text = "Zoom In";
             this.TsbZoomIn.Click += new System.EventHandler(this.TsbZoomIn_Click);
             // 
@@ -491,7 +499,7 @@
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
             // 
             // TsbFullScreen
             // 
@@ -500,7 +508,7 @@
             this.TsbFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbFullScreen.Name = "TsbFullScreen";
             this.TsbFullScreen.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbFullScreen.Size = new System.Drawing.Size(24, 25);
+            this.TsbFullScreen.Size = new System.Drawing.Size(24, 24);
             this.TsbFullScreen.Text = "Full Screen";
             this.TsbFullScreen.Click += new System.EventHandler(this.TsbFullScreen_Click);
             // 
@@ -514,7 +522,7 @@
             this.TsbSidebar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbSidebar.Name = "TsbSidebar";
             this.TsbSidebar.Padding = new System.Windows.Forms.Padding(2);
-            this.TsbSidebar.Size = new System.Drawing.Size(24, 25);
+            this.TsbSidebar.Size = new System.Drawing.Size(24, 24);
             this.TsbSidebar.Text = "Sidebar";
             this.TsbSidebar.Click += new System.EventHandler(this.TsbSidebar_Click_1);
             // 
@@ -524,9 +532,9 @@
             this.panel1.Controls.Add(this.splitter1);
             this.panel1.Controls.Add(this.splitContainer2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 31);
+            this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(804, 407);
+            this.panel1.Size = new System.Drawing.Size(804, 448);
             this.panel1.TabIndex = 3;
             // 
             // splitter1
@@ -534,7 +542,7 @@
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
             this.splitter1.Location = new System.Drawing.Point(593, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 407);
+            this.splitter1.Size = new System.Drawing.Size(3, 448);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             this.splitter1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter1_SplitterMoved);
@@ -550,8 +558,8 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.myTabControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(208, 407);
-            this.splitContainer2.SplitterDistance = 168;
+            this.splitContainer2.Size = new System.Drawing.Size(208, 448);
+            this.splitContainer2.SplitterDistance = 184;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -561,15 +569,16 @@
             this.myTabControl1.Location = new System.Drawing.Point(0, 0);
             this.myTabControl1.Name = "myTabControl1";
             this.myTabControl1.SelectedIndex = -1;
-            this.myTabControl1.Size = new System.Drawing.Size(208, 168);
+            this.myTabControl1.SelectedPage = null;
+            this.myTabControl1.Size = new System.Drawing.Size(208, 184);
             this.myTabControl1.TabIndex = 3;
             this.myTabControl1.Text = "myTabControl1";
             // 
             // DocumentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 438);
+            this.ClientSize = new System.Drawing.Size(804, 475);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.KeyPreview = true;

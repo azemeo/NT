@@ -862,6 +862,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\donation.png" />
+    <None Include="Resources\barrier.png" />
+    <None Include="Resources\consequence.png" />
+    <None Include="Resources\escalation.png" />
     <Content Include="Resources\Icons\check_update.ico" />
     <Content Include="Resources\Icons\document.ico" />
     <Content Include="Resources\Icons\exclamation.ico" />
@@ -923,6 +926,7 @@
     <None Include="Resources\tip_pin_button.png" />
     <None Include="Resources\tip_pin_pressed_button.png" />
     <None Include="Resources\tip_close_button.png" />
+    <None Include="Resources\threat.png" />
     <Content Include="Resources\UIThemes\Blackish Green.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
