@@ -1389,6 +1389,8 @@ namespace Blumind.Model.MindMaps
             if (this.CustomHeight.HasValue)
                 node.SetAttribute("custom_height", this.CustomHeight.Value.ToString());
 
+            node.SetAttribute("type", ((int) this.Type).ToString());
+
             //
             if(!TextBounds.IsEmpty)
                 node.SetAttribute("text_b", ST.ToString(TextBounds));
@@ -1468,6 +1470,8 @@ namespace Blumind.Model.MindMaps
 
             Hyperlink = node.GetAttribute("hyperlink");
             Folded = ST.GetBoolDefault(node.GetAttribute("folded"));
+
+            Type = (TopicType) ST.GetInt(node.GetAttribute("type"));
 
             //
             if (documentVersion >= Document.DV_3) // 新
