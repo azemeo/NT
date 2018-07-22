@@ -31,10 +31,9 @@ namespace Blumind.Controls.MapViews
                 TsbAddTopic,
                 TsbAddSubTopic,
                 TsbAddLink,
-                TsbAddIcon,
-                TsbAddRemark,
-                TsbAddProgressBar,
-                toolStripSeparator1
+                //TsbAddIcon,
+                //TsbAddRemark,
+                //TsbAddProgressBar,
             };
         }
 
@@ -50,20 +49,20 @@ namespace Blumind.Controls.MapViews
 
             // TsbAddTopic
             TsbAddTopic.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            TsbAddTopic.Image = Properties.Resources.add_topic;
-            TsbAddTopic.Text = Lang._("Add Topic");
+            TsbAddTopic.Image = Properties.Resources.threat;
+            TsbAddTopic.Text = Lang._("Add Threat");
             TsbAddTopic.Click += new System.EventHandler(this.TsbAddTopic_Click);
 
             // TsbAddSubTopic
             TsbAddSubTopic.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            TsbAddSubTopic.Image = Properties.Resources.add_sub_topic;
-            TsbAddSubTopic.Text = Lang._("Add Sub Topic");
+            TsbAddSubTopic.Image = Properties.Resources.consequence;
+            TsbAddSubTopic.Text = Lang._("Add Consequence");
             TsbAddSubTopic.Click += new System.EventHandler(this.TsbAddSubTopic_Click);
 
             // TsbAddLink
             TsbAddLink.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            TsbAddLink.Image = Properties.Resources.add_link;
-            TsbAddLink.Text = Lang._("Add Link");
+            TsbAddLink.Image = Properties.Resources.barrier;
+            TsbAddLink.Text = Lang._("Add Barrier");
             TsbAddLink.Click += new System.EventHandler(this.TsbAddLink_Click);
 
             // TsbAddIcon
@@ -96,12 +95,14 @@ namespace Blumind.Controls.MapViews
 
         void TsbAddSubTopic_Click(object sender, EventArgs e)
         {
-            AddSubTopic();
+            //AddSubTopic();
+            AddConsequence();
         }
 
         void TsbAddLink_Click(object sender, EventArgs e)
         {
-            AddLink();
+            //AddLink();
+            AddBarrier();
         }
 
         void TsbAddProgressBar_Click(object sender, EventArgs e)
@@ -127,9 +128,9 @@ namespace Blumind.Controls.MapViews
             {
                 bool hasSelected = HasSelected() && SelectedTopic != null;
 
-                TsbAddLink.Enabled = hasSelected;
-                TsbAddSubTopic.Enabled = hasSelected;
-                TsbAddTopic.Enabled = hasSelected && !SelectedTopic.IsRoot;
+                TsbAddLink.Enabled = hasSelected && (SelectedTopic.Type == Model.MindMaps.TopicType.Consequence || SelectedTopic.Type == Model.MindMaps.TopicType.Threat);
+                TsbAddSubTopic.Enabled = hasSelected && SelectedTopic.IsRoot;
+                TsbAddTopic.Enabled = hasSelected && SelectedTopic.IsRoot;
                 TsbAddIcon.Enabled = hasSelected;
                 TsbAddRemark.Enabled = hasSelected;
                 TsbAddProgressBar.Enabled = hasSelected;
