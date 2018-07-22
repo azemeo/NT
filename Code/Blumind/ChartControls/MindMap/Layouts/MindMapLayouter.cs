@@ -164,7 +164,7 @@ namespace Blumind.Controls.MapViews
                             int localY = y + (subTif.FullSize.Height) / 2;
                             if (parent != root && subTopic.Type == TopicType.Escalation)
                             {
-                                localY = Math.Max(parent.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2, localY);
+                                localY = Math.Max(previous.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2, localY);
                             }
                             pt = new Point(parent.Bounds.Left - space - subTopic.Bounds.Width, localY);
                         }
@@ -173,14 +173,23 @@ namespace Blumind.Controls.MapViews
                     default:
                         if (parent.Type == TopicType.Consequence || parent.Type == TopicType.Escalation)
                         {
-                            pt = new Point(previous.Bounds.Right + barrierSpace + subTopic.ContentBounds.Width, parent.Location.Y + subTopic.Size.Height / 2);
+                            int addX = 0;
+                            if (previous == root)
+                            {
+                                addX = subTopic.ContentBounds.Width;
+                            }
+                            else
+                            {
+                                addX = (subTopic.TextBounds.Width - subTopic.Bounds.Width) / 2;
+                            }
+                            pt = new Point(previous.ContentBounds.Right + barrierSpace + addX, parent.Location.Y + subTopic.Size.Height / 2);
                         }
                         else
                         {
                             int localY = y + (subTif.FullSize.Height) / 2;
                             if (parent != root && subTopic.Type == TopicType.Escalation)
                             {
-                                localY = Math.Max( parent.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2, localY);
+                                localY = Math.Max(previous.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2, localY);
                             }
                             pt = new Point(parent.Bounds.Right + space, localY);
                         }
@@ -209,11 +218,11 @@ namespace Blumind.Controls.MapViews
                         Topic lastChild = subTopic.Children[subTopic.Children.Count - 1];
                         if (vector == Vector4.Left)
                         {
-                            subTopic.Location = new Point(rectFullSub.X - barrierSpace - lastChild.ContentBounds.Width, subTopic.Location.Y);
+                            subTopic.Location = new Point(lastChild.ContentBounds.Left - barrierSpace - lastChild.ContentBounds.Width, subTopic.Location.Y);
                         }
                         else if (vector == Vector4.Right)
                         {
-                            subTopic.Location = new Point(rectFullSub.Right + barrierSpace, subTopic.Location.Y);
+                            subTopic.Location = new Point(lastChild.ContentBounds.Right + barrierSpace, subTopic.Location.Y);
                         }
                         beginNode = lastChild;
                         endNode = subTopic;
@@ -261,7 +270,14 @@ namespace Blumind.Controls.MapViews
                 if (!rectFullSub.IsEmpty)
                     rectFull = Rectangle.Union(rectFull, rectFullSub);
 
-                y += subTif.FullSize.Height + nodeSpace;
+                if (subTopic.HasChildren && (subTopic.Type == TopicType.Threat || subTopic.Type == TopicType.Consequence))
+                {
+                    y = rectFull.Bottom + nodeSpace;
+                }
+                else
+                {
+                    y += subTif.FullSize.Height + nodeSpace;
+                }
                 previous = subTopic;
             }
 
