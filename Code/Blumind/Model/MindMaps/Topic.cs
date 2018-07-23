@@ -335,7 +335,7 @@ namespace Blumind.Model.MindMaps
                             Style.BackColor = Color.FromArgb(255, 0, 0);
                             Style.BorderColor = Color.FromArgb(255, 0, 0);
                             Style.FillType = "Modern";
-                            Text = "Top Event";
+                            Text = "Sự cố ban đầu";
                             Bounds = new Rectangle(Bounds.Location, new Size(120, 120));
                             TextBounds = new Rectangle(new Point(20, 20), new Size(80, 80));
                             break;
@@ -344,7 +344,7 @@ namespace Blumind.Model.MindMaps
                             Style.BackColor = Color.FromArgb(255, 255, 0);
                             Style.BorderColor = Color.FromArgb(255, 255, 0);
                             Style.FillType = "Modern";
-                            Text = "New Hazard";
+                            Text = "Mối nguy";
                             Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
                             TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
                             break;
@@ -353,7 +353,7 @@ namespace Blumind.Model.MindMaps
                             Style.BackColor = Color.FromArgb(0, 0, 0);
                             Style.BorderColor = Color.FromArgb(0, 0, 0);
                             Style.FillType = "Modern";
-                            Text = "New Barrier";
+                            Text = "Biện pháp";
                             Bounds = new Rectangle(Bounds.Location, new Size(30, 60));
                             TextBounds = new Rectangle(new Point(-65, 65), new Size(160, 50));
                             break;
@@ -362,7 +362,7 @@ namespace Blumind.Model.MindMaps
                             Style.BackColor = Color.FromArgb(255, 0, 0);
                             Style.BorderColor = Color.FromArgb(255, 0, 0);
                             Style.FillType = "Modern";
-                            Text = "New Consequence";
+                            Text = "Hậu quả";
                             Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
                             TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
                             break;
@@ -371,7 +371,7 @@ namespace Blumind.Model.MindMaps
                             Style.BackColor = Color.FromArgb(0, 0, 255);
                             Style.BorderColor = Color.FromArgb(0, 0, 255);
                             Style.FillType = "Modern";
-                            Text = "New Threat";
+                            Text = "Nguyên nhân";
                             Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
                             TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
                             break;

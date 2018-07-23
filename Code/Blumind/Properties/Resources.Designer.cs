@@ -22,7 +22,7 @@ namespace Blumind.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Blumind.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Blumind.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Blumind.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _blank {
+        public static System.Drawing.Bitmap _blank {
             get {
                 object obj = ResourceManager.GetObject("_blank", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _new {
+        public static System.Drawing.Bitmap _new {
             get {
                 object obj = ResourceManager.GetObject("_new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_link {
+        public static System.Drawing.Bitmap add_link {
             get {
                 object obj = ResourceManager.GetObject("add_link", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +93,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_sub_topic {
+        public static System.Drawing.Bitmap add_sub_topic {
             get {
                 object obj = ResourceManager.GetObject("add_sub_topic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +103,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_topic {
+        public static System.Drawing.Bitmap add_topic {
             get {
                 object obj = ResourceManager.GetObject("add_topic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +113,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_topic_front {
+        public static System.Drawing.Bitmap add_topic_front {
             get {
                 object obj = ResourceManager.GetObject("add_topic_front", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +123,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap appearance {
+        public static System.Drawing.Bitmap appearance {
             get {
                 object obj = ResourceManager.GetObject("appearance", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +133,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow_move {
+        public static System.Drawing.Bitmap arrow_move {
             get {
                 object obj = ResourceManager.GetObject("arrow_move", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,7 +143,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap back_color {
+        public static System.Drawing.Bitmap back_color {
             get {
                 object obj = ResourceManager.GetObject("back_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +153,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bar {
+        public static System.Drawing.Bitmap bar {
             get {
                 object obj = ResourceManager.GetObject("bar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +163,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap barrier {
+        public static System.Drawing.Bitmap barrier {
             get {
                 object obj = ResourceManager.GetObject("barrier", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,7 +173,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bold {
+        public static System.Drawing.Bitmap bold {
             get {
                 object obj = ResourceManager.GetObject("bold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,7 +183,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap calculator {
+        public static System.Drawing.Bitmap calculator {
             get {
                 object obj = ResourceManager.GetObject("calculator", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -193,7 +193,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chain_small {
+        public static System.Drawing.Bitmap chain_small {
             get {
                 object obj = ResourceManager.GetObject("chain_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +203,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chart {
+        public static System.Drawing.Bitmap chart {
             get {
                 object obj = ResourceManager.GetObject("chart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +213,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap check_update {
+        public static System.Drawing.Bitmap check_update {
             get {
                 object obj = ResourceManager.GetObject("check_update", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +223,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon check_update1 {
+        public static System.Drawing.Icon check_update1 {
             get {
                 object obj = ResourceManager.GetObject("check_update1", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -233,7 +233,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chevron {
+        public static System.Drawing.Bitmap chevron {
             get {
                 object obj = ResourceManager.GetObject("chevron", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +243,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap close {
+        public static System.Drawing.Bitmap close {
             get {
                 object obj = ResourceManager.GetObject("close", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -253,7 +253,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap close_button {
+        public static System.Drawing.Bitmap close_button {
             get {
                 object obj = ResourceManager.GetObject("close_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -263,7 +263,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap color {
+        public static System.Drawing.Bitmap color {
             get {
                 object obj = ResourceManager.GetObject("color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -273,7 +273,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap consequence {
+        public static System.Drawing.Bitmap consequence {
             get {
                 object obj = ResourceManager.GetObject("consequence", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -283,7 +283,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap copy {
+        public static System.Drawing.Bitmap copy {
             get {
                 object obj = ResourceManager.GetObject("copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -293,7 +293,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cross_large {
+        public static System.Drawing.Bitmap cross_large {
             get {
                 object obj = ResourceManager.GetObject("cross_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -303,7 +303,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] cur_style_brush {
+        public static byte[] cur_style_brush {
             get {
                 object obj = ResourceManager.GetObject("cur_style_brush", resourceCulture);
                 return ((byte[])(obj));
@@ -313,7 +313,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cursor {
+        public static System.Drawing.Bitmap cursor {
             get {
                 object obj = ResourceManager.GetObject("cursor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -323,7 +323,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cut {
+        public static System.Drawing.Bitmap cut {
             get {
                 object obj = ResourceManager.GetObject("cut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -333,7 +333,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap delete {
+        public static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -343,7 +343,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap document {
+        public static System.Drawing.Bitmap document {
             get {
                 object obj = ResourceManager.GetObject("document", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -353,7 +353,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap document_128 {
+        public static System.Drawing.Bitmap document_128 {
             get {
                 object obj = ResourceManager.GetObject("document_128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -363,7 +363,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap document_16 {
+        public static System.Drawing.Bitmap document_16 {
             get {
                 object obj = ResourceManager.GetObject("document_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -373,7 +373,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap document_64 {
+        public static System.Drawing.Bitmap document_64 {
             get {
                 object obj = ResourceManager.GetObject("document_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -383,7 +383,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon document_icon {
+        public static System.Drawing.Icon document_icon {
             get {
                 object obj = ResourceManager.GetObject("document_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -393,7 +393,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap donation {
+        public static System.Drawing.Bitmap donation {
             get {
                 object obj = ResourceManager.GetObject("donation", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -403,7 +403,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap down {
+        public static System.Drawing.Bitmap down {
             get {
                 object obj = ResourceManager.GetObject("down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -413,7 +413,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit {
+        public static System.Drawing.Bitmap edit {
             get {
                 object obj = ResourceManager.GetObject("edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -423,7 +423,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_alignment {
+        public static System.Drawing.Bitmap edit_alignment {
             get {
                 object obj = ResourceManager.GetObject("edit_alignment", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -433,7 +433,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_alignment_center {
+        public static System.Drawing.Bitmap edit_alignment_center {
             get {
                 object obj = ResourceManager.GetObject("edit_alignment_center", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -443,7 +443,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_alignment_justify {
+        public static System.Drawing.Bitmap edit_alignment_justify {
             get {
                 object obj = ResourceManager.GetObject("edit_alignment_justify", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -453,7 +453,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_alignment_right {
+        public static System.Drawing.Bitmap edit_alignment_right {
             get {
                 object obj = ResourceManager.GetObject("edit_alignment_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -463,7 +463,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_code {
+        public static System.Drawing.Bitmap edit_code {
             get {
                 object obj = ResourceManager.GetObject("edit_code", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -473,7 +473,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_font_size_down {
+        public static System.Drawing.Bitmap edit_font_size_down {
             get {
                 object obj = ResourceManager.GetObject("edit_font_size_down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -483,7 +483,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_font_size_up {
+        public static System.Drawing.Bitmap edit_font_size_up {
             get {
                 object obj = ResourceManager.GetObject("edit_font_size_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -509,7 +509,7 @@ namespace Blumind.Properties {
         ///		&lt;item name=&quot;Key_Subtract&quot;&gt;-&lt;/item&gt;
         ///		&lt;item name=&quot;Key_Multiply&quot;&gt;*&lt;/ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string en_US {
+        public static string en_US {
             get {
                 return ResourceManager.GetString("en_US", resourceCulture);
             }
@@ -518,7 +518,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap escalation {
+        public static System.Drawing.Bitmap escalation {
             get {
                 object obj = ResourceManager.GetObject("escalation", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -528,7 +528,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon exclamation {
+        public static System.Drawing.Icon exclamation {
             get {
                 object obj = ResourceManager.GetObject("exclamation", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -538,7 +538,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap export {
+        public static System.Drawing.Bitmap export {
             get {
                 object obj = ResourceManager.GetObject("export", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -548,7 +548,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap export_image {
+        public static System.Drawing.Bitmap export_image {
             get {
                 object obj = ResourceManager.GetObject("export_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -558,7 +558,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap external {
+        public static System.Drawing.Bitmap external {
             get {
                 object obj = ResourceManager.GetObject("external", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -568,7 +568,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap find {
+        public static System.Drawing.Bitmap find {
             get {
                 object obj = ResourceManager.GetObject("find", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -578,7 +578,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap first {
+        public static System.Drawing.Bitmap first {
             get {
                 object obj = ResourceManager.GetObject("first", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -588,7 +588,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder {
+        public static System.Drawing.Bitmap folder {
             get {
                 object obj = ResourceManager.GetObject("folder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -598,7 +598,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder_sys {
+        public static System.Drawing.Bitmap folder_sys {
             get {
                 object obj = ResourceManager.GetObject("folder_sys", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -608,7 +608,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folding_collapse {
+        public static System.Drawing.Bitmap folding_collapse {
             get {
                 object obj = ResourceManager.GetObject("folding_collapse", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -618,7 +618,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folding_expand {
+        public static System.Drawing.Bitmap folding_expand {
             get {
                 object obj = ResourceManager.GetObject("folding_expand", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -628,7 +628,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap font {
+        public static System.Drawing.Bitmap font {
             get {
                 object obj = ResourceManager.GetObject("font", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -638,7 +638,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap font_size {
+        public static System.Drawing.Bitmap font_size {
             get {
                 object obj = ResourceManager.GetObject("font_size", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -648,7 +648,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fore_color {
+        public static System.Drawing.Bitmap fore_color {
             get {
                 object obj = ResourceManager.GetObject("fore_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -658,7 +658,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap format_painter {
+        public static System.Drawing.Bitmap format_painter {
             get {
                 object obj = ResourceManager.GetObject("format_painter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -668,7 +668,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap freemind_butterfly {
+        public static System.Drawing.Bitmap freemind_butterfly {
             get {
                 object obj = ResourceManager.GetObject("freemind_butterfly", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -678,7 +678,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap full_screen {
+        public static System.Drawing.Bitmap full_screen {
             get {
                 object obj = ResourceManager.GetObject("full_screen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -688,7 +688,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap full_screen_exit {
+        public static System.Drawing.Bitmap full_screen_exit {
             get {
                 object obj = ResourceManager.GetObject("full_screen_exit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -698,7 +698,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon globe_network {
+        public static System.Drawing.Icon globe_network {
             get {
                 object obj = ResourceManager.GetObject("globe_network", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -708,7 +708,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hand {
+        public static System.Drawing.Bitmap hand {
             get {
                 object obj = ResourceManager.GetObject("hand", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -718,7 +718,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] hand_cur {
+        public static byte[] hand_cur {
             get {
                 object obj = ResourceManager.GetObject("hand_cur", resourceCulture);
                 return ((byte[])(obj));
@@ -728,7 +728,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap help {
+        public static System.Drawing.Bitmap help {
             get {
                 object obj = ResourceManager.GetObject("help", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -738,7 +738,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hourglass {
+        public static System.Drawing.Bitmap hourglass {
             get {
                 object obj = ResourceManager.GetObject("hourglass", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -748,7 +748,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon hourglass_ico {
+        public static System.Drawing.Icon hourglass_ico {
             get {
                 object obj = ResourceManager.GetObject("hourglass_ico", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -775,7 +775,7 @@ namespace Blumind.Properties {
         ///		    {
         ///		       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string html_content {
+        public static string html_content {
             get {
                 return ResourceManager.GetString("html_content", resourceCulture);
             }
@@ -784,7 +784,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hyperlink {
+        public static System.Drawing.Bitmap hyperlink {
             get {
                 object obj = ResourceManager.GetObject("hyperlink", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -794,7 +794,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon icon_lib {
+        public static System.Drawing.Icon icon_lib {
             get {
                 object obj = ResourceManager.GetObject("icon_lib", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -804,7 +804,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap image {
+        public static System.Drawing.Bitmap image {
             get {
                 object obj = ResourceManager.GetObject("image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -814,7 +814,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon image_icon {
+        public static System.Drawing.Icon image_icon {
             get {
                 object obj = ResourceManager.GetObject("image_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -824,7 +824,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap image_resize {
+        public static System.Drawing.Bitmap image_resize {
             get {
                 object obj = ResourceManager.GetObject("image_resize", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -834,7 +834,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap import {
+        public static System.Drawing.Bitmap import {
             get {
                 object obj = ResourceManager.GetObject("import", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -844,7 +844,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap indent {
+        public static System.Drawing.Bitmap indent {
             get {
                 object obj = ResourceManager.GetObject("indent", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -854,7 +854,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap information {
+        public static System.Drawing.Bitmap information {
             get {
                 object obj = ResourceManager.GetObject("information", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -864,7 +864,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap internet {
+        public static System.Drawing.Bitmap internet {
             get {
                 object obj = ResourceManager.GetObject("internet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -874,7 +874,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap italic {
+        public static System.Drawing.Bitmap italic {
             get {
                 object obj = ResourceManager.GetObject("italic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -884,7 +884,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap keyboard {
+        public static System.Drawing.Bitmap keyboard {
             get {
                 object obj = ResourceManager.GetObject("keyboard", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -894,7 +894,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon keyboard_icon {
+        public static System.Drawing.Icon keyboard_icon {
             get {
                 object obj = ResourceManager.GetObject("keyboard_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -904,7 +904,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap languages {
+        public static System.Drawing.Bitmap languages {
             get {
                 object obj = ResourceManager.GetObject("languages", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -914,7 +914,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap last {
+        public static System.Drawing.Bitmap last {
             get {
                 object obj = ResourceManager.GetObject("last", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -924,7 +924,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap layout_logic_left {
+        public static System.Drawing.Bitmap layout_logic_left {
             get {
                 object obj = ResourceManager.GetObject("layout_logic_left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -934,7 +934,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap layout_logic_right {
+        public static System.Drawing.Bitmap layout_logic_right {
             get {
                 object obj = ResourceManager.GetObject("layout_logic_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -944,7 +944,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap layout_mind_map {
+        public static System.Drawing.Bitmap layout_mind_map {
             get {
                 object obj = ResourceManager.GetObject("layout_mind_map", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -954,7 +954,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap layout_org_down {
+        public static System.Drawing.Bitmap layout_org_down {
             get {
                 object obj = ResourceManager.GetObject("layout_org_down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -964,7 +964,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap layout_org_up {
+        public static System.Drawing.Bitmap layout_org_up {
             get {
                 object obj = ResourceManager.GetObject("layout_org_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -974,7 +974,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap layout_tree_left {
+        public static System.Drawing.Bitmap layout_tree_left {
             get {
                 object obj = ResourceManager.GetObject("layout_tree_left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -984,7 +984,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap layout_tree_right {
+        public static System.Drawing.Bitmap layout_tree_right {
             get {
                 object obj = ResourceManager.GetObject("layout_tree_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -994,7 +994,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon layout_type {
+        public static System.Drawing.Icon layout_type {
             get {
                 object obj = ResourceManager.GetObject("layout_type", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -1004,7 +1004,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap list_bullets {
+        public static System.Drawing.Bitmap list_bullets {
             get {
                 object obj = ResourceManager.GetObject("list_bullets", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1014,7 +1014,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap list_numbered {
+        public static System.Drawing.Bitmap list_numbered {
             get {
                 object obj = ResourceManager.GetObject("list_numbered", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1024,7 +1024,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon logo_icon {
+        public static System.Drawing.Icon logo_icon {
             get {
                 object obj = ResourceManager.GetObject("logo_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -1034,7 +1034,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo_large {
+        public static System.Drawing.Bitmap logo_large {
             get {
                 object obj = ResourceManager.GetObject("logo_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1044,7 +1044,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo_trans {
+        public static System.Drawing.Bitmap logo_trans {
             get {
                 object obj = ResourceManager.GetObject("logo_trans", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1054,7 +1054,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo64 {
+        public static System.Drawing.Bitmap logo64 {
             get {
                 object obj = ResourceManager.GetObject("logo64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1064,7 +1064,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mail {
+        public static System.Drawing.Bitmap mail {
             get {
                 object obj = ResourceManager.GetObject("mail", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1074,7 +1074,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mask {
+        public static System.Drawing.Bitmap mask {
             get {
                 object obj = ResourceManager.GetObject("mask", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1084,7 +1084,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap menu {
+        public static System.Drawing.Bitmap menu {
             get {
                 object obj = ResourceManager.GetObject("menu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1094,7 +1094,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nav_small_first {
+        public static System.Drawing.Bitmap nav_small_first {
             get {
                 object obj = ResourceManager.GetObject("nav_small_first", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1104,7 +1104,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nav_small_last {
+        public static System.Drawing.Bitmap nav_small_last {
             get {
                 object obj = ResourceManager.GetObject("nav_small_last", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1114,7 +1114,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nav_small_next {
+        public static System.Drawing.Bitmap nav_small_next {
             get {
                 object obj = ResourceManager.GetObject("nav_small_next", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1124,7 +1124,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nav_small_prev {
+        public static System.Drawing.Bitmap nav_small_prev {
             get {
                 object obj = ResourceManager.GetObject("nav_small_prev", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1134,7 +1134,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap navigation_button {
+        public static System.Drawing.Bitmap navigation_button {
             get {
                 object obj = ResourceManager.GetObject("navigation_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1144,7 +1144,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap new_24 {
+        public static System.Drawing.Bitmap new_24 {
             get {
                 object obj = ResourceManager.GetObject("new_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1154,7 +1154,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap next {
+        public static System.Drawing.Bitmap next {
             get {
                 object obj = ResourceManager.GetObject("next", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1164,7 +1164,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap no {
+        public static System.Drawing.Bitmap no {
             get {
                 object obj = ResourceManager.GetObject("no", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1174,7 +1174,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap note {
+        public static System.Drawing.Bitmap note {
             get {
                 object obj = ResourceManager.GetObject("note", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1184,7 +1184,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap note_small {
+        public static System.Drawing.Bitmap note_small {
             get {
                 object obj = ResourceManager.GetObject("note_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1194,7 +1194,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap notes {
+        public static System.Drawing.Bitmap notes {
             get {
                 object obj = ResourceManager.GetObject("notes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1204,7 +1204,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap objects {
+        public static System.Drawing.Bitmap objects {
             get {
                 object obj = ResourceManager.GetObject("objects", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1214,7 +1214,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap open {
+        public static System.Drawing.Bitmap open {
             get {
                 object obj = ResourceManager.GetObject("open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1224,7 +1224,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap open_24 {
+        public static System.Drawing.Bitmap open_24 {
             get {
                 object obj = ResourceManager.GetObject("open_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1234,7 +1234,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap outdent {
+        public static System.Drawing.Bitmap outdent {
             get {
                 object obj = ResourceManager.GetObject("outdent", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1244,7 +1244,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap page_settings {
+        public static System.Drawing.Bitmap page_settings {
             get {
                 object obj = ResourceManager.GetObject("page_settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1254,7 +1254,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap paste {
+        public static System.Drawing.Bitmap paste {
             get {
                 object obj = ResourceManager.GetObject("paste", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1264,7 +1264,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap paste_as_image {
+        public static System.Drawing.Bitmap paste_as_image {
             get {
                 object obj = ResourceManager.GetObject("paste_as_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1274,7 +1274,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap paste_as_remark {
+        public static System.Drawing.Bitmap paste_as_remark {
             get {
                 object obj = ResourceManager.GetObject("paste_as_remark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1284,7 +1284,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap plus {
+        public static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1294,7 +1294,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap preferences {
+        public static System.Drawing.Bitmap preferences {
             get {
                 object obj = ResourceManager.GetObject("preferences", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1304,7 +1304,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap preferences_24 {
+        public static System.Drawing.Bitmap preferences_24 {
             get {
                 object obj = ResourceManager.GetObject("preferences_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1314,7 +1314,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon preferences_icon {
+        public static System.Drawing.Icon preferences_icon {
             get {
                 object obj = ResourceManager.GetObject("preferences_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -1324,7 +1324,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap preview {
+        public static System.Drawing.Bitmap preview {
             get {
                 object obj = ResourceManager.GetObject("preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1334,7 +1334,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap previous {
+        public static System.Drawing.Bitmap previous {
             get {
                 object obj = ResourceManager.GetObject("previous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1344,7 +1344,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap print {
+        public static System.Drawing.Bitmap print {
             get {
                 object obj = ResourceManager.GetObject("print", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1354,7 +1354,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap print_pages {
+        public static System.Drawing.Bitmap print_pages {
             get {
                 object obj = ResourceManager.GetObject("print_pages", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1364,7 +1364,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap print_single_page {
+        public static System.Drawing.Bitmap print_single_page {
             get {
                 object obj = ResourceManager.GetObject("print_single_page", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1374,7 +1374,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap print_two_pages {
+        public static System.Drawing.Bitmap print_two_pages {
             get {
                 object obj = ResourceManager.GetObject("print_two_pages", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1384,7 +1384,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap progress_bar {
+        public static System.Drawing.Bitmap progress_bar {
             get {
                 object obj = ResourceManager.GetObject("progress_bar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1394,7 +1394,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap property {
+        public static System.Drawing.Bitmap property {
             get {
                 object obj = ResourceManager.GetObject("property", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1404,7 +1404,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon property_icon {
+        public static System.Drawing.Icon property_icon {
             get {
                 object obj = ResourceManager.GetObject("property_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -1414,7 +1414,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap question_large {
+        public static System.Drawing.Bitmap question_large {
             get {
                 object obj = ResourceManager.GetObject("question_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1424,7 +1424,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap redo {
+        public static System.Drawing.Bitmap redo {
             get {
                 object obj = ResourceManager.GetObject("redo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1434,7 +1434,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap refresh {
+        public static System.Drawing.Bitmap refresh {
             get {
                 object obj = ResourceManager.GetObject("refresh", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1444,7 +1444,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap replace {
+        public static System.Drawing.Bitmap replace {
             get {
                 object obj = ResourceManager.GetObject("replace", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1454,7 +1454,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap reset {
+        public static System.Drawing.Bitmap reset {
             get {
                 object obj = ResourceManager.GetObject("reset", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1464,7 +1464,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap rotate_left {
+        public static System.Drawing.Bitmap rotate_left {
             get {
                 object obj = ResourceManager.GetObject("rotate_left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1474,7 +1474,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap rotate_right {
+        public static System.Drawing.Bitmap rotate_right {
             get {
                 object obj = ResourceManager.GetObject("rotate_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1484,7 +1484,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap save {
+        public static System.Drawing.Bitmap save {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1494,7 +1494,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sidebar {
+        public static System.Drawing.Bitmap sidebar {
             get {
                 object obj = ResourceManager.GetObject("sidebar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1504,7 +1504,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sort {
+        public static System.Drawing.Bitmap sort {
             get {
                 object obj = ResourceManager.GetObject("sort", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1514,7 +1514,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap split_btn_h {
+        public static System.Drawing.Bitmap split_btn_h {
             get {
                 object obj = ResourceManager.GetObject("split_btn_h", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1524,7 +1524,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap split_btn_v {
+        public static System.Drawing.Bitmap split_btn_v {
             get {
                 object obj = ResourceManager.GetObject("split_btn_v", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1534,7 +1534,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap splitter_h {
+        public static System.Drawing.Bitmap splitter_h {
             get {
                 object obj = ResourceManager.GetObject("splitter_h", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1544,7 +1544,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap splitter_v {
+        public static System.Drawing.Bitmap splitter_v {
             get {
                 object obj = ResourceManager.GetObject("splitter_v", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1554,7 +1554,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap stop {
+        public static System.Drawing.Bitmap stop {
             get {
                 object obj = ResourceManager.GetObject("stop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1564,7 +1564,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap strike {
+        public static System.Drawing.Bitmap strike {
             get {
                 object obj = ResourceManager.GetObject("strike", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1574,7 +1574,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap svg {
+        public static System.Drawing.Bitmap svg {
             get {
                 object obj = ResourceManager.GetObject("svg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1584,7 +1584,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tab_button {
+        public static System.Drawing.Bitmap tab_button {
             get {
                 object obj = ResourceManager.GetObject("tab_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1594,7 +1594,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tabs {
+        public static System.Drawing.Bitmap tabs {
             get {
                 object obj = ResourceManager.GetObject("tabs", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1604,7 +1604,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap taskbar_close_button {
+        public static System.Drawing.Bitmap taskbar_close_button {
             get {
                 object obj = ResourceManager.GetObject("taskbar_close_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1620,7 +1620,7 @@ namespace Blumind.Properties {
         ///  &lt;people name=&quot;Michael&quot; jobs=&quot;Donation&quot; email=&quot;mkmurphym@yahoo.com&quot;/&gt;
         ///&lt;/thanks&gt;.
         /// </summary>
-        internal static string thanks {
+        public static string thanks {
             get {
                 return ResourceManager.GetString("thanks", resourceCulture);
             }
@@ -1629,7 +1629,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap theme {
+        public static System.Drawing.Bitmap theme {
             get {
                 object obj = ResourceManager.GetObject("theme", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1639,7 +1639,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap theme_manage {
+        public static System.Drawing.Bitmap theme_manage {
             get {
                 object obj = ResourceManager.GetObject("theme_manage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1662,7 +1662,7 @@ namespace Blumind.Properties {
         ///			&lt;root_back_color&gt;#363942&lt;/root_back_color&gt;
         ///			&lt;root_fore_color&gt;#F2F0 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string themes {
+        public static string themes {
             get {
                 return ResourceManager.GetString("themes", resourceCulture);
             }
@@ -1671,7 +1671,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap threat {
+        public static System.Drawing.Bitmap threat {
             get {
                 object obj = ResourceManager.GetObject("threat", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1681,7 +1681,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tick {
+        public static System.Drawing.Bitmap tick {
             get {
                 object obj = ResourceManager.GetObject("tick", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1691,7 +1691,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tick_small {
+        public static System.Drawing.Bitmap tick_small {
             get {
                 object obj = ResourceManager.GetObject("tick_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1701,7 +1701,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tip_close_button {
+        public static System.Drawing.Bitmap tip_close_button {
             get {
                 object obj = ResourceManager.GetObject("tip_close_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1711,7 +1711,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tip_pin_button {
+        public static System.Drawing.Bitmap tip_pin_button {
             get {
                 object obj = ResourceManager.GetObject("tip_pin_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1721,7 +1721,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tip_pin_pressed_button {
+        public static System.Drawing.Bitmap tip_pin_pressed_button {
             get {
                 object obj = ResourceManager.GetObject("tip_pin_pressed_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1731,7 +1731,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tool_button {
+        public static System.Drawing.Bitmap tool_button {
             get {
                 object obj = ResourceManager.GetObject("tool_button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1741,7 +1741,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap topic {
+        public static System.Drawing.Bitmap topic {
             get {
                 object obj = ResourceManager.GetObject("topic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1751,7 +1751,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap underline {
+        public static System.Drawing.Bitmap underline {
             get {
                 object obj = ResourceManager.GetObject("underline", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1761,7 +1761,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap undo {
+        public static System.Drawing.Bitmap undo {
             get {
                 object obj = ResourceManager.GetObject("undo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1771,7 +1771,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap up {
+        public static System.Drawing.Bitmap up {
             get {
                 object obj = ResourceManager.GetObject("up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1779,9 +1779,32 @@ namespace Blumind.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;dictionary&gt;
+        ///  &lt;information id=&quot;vi-VN&quot; name=&quot;Vietnamese&quot; nature_name=&quot;Tiếng Việt&quot; stable=&quot;true&quot;&gt;
+        ///    &lt;author name=&quot;Teddy Ruin&quot; email=&quot;tedruin@gmail.com&quot;/&gt;
+        ///    &lt;author name=&quot;Daniel Poulin&quot; email=&quot;poulindaniel@hotmail.com&quot;/&gt;
+        ///  &lt;/information&gt;
+        ///  &lt;compatibility&gt;
+        ///    &lt;culture id=&quot;vi&quot;/&gt;
+        ///    &lt;culture id=&quot;vi-VN&quot;/&gt;
+        ///    &lt;culture id=&quot;Vietnamese&quot;/&gt;
+        ///    &lt;culture id=&quot;Tiếng Việt&quot;/&gt;
+        ///  &lt;/compatibility&gt;
+        ///  &lt;words&gt;
+        ///    &lt;item name=&quot;About&quot;&gt;À Propos&lt;/item&gt;
+        ///    &lt;item name=&quot;Menu&quot;&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string vi_VN {
+            get {
+                return ResourceManager.GetString("vi_VN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap web {
+        public static System.Drawing.Bitmap web {
             get {
                 object obj = ResourceManager.GetObject("web", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1804,7 +1827,7 @@ namespace Blumind.Properties {
         ///		&lt;root_fore_color&gt;#E1E0D2&lt;/root_fore_color&gt;
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string windows_themes {
+        public static string windows_themes {
             get {
                 return ResourceManager.GetString("windows_themes", resourceCulture);
             }
@@ -1813,7 +1836,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap yes {
+        public static System.Drawing.Bitmap yes {
             get {
                 object obj = ResourceManager.GetObject("yes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1840,7 +1863,7 @@ namespace Blumind.Properties {
         ///		&lt;item name=&quot;Open&quot;&gt;打开&lt;/item&gt;
         ///		&lt;item name=&quot;N [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zh_CHS {
+        public static string zh_CHS {
             get {
                 return ResourceManager.GetString("zh_CHS", resourceCulture);
             }
@@ -1849,7 +1872,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap zoom {
+        public static System.Drawing.Bitmap zoom {
             get {
                 object obj = ResourceManager.GetObject("zoom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1859,7 +1882,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap zoom_in {
+        public static System.Drawing.Bitmap zoom_in {
             get {
                 object obj = ResourceManager.GetObject("zoom_in", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -1869,7 +1892,7 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap zoom_out {
+        public static System.Drawing.Bitmap zoom_out {
             get {
                 object obj = ResourceManager.GetObject("zoom_out", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

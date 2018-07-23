@@ -72,7 +72,7 @@
             this.LabProductName.Name = "LabProductName";
             this.LabProductName.Size = new System.Drawing.Size(47, 12);
             this.LabProductName.TabIndex = 1;
-            this.LabProductName.Text = "Blumind";
+            this.LabProductName.Text = "BowTie Presenter";
             // 
             // LabVersion
             // 

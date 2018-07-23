@@ -111,8 +111,9 @@ namespace Blumind.Globalization
             //AddLanguage(Language.LoadXml(Properties.Resources.sr_CS));
             //AddLanguage(Language.LoadXml(Properties.Resources.sv_SE));
             //AddLanguage(Language.LoadXml(Properties.Resources.tr_TR));
-            AddLanguage(Language.LoadXml(Properties.Resources.zh_CHS));
+            //AddLanguage(Language.LoadXml(Properties.Resources.zh_CHS));
             //AddLanguage(Language.LoadXml(Properties.Resources.zh_CHT));
+            AddLanguage(Language.LoadXml(Properties.Resources.vi_VN));
 
             LoadLanguages(LanguagesDirectory);
             //D.Message(new string('-', 40));

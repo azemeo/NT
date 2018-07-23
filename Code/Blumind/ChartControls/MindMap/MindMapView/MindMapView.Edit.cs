@@ -184,9 +184,14 @@ namespace Blumind.Controls.MapViews
 
         public virtual Topic AddBarrier()
         {
-            if (SelectedTopic != null)
+            Topic selectedTp = SelectedTopic;
+            if (selectedTp.Type == TopicType.Barrier)
             {
-                return AddSubTopic(SelectedTopic, null, TopicType.Barrier, true);
+                selectedTp = selectedTp.ParentTopic;
+            }
+            if (selectedTp != null && (selectedTp.Type == TopicType.Consequence || selectedTp.Type == TopicType.Threat))
+            {
+                return AddSubTopic(selectedTp, null, TopicType.Barrier, true);
             }
             else
             {

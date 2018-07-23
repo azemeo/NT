@@ -35,10 +35,10 @@ namespace Blumind.Controls.MapViews
             ShortcutKeys.Register(KeyMap.Collapse, delegate() { CollapseSelect(true); });
             ShortcutKeys.Register(KeyMap.ToggleFolding, delegate() { ToggleFolding(); });
 
-            ShortcutKeys.Register(KeyMap.AddSubTopic, delegate() { if (!ReadOnly) { AddSubTopic(); } });
-            ShortcutKeys.Register(KeyMap.AddSubTopic2, delegate() { if (!ReadOnly) { AddSubTopic(); } });
-            ShortcutKeys.Register(KeyMap.AddTopic, delegate() { if (!ReadOnly) { AddTopic(); } });
-            ShortcutKeys.Register(KeyMap.AddTopicFront, delegate() { if (!ReadOnly) { AddTopicFront(); } });
+            ShortcutKeys.Register(KeyMap.AddThreat, delegate() { if (!ReadOnly) { AddThreat(); } });
+            ShortcutKeys.Register(KeyMap.AddConsequence, delegate() { if (!ReadOnly) { AddConsequence(); } });
+            ShortcutKeys.Register(KeyMap.AddBarrier, delegate() { if (!ReadOnly) { AddBarrier(); } });
+            ShortcutKeys.Register(KeyMap.AddEscalation, delegate() { if (!ReadOnly) { AddEscalationFactor(); } });
             ShortcutKeys.Register(KeyMap.Edit, delegate() { if (!ReadOnly) { EditObject(); } });
             ShortcutKeys.Register(KeyMap.Edit2, delegate() { if (!ReadOnly) { EditObject(); } });
             ShortcutKeys.Register(KeyMap.Delete, delegate() { if (!ReadOnly) { DeleteObject(); } });

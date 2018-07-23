@@ -476,7 +476,7 @@ namespace Blumind
             //    remarkEditor.Text = Lang._("Remark");
 
             saveFileDialog1.Filter = string.Format("{0} (*{1})|*{1}",
-                Lang._("Blumind Mind Map File"),
+                Lang._("BowTie Presenter File"),
                 DocumentType.Blumind.DefaultExtension);
 
             multiChartsView1.NotifyCurrentLanguageChanged();
