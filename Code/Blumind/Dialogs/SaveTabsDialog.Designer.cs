@@ -54,7 +54,7 @@
             this.LabMessage.Name = "LabMessage";
             this.LabMessage.Size = new System.Drawing.Size(347, 12);
             this.LabMessage.TabIndex = 3;
-            this.LabMessage.Text = "Do you want Blumind save tabs and open them next startup?";
+            this.LabMessage.Text = "Do you want BowTie Presenter save tabs and open them next startup?";
             // 
             // BtnYes
             // 

@@ -95,7 +95,7 @@ namespace Blumind
             TaskBar.LeftButtons.Add(BtnStart);
             //TaskBar.LeftButtons.Add(BtnNew);
             TaskBar.LeftButtons.Add(BtnOpen);
-            TaskBar.RightButtons.Add(BtnHelp);
+            //TaskBar.RightButtons.Add(BtnHelp);
             TaskBar.Items.ItemAdded += TaskBar_Items_ItemAdded;
             TaskBar.Items.ItemRemoved += TaskBar_Items_ItemRemoved;
 

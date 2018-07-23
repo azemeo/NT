@@ -105,8 +105,8 @@
             //this.MenuPrint,
             //this.toolStripSeparator6,
             //this.MenuOptions,
-            this.MenuHelps,
-            this.toolStripSeparator2,
+            //this.MenuHelps,
+            //this.toolStripSeparator2,
             this.MenuExit});
             this.StartMenu.Name = "MenuStart";
             this.StartMenu.Size = new System.Drawing.Size(137, 276);
