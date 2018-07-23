@@ -32,6 +32,17 @@ namespace Blumind.Model.MindMaps
             Topic hazardTopic = new Topic();
             hazardTopic.Type = TopicType.Hazard;
             Root.Children.Add(hazardTopic);
+
+            for (int i = 0; i < 2; i++)
+            {
+                Topic subTopic = new Topic();
+                subTopic.Type = TopicType.Threat;
+                Root.Children.Add(subTopic);
+
+                subTopic = new Topic();
+                subTopic.Type = TopicType.Consequence;
+                Root.Children.Add(subTopic);
+            }
         }
 
         public MindMap(string name)

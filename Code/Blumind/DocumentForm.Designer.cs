@@ -90,11 +90,12 @@
             // 
             this.multiChartsView1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.multiChartsView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            | System.Windows.Forms.AnchorStyles.Left) 
             this.multiChartsView1.Location = new System.Drawing.Point(0, 0);
             this.multiChartsView1.Name = "multiChartsView1";
             this.multiChartsView1.SelectedIndex = -1;
             this.multiChartsView1.SelectedPage = null;
-            this.multiChartsView1.Size = new System.Drawing.Size(593, 448);
+            this.multiChartsView1.Size = new System.Drawing.Size(804, 448);
             this.multiChartsView1.TabIndex = 0;
             this.multiChartsView1.TabsMenuStrip = this.MenuStripChartTab;
             this.multiChartsView1.NewChartPage += new System.EventHandler(this.multiChartsView1_NewChartPage);
@@ -424,7 +425,7 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(138, 6);
             // 
             // toolStripSeparator14
             // 

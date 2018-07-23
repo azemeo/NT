@@ -64,7 +64,7 @@ namespace Blumind
             buttonListBox1.Buttons.AddRange(new ButtonInfo[] { 
                 btnNew,
                 btnOpen,
-                btnOptions
+                //btnOptions
             });
 
             //

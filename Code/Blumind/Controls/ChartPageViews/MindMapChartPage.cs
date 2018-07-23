@@ -318,7 +318,8 @@ namespace Blumind.ChartPageView
                 MenuDelete,
                 toolStripSeparator10,
                 MenuEdit,
-                MenuProperty});
+                //MenuProperty
+            });
 
             // MenuOpenHyperlink
             MenuOpenHyperlink.Image = Blumind.Properties.Resources.hyperlink;
