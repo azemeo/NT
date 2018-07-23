@@ -584,7 +584,7 @@ namespace Blumind.Controls.MapViews
             Rectangle rect;
             if (tobj is Topic)
             {
-                rect = ((Topic)tobj).GlobalTextBounds;
+                rect = PaintHelper.Zoom(((Topic)tobj).GlobalTextBounds, Zoom);
             }
             else
             {

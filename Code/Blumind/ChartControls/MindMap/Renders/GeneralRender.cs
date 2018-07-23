@@ -314,9 +314,43 @@ namespace Blumind.Controls.MapViews
             Color backColor = topic.Style.BackColor;
             if (backColor.IsEmpty)
                 backColor = e.Chart.NodeBackColor;
-            var ft = FillType.GetFillType(topic.Style.FillType);
-            IBrush brushBack = ft.CreateBrush(e.Graphics, backColor, rect);
-            shaper.Fill(e.Graphics, brushBack, rect);
+            if (topic.Type == TopicType.Hazard)
+            {
+                IBrush brushBack = e.Graphics.SolidBrush(backColor);
+                shaper.Fill(e.Graphics, brushBack, rect);
+
+                // Draw pattern
+                IGraphics graphics = e.Graphics;
+                IGraphicsState savedState = graphics.Save();
+                graphics.SetClip(rect);
+                IBrush blackBrush = graphics.SolidBrush(Color.Black);
+
+                Rectangle patternRect = new Rectangle(new Point(rect.X, rect.Y - rect.Height), new Size(15, 2 * rect.Height));
+                graphics.TranslateTransform(rect.Width - 30, 0);
+                graphics.RotateTransform(135);
+                graphics.FillRectangle(blackBrush, patternRect);
+
+                for (int i = 0; i < 5; ++i)
+                {
+                    graphics.TranslateTransform(30, 0);
+                    graphics.FillRectangle(blackBrush, patternRect);
+                }
+                graphics.Restore(savedState);
+            }
+            else if (topic.Type != TopicType.None)
+            {
+                Color midColor = topic.Type == TopicType.TopEvent ? Color.Orange : Color.White;
+                IBrush brushBack = e.Graphics.LinearGradientBrush(rect,
+                                                backColor, midColor, backColor);
+                shaper.Fill(e.Graphics, brushBack, rect);
+            }
+            else
+            {
+                var ft = FillType.GetFillType(topic.Style.FillType);
+                IBrush brushBack = ft.CreateBrush(e.Graphics, backColor, rect);
+                shaper.Fill(e.Graphics, brushBack, rect);
+            }
+            shaper.DrawBorder(e.Graphics, e.Graphics.Pen(Color.Black), rect);
 
             shaper.Dispose();
         }

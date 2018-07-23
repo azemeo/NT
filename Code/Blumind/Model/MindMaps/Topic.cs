@@ -350,8 +350,8 @@ namespace Blumind.Model.MindMaps
                             break;
                         case TopicType.Barrier:
                             Style.Shape = TopicShape.Rectangle;
-                            Style.BackColor = Color.FromArgb(64, 64, 64);
-                            Style.BorderColor = Color.FromArgb(64, 64, 64);
+                            Style.BackColor = Color.FromArgb(0, 0, 0);
+                            Style.BorderColor = Color.FromArgb(0, 0, 0);
                             Style.FillType = "Modern";
                             Text = "New Barrier";
                             Bounds = new Rectangle(Bounds.Location, new Size(30, 60));

@@ -82,7 +82,10 @@ namespace Blumind.Canvas.Pdf
         {
             Graphics.RotateTransform(angle);
         }
-
+        public IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, Color color3)
+        {
+            return new PdfBrush(new XLinearGradientBrush(rect, color1, color2, XLinearGradientMode.Vertical));
+        }
         public IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, LinearGradientMode mode)
         {
             XLinearGradientMode m;

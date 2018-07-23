@@ -55,6 +55,11 @@ namespace Blumind.Canvas.Svg
             CurrentState.Rotation = (CurrentState.Rotation + angle) % 360;
         }
 
+        public IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, Color color3)
+        {
+            return new SvgLinearGradientBrush(rect, color1, color2, LinearGradientMode.Vertical);
+        }
+
         public IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, LinearGradientMode mode)
         {
             return new SvgLinearGradientBrush(rect, color1, color2, mode);

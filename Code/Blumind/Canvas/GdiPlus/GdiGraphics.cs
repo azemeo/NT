@@ -45,6 +45,16 @@ namespace Blumind.Canvas.GdiPlus
             return new GdiBrush(new LinearGradientBrush(rect, color1, color2, angle));
         }
 
+        public IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, Color color3)
+        {
+            LinearGradientBrush br = new LinearGradientBrush(rect, color1, color2, LinearGradientMode.Vertical);
+            ColorBlend cb = new ColorBlend();
+            cb.Positions = new[] { 0, 1 / 2f, 1 };
+            cb.Colors = new[] { color1, color2, color3 };
+            br.InterpolationColors = cb;
+            return new GdiBrush(br);
+        }
+
         public IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, LinearGradientMode mode)
         {
             return new GdiBrush(new LinearGradientBrush(rect, color1, color2, mode));

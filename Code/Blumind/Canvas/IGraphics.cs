@@ -25,6 +25,8 @@ namespace Blumind.Canvas
 
         void SetClip(Rectangle rect);
 
+        IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, Color color3);
+
         IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, LinearGradientMode mode);
 
         IBrush LinearGradientBrush(Rectangle rect, Color color1, Color color2, float angle);
