@@ -90,7 +90,6 @@
             // 
             this.multiChartsView1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.multiChartsView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            | System.Windows.Forms.AnchorStyles.Left) 
             this.multiChartsView1.Location = new System.Drawing.Point(0, 0);
             this.multiChartsView1.Name = "multiChartsView1";
             this.multiChartsView1.SelectedIndex = -1;
