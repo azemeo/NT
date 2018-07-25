@@ -515,11 +515,6 @@
     <Compile Include="Model\Styles\ChartStyle.cs" />
     <Compile Include="Core\Delegates\ChartPropertyEventArgs.cs" />
     <Compile Include="Model\Widgets\NoteWidget.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Core\TimeSegment.cs" />
     <Compile Include="Core\XListEventArgs.cs" />
     <Compile Include="ChartControls\FreeDiagrams\FlowDiagramView.cs">
@@ -810,6 +805,11 @@
     <Compile Include="Model\Widgets\WidgetEventHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Test\D.cs" />
     <EmbeddedResource Include="Controls\ChartPageViews\MindMapChartPage.resx">
       <DependentUpon>MindMapChartPage.cs</DependentUpon>
@@ -891,9 +891,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\donation.png" />
-    <None Include="Resources\barrier.png" />
-    <None Include="Resources\consequence.png" />
-    <None Include="Resources\escalation.png" />
     <Content Include="Resources\Icons\check_update.ico" />
     <Content Include="Resources\Icons\document.ico" />
     <Content Include="Resources\Icons\exclamation.ico" />
@@ -942,11 +939,15 @@
     <None Include="Resources\Images\logo128.png" />
     <None Include="Resources\Images\logo64.png" />
     <None Include="Resources\Images\add_topic_front.png" />
+    <Content Include="Resources\Images\barrier.png" />
+    <Content Include="Resources\Images\consequence.png" />
+    <Content Include="Resources\Images\escalation.png" />
     <Content Include="Resources\Images\taskbar_close_button.png" />
     <None Include="Resources\Images\underline.png" />
     <None Include="Resources\Images\tick_small.png" />
     <None Include="Resources\Images\_blank.png" />
     <None Include="Resources\Images\tick.png" />
+    <Content Include="Resources\Images\threat.png" />
     <Content Include="Resources\Languages\vi.VN.xml" />
     <Content Include="Resources\Languages\_Template.xml">
       <SubType>Designer</SubType>
@@ -956,7 +957,6 @@
     <None Include="Resources\tip_pin_button.png" />
     <None Include="Resources\tip_pin_pressed_button.png" />
     <None Include="Resources\tip_close_button.png" />
-    <None Include="Resources\threat.png" />
     <Content Include="Resources\UIThemes\Blackish Green.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

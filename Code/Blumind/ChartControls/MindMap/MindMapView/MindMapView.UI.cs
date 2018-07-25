@@ -31,7 +31,7 @@ namespace Blumind.Controls.MapViews
                 TsbAddThreat,
                 TsbAddConsequence,
                 TsbAddBarrier,
-                //TsbAddEscalation,
+                TsbAddEscalation,
                 //TsbAddIcon,
                 //TsbAddRemark,
                 //TsbAddProgressBar,
@@ -51,19 +51,19 @@ namespace Blumind.Controls.MapViews
             // TsbAddThreat
             TsbAddThreat.DisplayStyle = ToolStripItemDisplayStyle.Image;
             TsbAddThreat.Image = Properties.Resources.threat;
-            TsbAddThreat.Text = Lang._("Thêm Nguyên Nhân");
+            TsbAddThreat.Text = Lang._("Add Threat");
             TsbAddThreat.Click += new System.EventHandler(this.TsbAddThreat_Click);
 
             // TsbAddConsequence
             TsbAddConsequence.DisplayStyle = ToolStripItemDisplayStyle.Image;
             TsbAddConsequence.Image = Properties.Resources.consequence;
-            TsbAddConsequence.Text = Lang._("Thêm Hậu Quả");
+            TsbAddConsequence.Text = Lang._("Add Consequence");
             TsbAddConsequence.Click += new System.EventHandler(this.TsbAddConsequence_Click);
 
             // TsbAddBarrier
             TsbAddBarrier.DisplayStyle = ToolStripItemDisplayStyle.Image;
             TsbAddBarrier.Image = Properties.Resources.barrier;
-            TsbAddBarrier.Text = Lang._("Thêm Biện Pháp");
+            TsbAddBarrier.Text = Lang._("Add Barrier");
             TsbAddBarrier.Click += new System.EventHandler(this.TsbAddBarrier_Click);
 
             // TsbAddEscalation
@@ -140,7 +140,7 @@ namespace Blumind.Controls.MapViews
         {
             base.OnCurrentLanguageChanged();
 
-            TsbAddThreat.Text = Lang._("Add Topic", KeyMap.AddThreat.Keys);
+            TsbAddThreat.Text = Lang._("Add Threat", KeyMap.AddThreat.Keys);
             TsbAddConsequence.Text = Lang._("Add Consequence", KeyMap.AddConsequence.Keys);
             TsbAddBarrier.Text = Lang._("Add Barrier", KeyMap.AddBarrier.Keys);
             TsbAddEscalation.Text = Lang._("Add Escalation", KeyMap.AddEscalation.Keys);

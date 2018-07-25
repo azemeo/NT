@@ -18,7 +18,8 @@ namespace Blumind.Globalization
 
         static LanguageManage()
         {
-            NaturalCultureName = CultureInfo.CurrentUICulture.Name;
+            //NaturalCultureName = CultureInfo.CurrentUICulture.Name;
+            NaturalCultureName = "vi-VN";
         }
 
         public static Language Current
@@ -175,7 +176,7 @@ namespace Blumind.Globalization
         {
             if (!ChangeLanguage(NaturalCultureName))
             {
-                ChangeLanguage("en");
+                ChangeLanguage("vi");
             }
         }
 

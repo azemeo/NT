@@ -104,7 +104,7 @@
             //this.MenuPreview,
             //this.MenuPrint,
             //this.toolStripSeparator6,
-            //this.MenuOptions,
+            this.MenuOptions,
             //this.MenuHelps,
             //this.toolStripSeparator2,
             this.MenuExit});

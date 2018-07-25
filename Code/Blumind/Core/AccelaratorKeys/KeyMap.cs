@@ -163,9 +163,9 @@ namespace Blumind.Core
         public static readonly ShortcutKey MoveDown = new ShortcutKey("Move Down", Keys.Control | Keys.Down, Properties.Resources.down);
 
 
-        public static readonly ShortcutKey AddThreat = new ShortcutKey("Thêm Nguyên Nhân", Keys.Enter, Properties.Resources.threat);
-        public static readonly ShortcutKey AddConsequence = new ShortcutKey("Thêm Hậu Quả", Keys.Enter | Keys.Shift, Properties.Resources.consequence);
-        public static readonly ShortcutKey AddBarrier = new ShortcutKey("Thêm Biện Pháp", Keys.Tab, Properties.Resources.barrier);
+        public static readonly ShortcutKey AddThreat = new ShortcutKey("Add Threat", Keys.Enter, Properties.Resources.threat);
+        public static readonly ShortcutKey AddConsequence = new ShortcutKey("Add Consequence", Keys.Enter | Keys.Shift, Properties.Resources.consequence);
+        public static readonly ShortcutKey AddBarrier = new ShortcutKey("Add Barrier", Keys.Tab, Properties.Resources.barrier);
         public static readonly ShortcutKey AddEscalation = new ShortcutKey("Add Escalation", Keys.Insert, Properties.Resources.escalation);
 
         // selection

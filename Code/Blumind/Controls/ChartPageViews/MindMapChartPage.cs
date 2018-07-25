@@ -186,10 +186,10 @@ namespace Blumind.ChartPageView
                 return;
 
             MenuOpenHyperlink.Text = Lang._("Open Hyperlink");
-            MenuAddThreat.Text = Lang._("Thêm Nguyên Nhân");
-            MenuAddConsequence.Text = Lang._("Thêm Hậu Quả");
-            MenuAddBarrier.Text = Lang._("Thêm Biện Pháp");
-            MenuAddEscalation.Text = Lang._("Add Escalation Factor");
+            MenuAddThreat.Text = Lang._("Add Threat");
+            MenuAddConsequence.Text = Lang._("Add Consequence");
+            MenuAddBarrier.Text = Lang._("Add Barrier");
+            MenuAddEscalation.Text = Lang._("Add Escalation");
             MenuAdd.Text = Lang._("Add");
             MenuAddIcon.Text = Lang.GetTextWithEllipsis("Icon");
             MenuAddProgressBar.Text = Lang.GetTextWithEllipsis("Progress Bar");
@@ -305,7 +305,7 @@ namespace Blumind.ChartPageView
                 MenuAddThreat,
                 MenuAddConsequence,
                 MenuAddBarrier,
-                //MenuAddEscalation,
+                MenuAddEscalation,
                 //MenuAdd,
                 toolStripSeparator5,
                 MenuLink,
@@ -334,28 +334,28 @@ namespace Blumind.ChartPageView
             MenuAddThreat.Image = Blumind.Properties.Resources.threat;
             MenuAddThreat.Name = "MenuAddThreat";
             MenuAddThreat.ShortcutKeyDisplayString = "Enter";
-            MenuAddThreat.Text = "Thêm Nguyên Nhân";
+            MenuAddThreat.Text = "Add Threat";
             MenuAddThreat.Click += new System.EventHandler(MenuAddThreat_Click);
 
             // MenuAddConsequence
             MenuAddConsequence.Image = Blumind.Properties.Resources.consequence;
             MenuAddConsequence.Name = "MenuAddConsequence";
             MenuAddConsequence.ShortcutKeyDisplayString = "Enter";
-            MenuAddConsequence.Text = "Thêm Hậu Quả";
+            MenuAddConsequence.Text = "Add Consequence";
             MenuAddConsequence.Click += new System.EventHandler(MenuAddConsequence_Click);
 
             // MenuAddBarrier
             MenuAddBarrier.Image = Blumind.Properties.Resources.barrier;
             MenuAddBarrier.Name = "MenuAddBarrier";
             MenuAddBarrier.ShortcutKeyDisplayString = "Tab";
-            MenuAddBarrier.Text = "Thêm Biện Pháp";
+            MenuAddBarrier.Text = "Add Barrier";
             MenuAddBarrier.Click += new System.EventHandler(MenuAddBarrier_Click);
 
             // MenuAddEscalation
             MenuAddEscalation.Image = Blumind.Properties.Resources.escalation;
             MenuAddEscalation.Name = "MenuAddEscalation";
             MenuAddEscalation.ShortcutKeyDisplayString = "Insert";
-            MenuAddEscalation.Text = "Add Escalation Factor";
+            MenuAddEscalation.Text = "Add Escalation";
             MenuAddEscalation.Click += new System.EventHandler(MenuAddEscalationFactor_Click);
 
             // MenuAdd

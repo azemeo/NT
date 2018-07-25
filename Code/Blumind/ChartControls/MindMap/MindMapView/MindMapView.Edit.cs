@@ -189,9 +189,9 @@ namespace Blumind.Controls.MapViews
             {
                 selectedTp = selectedTp.ParentTopic;
             }
-            if (selectedTp != null && (selectedTp.Type == TopicType.Consequence || selectedTp.Type == TopicType.Threat))
+            if (selectedTp != null && (selectedTp.Type == TopicType.Consequence || selectedTp.Type == TopicType.Threat || selectedTp.Type == TopicType.Escalation))
             {
-                return AddSubTopic(selectedTp, null, TopicType.Barrier, true);
+                return AddSubTopic(selectedTp, null, TopicType.Barrier, false);
             }
             else
             {
