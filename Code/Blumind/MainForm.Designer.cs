@@ -43,13 +43,13 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.MenuOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuHelps = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.MenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuImport = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuShortcuts = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -101,15 +101,10 @@
             this.toolStripSeparator8,
             this.toolStripMenuItem1,
             this.toolStripSeparator5,
-            //this.MenuPreview,
-            //this.MenuPrint,
-            //this.toolStripSeparator6,
             this.MenuOptions,
-            //this.MenuHelps,
-            //this.toolStripSeparator2,
             this.MenuExit});
             this.StartMenu.Name = "MenuStart";
-            this.StartMenu.Size = new System.Drawing.Size(137, 276);
+            this.StartMenu.Size = new System.Drawing.Size(137, 198);
             this.StartMenu.Opening += new System.ComponentModel.CancelEventHandler(this.StartMenu_Opening);
             // 
             // MenuNew
@@ -173,6 +168,21 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(133, 6);
             // 
+            // MenuOptions
+            // 
+            this.MenuOptions.Image = global::Blumind.Properties.Resources.preferences;
+            this.MenuOptions.Name = "MenuOptions";
+            this.MenuOptions.Size = new System.Drawing.Size(136, 22);
+            this.MenuOptions.Text = "Options...";
+            this.MenuOptions.Click += new System.EventHandler(this.MenuOptions_Click);
+            // 
+            // MenuExit
+            // 
+            this.MenuExit.Name = "MenuExit";
+            this.MenuExit.Size = new System.Drawing.Size(136, 22);
+            this.MenuExit.Text = "E&xit";
+            this.MenuExit.Click += new System.EventHandler(this.MenuExit_Click);
+            // 
             // MenuPreview
             // 
             this.MenuPreview.Name = "MenuPreview";
@@ -193,14 +203,6 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(133, 6);
             // 
-            // MenuOptions
-            // 
-            this.MenuOptions.Image = global::Blumind.Properties.Resources.preferences;
-            this.MenuOptions.Name = "MenuOptions";
-            this.MenuOptions.Size = new System.Drawing.Size(136, 22);
-            this.MenuOptions.Text = "Options...";
-            this.MenuOptions.Click += new System.EventHandler(this.MenuOptions_Click);
-            // 
             // MenuHelps
             // 
             this.MenuHelps.Name = "MenuHelps";
@@ -211,13 +213,6 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
-            // 
-            // MenuExit
-            // 
-            this.MenuExit.Name = "MenuExit";
-            this.MenuExit.Size = new System.Drawing.Size(136, 22);
-            this.MenuExit.Text = "E&xit";
-            this.MenuExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
             // MenuImport
             // 
