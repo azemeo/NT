@@ -389,7 +389,7 @@
 	<item name="Add Threat">Thêm nguyên nhân</item>
 	<item name="Add Consequence">Thêm hậu quả</item>
 	<item name="Add Barrier">Thêm biện pháp</item>
-	<item name="Add Escalation">Thêm yếu tố</item>
+	<item name="Add Escalation">Thêm yếu tố phát sinh</item>
 
   </words>
 </dictionary>
