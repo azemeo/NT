@@ -293,7 +293,7 @@
 
     <item name="Create a new Mind Map">Tạo tài liệu mới</item>
     <item name="Open a old file">Mở tài liệu cũ</item>
-    <item name="Confirm Save">Xác nhận lưu</item>
+    <item name="Confirm Save">Bạn có muốn lưu tài liệu hiện thời không?</item>
     <item name="The format is not supported">Định dạng không được hỗ trợ</item>
     <item name="No Pages">Không có trang</item>
     <item name="Exception Occurs">Đã xảy ra lỗi không mong muốn</item>
@@ -391,5 +391,8 @@
 	<item name="Add Barrier">Thêm biện pháp</item>
 	<item name="Add Escalation">Thêm yếu tố phát sinh</item>
 
+	<item name="Your trial is expired!">Bản quyền của bạn đã hết hạn.</item>
+	<item name="Your trial version will expire in {0} days.">Bạn còn {0} ngày để dùng thử phần mềm.</item>
+	
   </words>
 </dictionary>
