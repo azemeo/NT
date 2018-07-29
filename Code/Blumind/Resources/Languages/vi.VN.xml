@@ -83,7 +83,7 @@
     <item name="Fore Color">Màu chữ</item>
     <item name="Line Color">Màu đường thẳng</item>
     <item name="Padding">Khoảng cách</item>
-    <item name="Text">Texte</item>
+    <item name="Text">Nội dung</item>
     <item name="Name">Tên</item>
     <item name="Overview">Tổng quan</item>
     <item name="Hover Color">Màu</item>
@@ -378,6 +378,12 @@
     <item name="Moving">Di chuyển</item>
     <item name="Accept Changes">Đồng ý thay đổi</item>
     <item name="The content has changed, do you want to accept the changes?">Nội dung đã thay đổi, bạn có muốn đồng ý thay đổi?</item>
+	
+	<item name="All Charts">Tất cả biểu đồ</item>
+	<item name="Current Chart">Biểu đồ hiện thời</item>
+	<item name="Select Below">Biểu đồ chọn bên dưới</item>
+	<item name="Export Type">Định dạng</item>
+	<item name="Export Document">Xuất biểu đồ</item>
 	
 	<item name="Top Event">Sự cố ban đầu</item>
 	<item name="New Hazard">Mối nguy</item>

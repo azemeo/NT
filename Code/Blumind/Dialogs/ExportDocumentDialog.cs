@@ -101,13 +101,13 @@ namespace Blumind.Dialogs
 
             // labExportType
             labExportType.Anchor = AnchorStyles.Left;
-            labExportType.Text = "Export Type";
+            labExportType.Text = Lang._("Export Type");
             labExportType.AutoSize = true;
             labExportType.Padding = new Padding(0, 2, 0, 2);
 
             // labCharts
             labCharts.Anchor = AnchorStyles.Left;
-            labCharts.Text = "Charts";
+            labCharts.Text = Lang._("Charts");
             labCharts.AutoSize = true;
             labCharts.Padding = new Padding(0, 2, 0, 2);
 
@@ -125,7 +125,7 @@ namespace Blumind.Dialogs
             // ExportDocumentDialog
             ClientSize = new Size(600, 400);
             Controls.Add(this.tableLayoutPanel1);
-            Text = "Export Document";
+            Text = Lang._("Export Document");
             tableLayoutPanel1.ResumeLayout();
             ResumeLayout();
         }

@@ -129,7 +129,7 @@ namespace Blumind.Core.Exports
             if (charts.Count() > 1 && !SupportMultiCharts)
             {
                 var dialog = new FolderBrowserDialog();
-                dialog.Description = Lang._("Select a folder to export charts");
+                dialog.Description = Lang.GetText("Select a folder to export charts");
                 if (dialog.ShowDialog(Program.MainForm) == DialogResult.OK)
                 {
                     ExportChartsToFolder(document, charts, dialog.SelectedPath);
@@ -140,14 +140,14 @@ namespace Blumind.Core.Exports
                 var dialog = new SaveFileDialog();
                 dialog.Filter = documentType.FileDialogFilter;
                 dialog.DefaultExt = documentType.DefaultExtension;
-                dialog.Title = Lang._("Export");
+                dialog.Title = Lang.GetText("Export");
                 dialog.FileName = ST.EscapeFileName(document.Name);
                 if (dialog.ShowDialog(Program.MainForm) == DialogResult.OK)
                 {
                     if (ExportChartsToFile(document, charts, dialog.FileName))
                     {
                         var fld = new FileLocationDialog(dialog.FileName, dialog.FileName);
-                        fld.Text = Lang._("Export Success");
+                        fld.Text = Lang.GetText("Export Success");
                         fld.ShowDialog(Program.MainForm);
                     }
                 }
