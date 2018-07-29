@@ -94,9 +94,19 @@ namespace Blumind.Model.MindMaps
                         {
                             boundSize.Width = TextBounds.Width + 10;
                         }
-                        if (TextBounds.Height + 10 != Height)
+                        if (Type == TopicType.Hazard)
                         {
-                            boundSize.Height = TextBounds.Height + 10;
+                            if (TextBounds.Height + 35 != Height)
+                            {
+                                boundSize.Height = TextBounds.Height + 35;
+                            }
+                        }
+                        else
+                        {
+                            if (TextBounds.Height + 10 != Height)
+                            {
+                                boundSize.Height = TextBounds.Height + 10;
+                            }
                         }
                         Bounds = new Rectangle(Bounds.Location, boundSize);
                     }
