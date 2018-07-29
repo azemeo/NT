@@ -252,10 +252,25 @@ namespace Blumind.Model.MindMaps
         {
             get
             {
-                if (ParentTopic != null && Index < ParentTopic.Children.Count - 1)
-                    return ParentTopic.Children[Index + 1];
-                else
-                    return null;
+                Topic next = null;
+                bool shouldNext = false;
+                foreach (Topic child in ParentTopic.Children)
+                {
+                    if (shouldNext)
+                    {
+                        next = child;
+                        break;
+                    }
+                    if (child == this)
+                    {
+                        shouldNext = true;
+                    }
+                }
+                return next;
+                //if (ParentTopic != null && Index < ParentTopic.Children.Count - 1) // FIXME datnq
+                //    return ParentTopic.Children[Index + 1];
+                //else
+                //    return null;
             }
         }
 

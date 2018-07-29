@@ -220,7 +220,7 @@ namespace Blumind.Controls.MapViews
             if (topic.Type == TopicType.Barrier)
             {
                 Topic next = topic.NextSibling;
-                if (next != null)
+                if (next != null && next != topic)
                 {
                     if (next.HasChildren)
                     {
