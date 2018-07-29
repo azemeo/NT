@@ -5,6 +5,7 @@ using Blumind.Core;
 using Blumind.Model;
 using Blumind.Model.MindMaps;
 using Blumind.Model.Styles;
+using System.Windows.Forms;
 
 namespace Blumind.Controls.MapViews
 {
@@ -65,6 +66,101 @@ namespace Blumind.Controls.MapViews
             return allBounds;
         }
 
+        Size CalculateTextSize(Topic topic, MindMapLayoutArgs e)
+        {
+            Size proposedSize = topic.TextBounds.Size;
+            Font font = topic.Style.Font != null ? topic.Style.Font : e.Font;
+            Size textSize;
+            if (e.Graphics == null)
+                textSize = TextRenderer.MeasureText(topic.Text, font, proposedSize);
+            else
+                textSize = Size.Ceiling(e.Graphics.MeasureString(topic.Text, font, proposedSize.Width));
+            return textSize;
+        }
+
+        //XList<int> calculateRow(Topic parent)
+        //{
+        //    XList<int> listHeight = new XList<int>();
+        //    listHeight.Add(parent.ContentBounds.Height);
+
+        //    XList<Topic> children = parent.Children;
+        //    foreach (Topic subTopic in children)
+        //    {
+        //        XList<int> subListHeight = calculateRow(subTopic);
+
+        //        // Merge rows
+        //        for (int i = 0, n = listHeight.Count; i < n; ++i)
+        //        {
+        //            if (i + 1 < subListHeight.Count)
+        //            {
+        //                listHeight[i] = Math.Max(subListHeight[i], listHeight[i]);
+        //            }
+        //            else
+        //            {
+        //                break;
+        //            }
+        //        }
+        //        if (listHeight.Count < subListHeight.Count)
+        //        {
+        //            for (int i = listHeight.Count, n = subListHeight.Count; i < n; ++i)
+        //            {
+        //                listHeight.Add(subListHeight[i]);
+        //            }
+        //        }
+        //    }
+        //    return listHeight;
+        //}
+
+        //XList<XList<Rectangle>> createGrid(Topic parent)
+        //{
+
+        //}
+
+        //Size createLayouts(Topic parent, Size parentFullSize, MindMapLayoutArgs e, Hashtable layoutInfos)
+        //{
+        //    if (parent.Folded)
+        //        return createLayouts(parent, parentFullSize, null, e, layoutInfos);
+        //    else
+        //        return createLayouts(parent, parentFullSize, parent.Children.ToArray(), e, layoutInfos);
+        //}
+
+        //Size createLayouts(Topic parent, Size parentFullSize, Topic[] subTopics, MindMapLayoutArgs e, Hashtable layoutInfos)
+        //{
+        //    int verticalSpacing = 20;
+        //    int horizontalSpacing = 20;
+        //    Point location = Point.Empty;
+        //    Size size = Size.Empty;
+
+        //    if (subTopics != null && subTopics.Length > 0)
+        //    {
+        //        Rectangle previousRect = Rectangle.Empty;
+        //        foreach (Topic subTopic in subTopics)
+        //        {
+        //            subTopic.TextSize = CalculateTextSize(subTopic, e);
+        //            Size topicSize = LayoutAttachments(subTopic, e);
+        //            Size subSize = createLayouts(subTopic, topicSize, e, layoutInfos);
+        //            Rectangle topicRect = Rectangle.Empty;
+        //            if (subTopic.Type == TopicType.Threat ||
+        //                subTopic.Type == TopicType.Consequence)
+        //            {
+        //                topicRect.Location = new Point(subSize.Width + horizontalSpacing, previousRect.Bottom + verticalSpacing);
+        //                topicRect.Size = new Size(topicSize.Width, topicSize.Height + subSize.Height);
+        //            }
+        //            else if (subTopic.Type == TopicType.Barrier)
+        //            {
+
+        //            }
+        //            previousRect = topicRect;
+        //            layoutInfos[subTopic] = topicRect;
+        //        }
+        //    }
+
+        //    if (parent.IsRoot)
+        //    {
+        //        layoutInfos[parent] = new Rectangle(location, size);
+        //    }
+        //}
+
         Size CalculateSizes(Topic parent, Size parentFullSize, Topic[] subTopics, MindMapLayoutArgs e, Vector4 vector, Hashtable layoutInfos)
         {
             Size fullSize = parentFullSize;// parent.Size;
@@ -75,7 +171,7 @@ namespace Blumind.Controls.MapViews
                 int previousHeight = 0;
                 foreach (Topic subTopic in subTopics)
                 {
-                    // subTopic.Size = CalculateNodeSize(subTopic, e); // datnq
+                    subTopic.TextSize = CalculateTextSize(subTopic, e);
                     var subTopicFullSize = LayoutAttachments(subTopic, e);
                     Size subSize = CalculateSizes(subTopic, subTopicFullSize, e, vector, layoutInfos);
                     if (parent.Type == TopicType.Barrier)
@@ -90,6 +186,10 @@ namespace Blumind.Controls.MapViews
                         }
                         fullSize.Height = Math.Max(fullSize.Height, subSize.Height + e.ItemsSpace);
                         previousHeight = subSize.Height - subTopic.ContentBounds.Height - e.ItemsSpace;
+                    }
+                    else
+                    {
+                        fullSize.Height = Math.Max(fullSize.Height, subSize.Height);
                     }
 
                     if (previous != null)
@@ -120,9 +220,19 @@ namespace Blumind.Controls.MapViews
             if (topic.Type == TopicType.Barrier)
             {
                 Topic next = topic.NextSibling;
-                if (next != null && next.HasChildren)
+                if (next != null)
                 {
-                    height += ((TopicLayoutInfo)layoutInfos[next]).FullSize.Height - next.ContentBounds.Height + nextBarrierHeight(next, layoutInfos);
+                    if (next.HasChildren)
+                    {
+                        height = ((TopicLayoutInfo)layoutInfos[next]).FullSize.Height - topic.ContentBounds.Height + nextBarrierHeight(next, layoutInfos);
+                    }
+                }
+                else
+                {
+                    if (topic.ParentTopic != null)
+                    {
+                        height = topic.ParentTopic.ContentBounds.Height - topic.ContentBounds.Height;
+                    }
                 }
             }
             return height;
@@ -149,7 +259,6 @@ namespace Blumind.Controls.MapViews
 
             // get full height
             int fullHeight = 0;
-            
             for (int i = 0; i < subTopics.Length; i++)
             {
                 if (i > 0)
@@ -180,7 +289,7 @@ namespace Blumind.Controls.MapViews
                 switch (vector)
                 {
                     case Vector4.Top:
-                        pt = new Point(root.Bounds.Left - (subTopic.Width - root.Width) / 2, parent.Location.Y - space - subTopic.Size.Height / 2);
+                        pt = new Point(root.Bounds.Left - (subTopic.Width - root.Width) / 2, parent.Location.Y - space - subTopic.Size.Height);
                         break;
                     case Vector4.Left:
                         if (parent.Type == TopicType.Threat || parent.Type == TopicType.Escalation)

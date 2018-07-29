@@ -320,6 +320,7 @@ namespace Blumind.Model.MindMaps
             }
         }
 
+        [Browsable(false)]
         public TopicType Type
         {
             get { return _Type; }
@@ -337,7 +338,7 @@ namespace Blumind.Model.MindMaps
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("Top Event");
                             Bounds = new Rectangle(Bounds.Location, new Size(120, 120));
-                            TextBounds = new Rectangle(new Point(20, 20), new Size(80, 80));
+                            TextBounds = new Rectangle(new Point(20, 20), getMinTextSize(value));
                             break;
                         case TopicType.Hazard:
                             Style.Shape = TopicShape.Rectangle;
@@ -346,7 +347,7 @@ namespace Blumind.Model.MindMaps
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Hazard");
                             Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
+                            TextBounds = new Rectangle(new Point(5, 5), getMinTextSize(value));
                             break;
                         case TopicType.Barrier:
                             Style.Shape = TopicShape.Rectangle;
@@ -355,7 +356,7 @@ namespace Blumind.Model.MindMaps
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Barrier");
                             Bounds = new Rectangle(Bounds.Location, new Size(30, 60));
-                            TextBounds = new Rectangle(new Point(-65, 60), new Size(160, 50));
+                            TextBounds = new Rectangle(new Point(-65, 60), getMinTextSize(value));
                             break;
                         case TopicType.Consequence:
                             Style.Shape = TopicShape.Rectangle;
@@ -364,7 +365,7 @@ namespace Blumind.Model.MindMaps
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Consequence");
                             Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 100));
+                            TextBounds = new Rectangle(new Point(5, 5), getMinTextSize(value));
                             break;
                         case TopicType.Threat:
                             Style.Shape = TopicShape.Rectangle;
@@ -373,7 +374,7 @@ namespace Blumind.Model.MindMaps
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Threat");
                             Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 100));
+                            TextBounds = new Rectangle(new Point(5, 5), getMinTextSize(value));
                             break;
                         case TopicType.Escalation:
                             Style.Shape = TopicShape.Rectangle;
@@ -382,7 +383,7 @@ namespace Blumind.Model.MindMaps
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Escalation Factor");
                             Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 100));
+                            TextBounds = new Rectangle(new Point(5, 5), getMinTextSize(value));
                             break;
                     }
                 }
@@ -1466,12 +1467,11 @@ namespace Blumind.Model.MindMaps
 
         public override void Deserialize(Version documentVersion, System.Xml.XmlElement node)
         {
+            Type = (TopicType)ST.GetInt(node.GetAttribute("type"));
             base.Deserialize(documentVersion, node);
 
             Hyperlink = node.GetAttribute("hyperlink");
             Folded = ST.GetBoolDefault(node.GetAttribute("folded"));
-
-            Type = (TopicType) ST.GetInt(node.GetAttribute("type"));
 
             //
             if (documentVersion >= Document.DV_3) // 新
