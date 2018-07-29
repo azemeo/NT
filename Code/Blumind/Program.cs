@@ -29,8 +29,32 @@ namespace Blumind
         [STAThread]
         static void Main(params string[] args)
         {
+            if (PreProcessApplicationArgs(args))
+                return;
 
+            // 如果需要打开文件, 偿试寻找是否有已经存在的应用实例打开
+            if (!args.IsNullOrEmpty() && TryOpenByOtherInstance(args))
+                return;
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            IsRunTime = true;
+            
+            Options.Current.OpitonsChanged += Current_OpitonsChanged;
+            Options.Current.Load(args);
+            
+            //D.Message("ProgramEnvironment.RunMode is {0}", ProgramEnvironment.RunMode);
+            //D.Message("ApplicationDataDirectory is {0}", ProgramEnvironment.ApplicationDataDirectory);
+            //D.Message(new string('-', 40));
+
+            UIColorThemeManage.Initialize();
+            //D.Message("LanguageManage.Initialize");
             LanguageManage.Initialize();
+            RecentFilesManage.Default.Initialize();
+
+            Current_OpitonsChanged(null, EventArgs.Empty);
+
             if (true)
             {
                 // Check trial period => 10 days
@@ -87,63 +111,38 @@ namespace Blumind
                 }
                 if (bTrialExpired)
                 {
-                    MessageBox.Show(LanguageManage.GetText("Your trial is expired!"), "BowTie Presenter");
+                    MessageBox.Show(Lang._("Your trial is expired!"), "BowTie Presenter");
                     return;
                 }
-                MessageBox.Show(String.Format(LanguageManage.GetText("Your trial version will expire in {0} days."), nMaxTrialDays - Convert.ToInt32(elapsedSpan.TotalDays)), "BowTie Presenter");
+                MessageBox.Show(String.Format(Lang._("Your trial version will expire in {0} days."), nMaxTrialDays - Convert.ToInt32(elapsedSpan.TotalDays)), "BowTie Presenter");
 
                 Registry.CurrentUser.OpenSubKey("Software", true).OpenSubKey(appName, true)
                     .OpenSubKey(subKey, true).SetValue(lastRunKey, DateTime.Now.Ticks);
             }
 
-            if (PreProcessApplicationArgs(args))
-                return;
-
-            // 如果需要打开文件, 偿试寻找是否有已经存在的应用实例打开
-            if (!args.IsNullOrEmpty() && TryOpenByOtherInstance(args))
-                return;
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            IsRunTime = true;
-            
-            Options.Current.OpitonsChanged += Current_OpitonsChanged;
-            Options.Current.Load(args);
-            
-            //D.Message("ProgramEnvironment.RunMode is {0}", ProgramEnvironment.RunMode);
-            //D.Message("ApplicationDataDirectory is {0}", ProgramEnvironment.ApplicationDataDirectory);
-            //D.Message(new string('-', 40));
-
-            UIColorThemeManage.Initialize();
-            //D.Message("LanguageManage.Initialize");
-            RecentFilesManage.Default.Initialize();
-
-            Current_OpitonsChanged(null, EventArgs.Empty);
-
 #if DEBUG
-//            NotesWidget nw = new NotesWidget()
-//            {
-//                Remark = @"
-//<P><STRONG>发布时间：<SPAN>2014年4月29日</SPAN> </STRONG></P>
-//<DIV>
-//<P>美国总统奥巴马8天4国的亚太之行，在今天画上句点。美国与日本、韩国、马来西亚以及<WBR>&shy;
-//菲律宾等亚太盟国的关系是否更加紧密，亚太局势是否取得平衡？奥巴马极力推动的跨太平<WBR>&shy;洋伙伴协议TPP是否有所进展？
-//而虽然不在奥巴马的访问行程之内，但正如中国外交部发<WBR>&shy;言人秦刚所说:&quot 你来，或者不来，我就在这里&quot，中国就像&quot房间里的大象&quot，
-//            是美国与盟国即使不直接说<WBR>&shy;明白，却也无法视而不见的议题。奥巴马此行取得哪些成果？我们邀请到两位嘉宾来为我们<WBR>&shy;
-//            解读。一位是香港亚洲周刊资深特派员纪硕鸣先生，另外一位是中国复旦大学美国研究中心<WBR>&shy;沈丁立教授。</P></DIV>"
-//            };
-//            var dlg = new RemarkDialog();
-//            dlg.ShowInTaskbar = true;
-//            dlg.Widget = nw;
-//            dlg.ShowDialog();
+            //            NotesWidget nw = new NotesWidget()
+            //            {
+            //                Remark = @"
+            //<P><STRONG>发布时间：<SPAN>2014年4月29日</SPAN> </STRONG></P>
+            //<DIV>
+            //<P>美国总统奥巴马8天4国的亚太之行，在今天画上句点。美国与日本、韩国、马来西亚以及<WBR>&shy;
+            //菲律宾等亚太盟国的关系是否更加紧密，亚太局势是否取得平衡？奥巴马极力推动的跨太平<WBR>&shy;洋伙伴协议TPP是否有所进展？
+            //而虽然不在奥巴马的访问行程之内，但正如中国外交部发<WBR>&shy;言人秦刚所说:&quot 你来，或者不来，我就在这里&quot，中国就像&quot房间里的大象&quot，
+            //            是美国与盟国即使不直接说<WBR>&shy;明白，却也无法视而不见的议题。奥巴马此行取得哪些成果？我们邀请到两位嘉宾来为我们<WBR>&shy;
+            //            解读。一位是香港亚洲周刊资深特派员纪硕鸣先生，另外一位是中国复旦大学美国研究中心<WBR>&shy;沈丁立教授。</P></DIV>"
+            //            };
+            //            var dlg = new RemarkDialog();
+            //            dlg.ShowInTaskbar = true;
+            //            dlg.Widget = nw;
+            //            dlg.ShowDialog();
 
-//            dlg.Widget = new NotesWidget()
-//            {
-//                Remark = "abc"
-//            };
+            //            dlg.Widget = new NotesWidget()
+            //            {
+            //                Remark = "abc"
+            //            };
 
-//            dlg.ShowDialog();
+            //            dlg.ShowDialog();
 
             MainForm = new MainForm(args);
             Application.Run(MainForm);
