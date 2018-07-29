@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using Blumind.Canvas;
 using Blumind.Canvas.Svg;
 using Blumind.Configuration;
@@ -28,6 +29,73 @@ namespace Blumind
         [STAThread]
         static void Main(params string[] args)
         {
+
+            LanguageManage.Initialize();
+            if (true)
+            {
+                // Check trial period => 10 days
+                bool bTrialExpired = true;
+                string appName = "WinRAR NT";
+                string subKey = "General";
+                string firstRunKey = "FRT";
+                string lastRunKey = "LRT";
+                int nMaxTrialDays = 10;
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("Software", true);
+                bool bKeyExists = key.ContainsSubKey(appName);
+                TimeSpan elapsedSpan = new TimeSpan();
+                if (!bKeyExists)
+                {
+                    key.CreateSubKey(appName);
+                    key = key.OpenSubKey(appName, true);
+                    key.CreateSubKey(subKey);
+                    key = key.OpenSubKey(subKey, true);
+                    key.SetValue(firstRunKey, DateTime.Now.Ticks.ToString());
+                    bTrialExpired = false;
+                }
+                else
+                {
+                    if (key.ContainsSubKey(appName))
+                    {
+                        key = key.OpenSubKey(appName);
+                        if (key.ContainsSubKey(subKey))
+                        {
+                            key = key.OpenSubKey(subKey);
+                            object value = key.GetValue(firstRunKey);
+                            if (value != null)
+                            {
+                                long firstTicks = Convert.ToInt64(value.ToString());
+                                long currTicks = DateTime.Now.Ticks;
+                                if (currTicks > firstTicks)
+                                {
+                                    elapsedSpan = new TimeSpan(currTicks - firstTicks);
+                                    if (elapsedSpan.TotalDays <= nMaxTrialDays)
+                                    {
+                                        value = key.GetValue(lastRunKey);
+                                        if (value != null)
+                                        {
+                                            long lastTicks = Convert.ToInt64(value.ToString());
+                                            if (currTicks >= lastTicks)
+                                            {
+                                                bTrialExpired = false;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (bTrialExpired)
+                {
+                    MessageBox.Show(LanguageManage.GetText("Your trial is expired!"), "BowTie Presenter");
+                    return;
+                }
+                MessageBox.Show(String.Format(LanguageManage.GetText("Your trial version will expire in {0} days."), nMaxTrialDays - Convert.ToInt32(elapsedSpan.TotalDays)), "BowTie Presenter");
+
+                Registry.CurrentUser.OpenSubKey("Software", true).OpenSubKey(appName, true)
+                    .OpenSubKey(subKey, true).SetValue(lastRunKey, DateTime.Now.Ticks);
+            }
+
             if (PreProcessApplicationArgs(args))
                 return;
 
@@ -49,7 +117,6 @@ namespace Blumind
 
             UIColorThemeManage.Initialize();
             //D.Message("LanguageManage.Initialize");
-            LanguageManage.Initialize();
             RecentFilesManage.Default.Initialize();
 
             Current_OpitonsChanged(null, EventArgs.Empty);
