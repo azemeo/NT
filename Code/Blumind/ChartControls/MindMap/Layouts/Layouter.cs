@@ -199,7 +199,7 @@ namespace Blumind.Controls.MapViews
 
         protected virtual Size LayoutAttachments(Topic topic, MindMapLayoutArgs e)
         {
-            var size = topic.Size;
+            var size = topic.ContentBounds.Size;
             if (e.ShowRemarkIcon && topic.HaveRemark)
             {
                 topic.RemarkIconBounds = new Rectangle(0, size.Height + 2, e.RemarkIconSize, e.RemarkIconSize);

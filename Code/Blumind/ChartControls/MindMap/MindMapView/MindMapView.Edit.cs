@@ -191,7 +191,7 @@ namespace Blumind.Controls.MapViews
             }
             if (selectedTp != null && (selectedTp.Type == TopicType.Consequence || selectedTp.Type == TopicType.Threat || selectedTp.Type == TopicType.Escalation))
             {
-                return AddSubTopic(selectedTp, null, TopicType.Barrier, false);
+                return AddSubTopic(selectedTp, selectedTp.LastChild, TopicType.Barrier, false);
             }
             else
             {

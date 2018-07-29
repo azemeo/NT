@@ -71,23 +71,32 @@ namespace Blumind.Controls.MapViews
 
             if (subTopics != null && subTopics.Length > 0)
             {
-                bool first = true;
+                Topic previous = null;
+                int previousHeight = 0;
                 foreach (Topic subTopic in subTopics)
                 {
-                    // subTopic.Size =  // CalculateNodeSize(subTopic, e); // datnq
+                    // subTopic.Size = CalculateNodeSize(subTopic, e); // datnq
                     var subTopicFullSize = LayoutAttachments(subTopic, e);
                     Size subSize = CalculateSizes(subTopic, subTopicFullSize, e, vector, layoutInfos);
-                    if (first)
+                    if (parent.Type == TopicType.Barrier)
                     {
-                        fullSize.Height = Math.Max(parent.Size.Height, subSize.Height);
-                        first = false;
+                        fullSize.Height += subSize.Height + e.ItemsSpace;
                     }
-                    else
+                    else if (subTopic.Type == TopicType.Barrier && subTopic.HasChildren)
+                    {
+                        if (previous != null && previous.Type == TopicType.Barrier && previous.HasChildren)
+                        {
+                            subSize.Height += previousHeight;
+                        }
+                        fullSize.Height = Math.Max(fullSize.Height, subSize.Height + e.ItemsSpace);
+                        previousHeight = subSize.Height - subTopic.ContentBounds.Height - e.ItemsSpace;
+                    }
+
+                    if (previous != null)
                     {
                         fullSize.Width = Math.Max(fullSize.Width, subSize.Width);
-                        // fullSize.Height += subSize.Height + e.ItemsSpace;
-                        //fullSize.Height += subSize.Height + (int)((parent.IsRoot ? NodeSpaceRoot_V : NodeSpace_V) * args.Zoom);
                     }
+                    previous = subTopic;
                 }
 
                 fullSize.Width += e.LayerSpace + parent.Size.Width / 2;
@@ -103,6 +112,20 @@ namespace Blumind.Controls.MapViews
                 return CalculateSizes(parent, parentFullSize, null, e, vector, layoutInfos);
             else
                 return CalculateSizes(parent, parentFullSize, parent.Children.ToArray(), e, vector, layoutInfos);
+        }
+
+        int nextBarrierHeight(Topic topic, Hashtable layoutInfos)
+        {
+            int height = 0;
+            if (topic.Type == TopicType.Barrier)
+            {
+                Topic next = topic.NextSibling;
+                if (next != null && next.HasChildren)
+                {
+                    height += ((TopicLayoutInfo)layoutInfos[next]).FullSize.Height - next.ContentBounds.Height + nextBarrierHeight(next, layoutInfos);
+                }
+            }
+            return height;
         }
 
         Rectangle LayoutSubTopics(Topic parent, Topic[] subTopics, Vector4 vector, Hashtable layoutInfos, MindMapLayoutArgs e)
@@ -126,21 +149,26 @@ namespace Blumind.Controls.MapViews
 
             // get full height
             int fullHeight = 0;
-            if (parent.IsRoot)
+            
+            for (int i = 0; i < subTopics.Length; i++)
             {
-                for (int i = 0; i < subTopics.Length; i++)
-                {
-                    if (i > 0)
-                        fullHeight += nodeSpace;
-                    fullHeight += ((TopicLayoutInfo)layoutInfos[subTopics[i]]).FullSize.Height;
-                }
+                if (i > 0)
+                    fullHeight += nodeSpace;
+                fullHeight += ((TopicLayoutInfo)layoutInfos[subTopics[i]]).FullSize.Height;
             }
 
             //
             Rectangle rectFull = Rectangle.Empty;
-            Point pp = PaintHelper.CenterPoint(parent.Bounds);
-            int y = pp.Y - (fullHeight / 2);
-            //int space = (int)(NodeSpace_H * args.Zoom);
+            int y = 0;
+            if (parent.Type == TopicType.Barrier)
+            {
+                y = parent.ContentBounds.Bottom + nodeSpace + nextBarrierHeight(parent, layoutInfos);
+            }
+            else
+            {
+                Point pp = PaintHelper.CenterPoint(parent.ContentBounds);
+                y = pp.Y - (fullHeight / 2);
+            }
             int space = e.LayerSpace;
             int barrierSpace = 10;
             Topic previous = parent == root ? root : parent.ParentTopic;
@@ -157,45 +185,44 @@ namespace Blumind.Controls.MapViews
                     case Vector4.Left:
                         if (parent.Type == TopicType.Threat || parent.Type == TopicType.Escalation)
                         {
-                            pt = new Point(previous.Bounds.Left - barrierSpace - subTopic.ContentBounds.Width, parent.Location.Y + subTopic.Size.Height / 2);
+                            int localX = 0;
+                            if (previous == root)
+                            {
+                                localX = previous.Bounds.Left - space - (subTopic.ContentBounds.Width + subTopic.Bounds.Width) / 2;
+                            }
+                            else
+                            {
+                                localX = previous.Bounds.Left - barrierSpace - subTopic.ContentBounds.Width;
+                            }
+                            pt = new Point(localX, parent.Location.Y);
                         }
                         else
                         {
-                            int localY = y + (subTif.FullSize.Height) / 2;
-                            if (parent != root && subTopic.Type == TopicType.Escalation)
-                            {
-                                localY = Math.Max(previous.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2, localY);
-                            }
-                            pt = new Point(parent.Bounds.Left - space - subTopic.Bounds.Width, localY);
+                            pt = new Point(parent.Bounds.Left - space - subTopic.Bounds.Width, y);
                         }
                         break;
                     case Vector4.Right:
                     default:
                         if (parent.Type == TopicType.Consequence || parent.Type == TopicType.Escalation)
                         {
-                            int addX = 0;
+                            int localX = 0;
                             if (previous == root)
                             {
-                                addX = subTopic.ContentBounds.Width;
+                                localX = previous.ContentBounds.Right + space + (subTopic.ContentBounds.Width - subTopic.Bounds.Width) / 2;
                             }
                             else
                             {
-                                addX = (subTopic.TextBounds.Width - subTopic.Bounds.Width) / 2;
+                                localX = previous.ContentBounds.Right + barrierSpace + (subTopic.TextBounds.Width - subTopic.Bounds.Width) / 2;
                             }
-                            pt = new Point(previous.ContentBounds.Right + barrierSpace + addX, parent.Location.Y + subTopic.Size.Height / 2);
+                            pt = new Point(localX, parent.Location.Y);
                         }
                         else
                         {
-                            int localY = y + (subTif.FullSize.Height) / 2;
-                            if (parent != root && subTopic.Type == TopicType.Escalation)
-                            {
-                                localY = Math.Max(previous.ContentBounds.Bottom + nodeSpace + subTopic.Size.Height / 2, localY);
-                            }
-                            pt = new Point(parent.Bounds.Right + space, localY);
+                            pt = new Point(parent.Bounds.Right + space, y);
                         }
                         break;
                 }
-                subTopic.Location = new Point(pt.X, pt.Y - subTopic.Size.Height / 2);
+                subTopic.Location = new Point(pt.X, pt.Y);
 
                 // line
                 if (!parent.Folded && subTopic.Type == TopicType.Barrier)
@@ -270,14 +297,7 @@ namespace Blumind.Controls.MapViews
                 if (!rectFullSub.IsEmpty)
                     rectFull = Rectangle.Union(rectFull, rectFullSub);
 
-                if (subTopic.HasChildren && (subTopic.Type == TopicType.Threat || subTopic.Type == TopicType.Consequence))
-                {
-                    y = rectFull.Bottom + nodeSpace;
-                }
-                else
-                {
-                    y += subTif.FullSize.Height + nodeSpace;
-                }
+                y += subTif.FullSize.Height + nodeSpace;
                 previous = subTopic;
             }
 

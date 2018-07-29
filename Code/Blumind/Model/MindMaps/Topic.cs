@@ -345,7 +345,7 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(255, 255, 0);
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Hazard");
-                            Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
                             TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
                             break;
                         case TopicType.Barrier:
@@ -355,7 +355,7 @@ namespace Blumind.Model.MindMaps
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Barrier");
                             Bounds = new Rectangle(Bounds.Location, new Size(30, 60));
-                            TextBounds = new Rectangle(new Point(-65, 65), new Size(160, 50));
+                            TextBounds = new Rectangle(new Point(-65, 60), new Size(160, 50));
                             break;
                         case TopicType.Consequence:
                             Style.Shape = TopicShape.Rectangle;
@@ -363,8 +363,8 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(255, 0, 0);
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Consequence");
-                            Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 100));
                             break;
                         case TopicType.Threat:
                             Style.Shape = TopicShape.Rectangle;
@@ -372,8 +372,8 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(0, 0, 255);
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Threat");
-                            Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 100));
                             break;
                         case TopicType.Escalation:
                             Style.Shape = TopicShape.Rectangle;
@@ -381,8 +381,8 @@ namespace Blumind.Model.MindMaps
                             Style.BorderColor = Color.FromArgb(255, 255, 0);
                             Style.FillType = "Modern";
                             Text = LanguageManage.GetText("New Escalation Factor");
-                            Bounds = new Rectangle(Bounds.Location, new Size(160, 115));
-                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 75));
+                            Bounds = new Rectangle(Bounds.Location, new Size(160, 110));
+                            TextBounds = new Rectangle(new Point(5, 5), new Size(150, 100));
                             break;
                     }
                 }
