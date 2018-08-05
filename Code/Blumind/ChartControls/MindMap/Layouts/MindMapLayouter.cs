@@ -57,8 +57,9 @@ namespace Blumind.Controls.MapViews
                     subTopics[ti] = children[ti];
                 }
 
-                Size fullSize = CalculateSizes(root, rootFullSize, subTopics, args, vectors[vi], layoutInfos);
-                Rectangle rectFull = LayoutSubTopics(root, subTopics, vectors[vi], layoutInfos, args);
+                XList<int> rows = CalculateRow(root, subTopics, args);
+                XList<int> columns = CalculateColumn(root, subTopics);
+                Rectangle rectFull = LayoutSubTopics(root, subTopics, vectors[vi], rows, columns, -1, -1, args);
                 if (!rectFull.IsEmpty)
                     allBounds = Rectangle.Union(allBounds, rectFull);
             }
@@ -78,260 +79,309 @@ namespace Blumind.Controls.MapViews
             return textSize;
         }
 
-        //XList<int> calculateRow(Topic parent)
-        //{
-        //    XList<int> listHeight = new XList<int>();
-        //    listHeight.Add(parent.ContentBounds.Height);
-
-        //    XList<Topic> children = parent.Children;
-        //    foreach (Topic subTopic in children)
-        //    {
-        //        XList<int> subListHeight = calculateRow(subTopic);
-
-        //        // Merge rows
-        //        for (int i = 0, n = listHeight.Count; i < n; ++i)
-        //        {
-        //            if (i + 1 < subListHeight.Count)
-        //            {
-        //                listHeight[i] = Math.Max(subListHeight[i], listHeight[i]);
-        //            }
-        //            else
-        //            {
-        //                break;
-        //            }
-        //        }
-        //        if (listHeight.Count < subListHeight.Count)
-        //        {
-        //            for (int i = listHeight.Count, n = subListHeight.Count; i < n; ++i)
-        //            {
-        //                listHeight.Add(subListHeight[i]);
-        //            }
-        //        }
-        //    }
-        //    return listHeight;
-        //}
-
-        //XList<XList<Rectangle>> createGrid(Topic parent)
-        //{
-
-        //}
-
-        //Size createLayouts(Topic parent, Size parentFullSize, MindMapLayoutArgs e, Hashtable layoutInfos)
-        //{
-        //    if (parent.Folded)
-        //        return createLayouts(parent, parentFullSize, null, e, layoutInfos);
-        //    else
-        //        return createLayouts(parent, parentFullSize, parent.Children.ToArray(), e, layoutInfos);
-        //}
-
-        //Size createLayouts(Topic parent, Size parentFullSize, Topic[] subTopics, MindMapLayoutArgs e, Hashtable layoutInfos)
-        //{
-        //    int verticalSpacing = 20;
-        //    int horizontalSpacing = 20;
-        //    Point location = Point.Empty;
-        //    Size size = Size.Empty;
-
-        //    if (subTopics != null && subTopics.Length > 0)
-        //    {
-        //        Rectangle previousRect = Rectangle.Empty;
-        //        foreach (Topic subTopic in subTopics)
-        //        {
-        //            subTopic.TextSize = CalculateTextSize(subTopic, e);
-        //            Size topicSize = LayoutAttachments(subTopic, e);
-        //            Size subSize = createLayouts(subTopic, topicSize, e, layoutInfos);
-        //            Rectangle topicRect = Rectangle.Empty;
-        //            if (subTopic.Type == TopicType.Threat ||
-        //                subTopic.Type == TopicType.Consequence)
-        //            {
-        //                topicRect.Location = new Point(subSize.Width + horizontalSpacing, previousRect.Bottom + verticalSpacing);
-        //                topicRect.Size = new Size(topicSize.Width, topicSize.Height + subSize.Height);
-        //            }
-        //            else if (subTopic.Type == TopicType.Barrier)
-        //            {
-
-        //            }
-        //            previousRect = topicRect;
-        //            layoutInfos[subTopic] = topicRect;
-        //        }
-        //    }
-
-        //    if (parent.IsRoot)
-        //    {
-        //        layoutInfos[parent] = new Rectangle(location, size);
-        //    }
-        //}
-
-        Size CalculateSizes(Topic parent, Size parentFullSize, Topic[] subTopics, MindMapLayoutArgs e, Vector4 vector, Hashtable layoutInfos)
+        XList<int> CalculateRow(Topic parent, MindMapLayoutArgs e)
         {
-            Size fullSize = parentFullSize;// parent.Size;
+            Topic[] empty = { };
+            if (parent.Folded)
+                return CalculateRow(parent, empty, e);
+            else
+                return CalculateRow(parent, parent.Children.ToArray(), e);
+        }
 
-            if (subTopics != null && subTopics.Length > 0)
+        XList<int> CalculateRow(Topic parent, Topic[] children, MindMapLayoutArgs e)
+        {
+            XList<int> listHeight = new XList<int>();
+            if (!parent.IsRoot)
             {
-                Topic previous = null;
-                int previousHeight = 0;
-                foreach (Topic subTopic in subTopics)
+                parent.TextSize = CalculateTextSize(parent, e);
+                listHeight.Add(parent.ContentBounds.Height);
+            }
+            XList<int> prevSubListHeight = new XList<int>();
+
+            bool isIncrease = parent.IsRoot || parent.Type == TopicType.Barrier;
+            int i = isIncrease ? 0 : children.Length - 1;
+            while (i > - 1 && i < children.Length)
+            {
+                Topic subTopic = children[i];
+                XList<int> subListHeight = CalculateRow(subTopic, e);
+                if (subTopic.Type == TopicType.Barrier && prevSubListHeight.Count > 1)
                 {
-                    subTopic.TextSize = CalculateTextSize(subTopic, e);
-                    var subTopicFullSize = LayoutAttachments(subTopic, e);
-                    Size subSize = CalculateSizes(subTopic, subTopicFullSize, e, vector, layoutInfos);
-                    if (parent.Type == TopicType.Barrier)
+                    prevSubListHeight.RemoveAt(0);
+                    if (subListHeight.IsEmpty)
                     {
-                        fullSize.Height += subSize.Height + e.ItemsSpace;
-                    }
-                    else if (subTopic.Type == TopicType.Barrier && subTopic.HasChildren)
-                    {
-                        if (previous != null && previous.Type == TopicType.Barrier && previous.HasChildren)
-                        {
-                            subSize.Height += previousHeight;
-                        }
-                        fullSize.Height = Math.Max(fullSize.Height, subSize.Height + e.ItemsSpace);
-                        previousHeight = subSize.Height - subTopic.ContentBounds.Height - e.ItemsSpace;
+                        subListHeight.AddRange(prevSubListHeight);
                     }
                     else
                     {
-                        fullSize.Height = Math.Max(fullSize.Height, subSize.Height);
+                        XList<int> savedList = subListHeight;
+                        subListHeight = new XList<int>();
+                        subListHeight.Add(savedList[0]);
+                        subListHeight.AddRange(prevSubListHeight);
+                        savedList.RemoveAt(0);
+                        subListHeight.AddRange(savedList);
                     }
-
-                    if (previous != null)
-                    {
-                        fullSize.Width = Math.Max(fullSize.Width, subSize.Width);
-                    }
-                    previous = subTopic;
                 }
 
-                fullSize.Width += e.LayerSpace + parent.Size.Width / 2;
-            }
-
-            layoutInfos[parent] = new TopicLayoutInfo(fullSize);
-            return fullSize;
-        }
-
-        Size CalculateSizes(Topic parent, Size parentFullSize, MindMapLayoutArgs e, Vector4 vector, Hashtable layoutInfos)
-        {
-            if (parent.Folded)
-                return CalculateSizes(parent, parentFullSize, null, e, vector, layoutInfos);
-            else
-                return CalculateSizes(parent, parentFullSize, parent.Children.ToArray(), e, vector, layoutInfos);
-        }
-
-        int nextBarrierHeight(Topic topic, Hashtable layoutInfos)
-        {
-            int height = 0;
-            if (topic.Type == TopicType.Barrier)
-            {
-                Topic next = topic.NextSibling;
-                if (next != null && next != topic)
+                if (parent.Type == TopicType.Barrier || parent.IsRoot)
                 {
-                    if (next.HasChildren)
-                    {
-                        height = ((TopicLayoutInfo)layoutInfos[next]).FullSize.Height - topic.ContentBounds.Height + nextBarrierHeight(next, layoutInfos);
-                    }
+                    // Append row
+                    listHeight.AddRange(subListHeight);
                 }
                 else
                 {
-                    if (topic.ParentTopic != null)
+                    // Merge rows
+                    for (int k = 0, n = listHeight.Count; k < n; ++k)
                     {
-                        height = topic.ParentTopic.ContentBounds.Height - topic.ContentBounds.Height;
+                        if (k < subListHeight.Count)
+                        {
+                            listHeight[k] = Math.Max(subListHeight[k], listHeight[k]);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    if (listHeight.Count < subListHeight.Count)
+                    {
+                        for (int k = listHeight.Count, n = subListHeight.Count; k < n; ++k)
+                        {
+                            listHeight.Add(subListHeight[k]);
+                        }
                     }
                 }
+                prevSubListHeight = subListHeight;
+
+                if (isIncrease)
+                    ++i;
+                else
+                    --i;
             }
-            return height;
+            return listHeight;
         }
 
-        Rectangle LayoutSubTopics(Topic parent, Topic[] subTopics, Vector4 vector, Hashtable layoutInfos, MindMapLayoutArgs e)
+        int CalculateMaxRow(Topic topic, Topic[] siblingTopics)
+        {
+            if (topic == null)
+                return 0;
+
+            int maxRow = 0; // Row contains itself
+            bool isIncrease = !topic.IsRoot && topic.Type != TopicType.Barrier;
+            int i = isIncrease ? 0 : siblingTopics.Length - 1;
+            while (i > -1 && i < siblingTopics.Length)
+            {
+                Topic sibling = siblingTopics[i];
+                int siblingRow = 0;
+                if (sibling.Type == TopicType.Barrier)
+                {
+                    siblingRow = CalculateMaxRow(sibling.LastChild, sibling.Children.ToArray());
+                }
+                else
+                {
+                    siblingRow = CalculateMaxRow(sibling.FirstChild, sibling.Children.ToArray()) + 1;
+                }
+                maxRow += siblingRow;
+                if (sibling == topic)
+                {
+                    break;
+                }
+
+                if (isIncrease)
+                    ++i;
+                else
+                    --i;
+            }
+            return maxRow;
+        }
+
+        XList<int> CalculateColumn(Topic parent)
+        {
+            Topic[] empty = {};
+            if (parent.Folded)
+                return CalculateColumn(parent, empty);
+            else
+                return CalculateColumn(parent, parent.Children.ToArray());
+        }
+
+        XList<int> CalculateColumn(Topic parent, Topic[] children)
+        {
+            XList<int> listWidth = new XList<int>();
+            if (parent.Type == TopicType.Barrier)
+            {
+                listWidth.Add(parent.ContentBounds.Width);
+            }
+            int index = 0;
+            for (int i = 0, count = children.Length; i <= count; ++i)
+            {
+                Topic subTopic = null;
+                XList<int> subListWidth = new XList<int>();
+                if (i == count)
+                {
+                    if (parent.Type != TopicType.Barrier && !parent.IsRoot)
+                    {
+                        subTopic = parent;
+                        subListWidth.Add(subTopic.ContentBounds.Width);
+                    }
+                    else
+                        break;
+                }
+                else
+                {
+                    subTopic = children[i];
+                    subListWidth = CalculateColumn(subTopic);
+                }
+
+                if (parent.Type == TopicType.Barrier)
+                    index = 1;
+                if (parent.IsRoot)
+                    index = 0;
+
+                for (int k = index, n = listWidth.Count; k < n; ++k)
+                {
+                    if (k < subListWidth.Count)
+                    {
+                        listWidth[k] = Math.Max(subListWidth[k], listWidth[k]);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (listWidth.Count < subListWidth.Count + index)
+                {
+                    for (int k = listWidth.Count - index, n = subListWidth.Count; k < n; ++k)
+                    {
+                        listWidth.Add(subListWidth[k]);
+                    }
+                }
+                ++index;
+            }
+            return listWidth;
+        }
+
+        int GetYPos(int index, int space, XList<int> items)
+        {
+            int pos = 0;
+            for (int i = 0, n = items.Count; i < n; ++i)
+            {
+                if (i >= index)
+                    break;
+                if (i >= 0)
+                    pos += space;
+                pos += items[i];
+            }
+            return pos;
+        }
+
+        int GetXPos(int index, int space, XList<int> items, Vector4 vector)
+        {
+            int pos = 0;
+            for (int i = 0, n = items.Count; i < n; ++i)
+            {
+                if (vector == Vector4.Left)
+                {
+                    if (i > 0)
+                        pos += space;
+                    pos += items[i];
+                }
+                if (i >= index)
+                    break;
+                if (vector == Vector4.Right)
+                {
+                    if (i > 0)
+                        pos += space;
+                    pos += items[i];
+                }
+            }
+            return pos;
+        }
+
+        Rectangle LayoutSubTopics(Topic parent, Topic[] subTopics, Vector4 vector, XList<int> rows, XList<int> columns, int parentRow, int parentCol, MindMapLayoutArgs e)
         {
             if (parent == null)
                 throw new ArgumentNullException();
 
-            if (!layoutInfos.Contains(parent))
+            if (rows.IsEmpty || columns.IsEmpty)
                 return Rectangle.Empty;
 
             if (parent.Folded || parent.Children.IsEmpty)
                 return Rectangle.Empty;
 
-            int nodeSpace = e.ItemsSpace;
-            if (parent.IsRoot)
-            {
-                nodeSpace = GetRootItemsSpace(parent, subTopics, layoutInfos, e);
-            }
-
+            int vSpace = e.ItemsSpace;
             Topic root = parent.GetRoot();
 
-            // get full height
-            int fullHeight = 0;
-            for (int i = 0; i < subTopics.Length; i++)
-            {
-                if (i > 0)
-                    fullHeight += nodeSpace;
-                fullHeight += ((TopicLayoutInfo)layoutInfos[subTopics[i]]).FullSize.Height;
-            }
-
-            //
             Rectangle rectFull = Rectangle.Empty;
-            int y = 0;
-            if (parent.Type == TopicType.Barrier)
-            {
-                y = parent.ContentBounds.Bottom + nodeSpace + nextBarrierHeight(parent, layoutInfos);
-            }
-            else
-            {
-                Point pp = PaintHelper.CenterPoint(parent.ContentBounds);
-                y = pp.Y - (fullHeight / 2);
-            }
-            int space = e.LayerSpace;
-            int barrierSpace = 10;
+            Point pp = PaintHelper.CenterPoint(root.ContentBounds);
+
+            int fullHeight = GetYPos(rows.Count - 1, vSpace, rows);
+            int x = vector == Vector4.Left ? root.Left - e.LayerSpace : root.Right + e.LayerSpace;
+            int y = pp.Y - (fullHeight / 2) - 30;
+            int hSpace = 10;
             Topic previous = parent == root ? root : parent.ParentTopic;
-            foreach (var subTopic in subTopics)
+            int prevRow = 0;
+            for (int i = 0, n = subTopics.Length; i < n; ++i)
             {
-                var subTif = (TopicLayoutInfo)layoutInfos[subTopic];
+                Topic subTopic = subTopics[i];
                 subTopic.Vector = vector;
-                Point pt;
+                int row = 0, column = 0;
                 switch (vector)
                 {
                     case Vector4.Top:
-                        pt = new Point(root.Bounds.Left - (subTopic.Width - root.Width) / 2, parent.Location.Y - space - subTopic.Size.Height);
+                        subTopic.Location = new Point(root.Bounds.Left - (subTopic.Width - root.Width) / 2, parent.Location.Y - e.LayerSpace - subTopic.Size.Height);
                         break;
                     case Vector4.Left:
-                        if (parent.Type == TopicType.Threat || parent.Type == TopicType.Escalation)
-                        {
-                            int localX = 0;
-                            if (previous == root)
-                            {
-                                localX = previous.Bounds.Left - space - (subTopic.ContentBounds.Width + subTopic.Bounds.Width) / 2;
-                            }
-                            else
-                            {
-                                localX = previous.Bounds.Left - barrierSpace - subTopic.ContentBounds.Width;
-                            }
-                            pt = new Point(localX, parent.Location.Y);
-                        }
-                        else
-                        {
-                            pt = new Point(parent.Bounds.Left - space - subTopic.Bounds.Width, y);
-                        }
-                        break;
                     case Vector4.Right:
                     default:
-                        if (parent.Type == TopicType.Consequence || parent.Type == TopicType.Escalation)
+                        if (subTopic.Type == TopicType.Barrier)
                         {
-                            int localX = 0;
-                            if (previous == root)
-                            {
-                                localX = previous.ContentBounds.Right + space + (subTopic.ContentBounds.Width - subTopic.Bounds.Width) / 2;
-                            }
-                            else
-                            {
-                                localX = previous.ContentBounds.Right + barrierSpace + (subTopic.TextBounds.Width - subTopic.Bounds.Width) / 2;
-                            }
-                            pt = new Point(localX, parent.Location.Y);
+                            column = parentCol - subTopics.Length + i;
+                            row = parentRow;
                         }
                         else
                         {
-                            pt = new Point(parent.Bounds.Right + space, y);
+                            column = parentCol + subTopic.Children.Count + 1;
+                            row = parentRow + 1;
+                            if (subTopic.Type == TopicType.Escalation)
+                            {
+                                int maxUncleRow = 0;
+                                if (parent.ParentTopic != null)
+                                {
+                                    XList<Topic> children = parent.ParentTopic.Children;
+                                    int nextIndex = children.IndexOf(parent) + 1;
+                                    if (nextIndex < children.Count)
+                                    {
+                                        maxUncleRow = CalculateMaxRow(children[nextIndex], children.ToArray());
+                                    }
+                                }
+
+                                int maxSiblingRow = 0;
+                                int prevIndex = i - 1;
+                                if (prevIndex >= 0)
+                                {
+                                    maxSiblingRow = CalculateMaxRow(parent.Children[prevIndex], parent.Children.ToArray());
+                                }
+                                row += maxSiblingRow + maxUncleRow;
+                            }
+                            else if (parent.IsRoot)
+                            {
+                                int prevIndex = i - 1;
+                                if (prevIndex >= 0)
+                                {
+                                    row += CalculateMaxRow(subTopics[prevIndex], subTopics);
+                                }
+                            }
                         }
+                        Point pt = new Point(GetXPos(column, hSpace, columns, vector), GetYPos(row, vSpace, rows));
+                        if (subTopic.Type == TopicType.Barrier)
+                        {
+                            if (vector == Vector4.Left)
+                                pt.X -= (subTopic.ContentBounds.Width - subTopic.Width) / 2;
+                            else
+                                pt.X += (subTopic.ContentBounds.Width - subTopic.Width) / 2;
+                        }
+                        subTopic.Location = new Point(vector == Vector4.Left ? x - pt.X: x + pt.X, pt.Y + y);
+                        prevRow = row;
                         break;
                 }
-                subTopic.Location = new Point(pt.X, pt.Y);
 
                 // line
                 if (!parent.Folded && subTopic.Type == TopicType.Barrier)
@@ -344,23 +394,14 @@ namespace Blumind.Controls.MapViews
                 }
                 subTopic.Lines.Clear();
 
-                Rectangle rectFullSub = LayoutSubTopics(subTopic, subTopic.Children.ToArray(), vector, layoutInfos, e);
+                Rectangle rectFullSub = LayoutSubTopics(subTopic, subTopic.Children.ToArray(), vector, rows, columns, row, column, e);
                 // Threat topic will be drawn as the last element
                 if (subTopic.Type == TopicType.Threat || subTopic.Type == TopicType.Consequence || subTopic.Type == TopicType.Escalation)
                 {
                     Topic beginNode, endNode;
                     if (subTopic.HasChildren && !subTopic.Folded)
                     {
-                        Topic lastChild = subTopic.Children[subTopic.Children.Count - 1];
-                        if (vector == Vector4.Left)
-                        {
-                            subTopic.Location = new Point(lastChild.ContentBounds.Left - barrierSpace - lastChild.ContentBounds.Width, subTopic.Location.Y);
-                        }
-                        else if (vector == Vector4.Right)
-                        {
-                            subTopic.Location = new Point(lastChild.ContentBounds.Right + barrierSpace, subTopic.Location.Y);
-                        }
-                        beginNode = lastChild;
+                        beginNode = subTopic.Children[subTopic.Children.Count - 1];
                         endNode = subTopic;
                     }
                     else
@@ -405,8 +446,6 @@ namespace Blumind.Controls.MapViews
                 rectFull = Rectangle.Union(rectFull, subTopic.ContentBounds);
                 if (!rectFullSub.IsEmpty)
                     rectFull = Rectangle.Union(rectFull, rectFullSub);
-
-                y += subTif.FullSize.Height + nodeSpace;
                 previous = subTopic;
             }
 
