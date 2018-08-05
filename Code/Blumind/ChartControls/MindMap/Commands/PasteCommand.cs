@@ -63,10 +63,6 @@ namespace Blumind.Controls.MapViews
             {
                 return PasteTopic(Topic, Clipboard.GetData(typeof(MapClipboardData).ToString()));
             }
-            else if (Clipboard.ContainsText())
-            {
-                return PasteText(Topic, Clipboard.GetText());
-            }
             else
             {
                 return false;
@@ -98,7 +94,6 @@ namespace Blumind.Controls.MapViews
             if (data is MapClipboardData)
             {
                 var tcd = (MapClipboardData)data;
-                //var topics = tcd.GetTopics();
                 var chartObjects = PasteObjectsTo(tcd, Document, topic);
                 if (chartObjects.IsNullOrEmpty())
                     return true;
@@ -114,6 +109,24 @@ namespace Blumind.Controls.MapViews
             }
         }
 
+        static bool isTargetAllow(Topic source, Topic target)
+        {
+            if (target.Type == TopicType.TopEvent)
+            {
+                if (source.Type == TopicType.Threat ||
+                    source.Type == TopicType.Consequence)
+                    return true;
+            }
+            else if (target.Type == TopicType.Threat ||
+                target.Type == TopicType.Consequence ||
+                target.Type == TopicType.Escalation)
+            {
+                if (source.Type == TopicType.Barrier)
+                    return true;
+            }
+            return false;
+        }
+
         public static ChartObject[] PasteObjectsTo(MapClipboardData data, Document document, Topic target)
         {
             var chartObjects = data.GetChartObjects();
@@ -122,6 +135,10 @@ namespace Blumind.Controls.MapViews
                 var newids = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                 foreach (var co in chartObjects)
                 {
+                    if (co is Topic && !isTargetAllow((Topic) co, target))
+                    {
+                        continue;
+                    }
                     if (!string.IsNullOrEmpty(co.ID))
                     {
                         string id = co.ID;
@@ -134,6 +151,11 @@ namespace Blumind.Controls.MapViews
                 {
                     if (co is Topic)
                     {
+                        if (!isTargetAllow((Topic)co, target))
+                        {
+                            continue;
+                        }
+
                         var t = (Topic)co;
                         target.Children.Add(t);
 

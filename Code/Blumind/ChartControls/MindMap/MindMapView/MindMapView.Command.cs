@@ -23,7 +23,10 @@ namespace Blumind.Controls.MapViews
         {
             get
             {
-                if (SelectedTopics != null && SelectedTopics.Length > 0)
+                if (SelectedTopics != null && SelectedTopics.Length > 0 &&
+                    (!SelectedTopics.Exists(t => t.IsRoot) &&
+                     !SelectedTopics.Exists(t => (t.Type == TopicType.Hazard)) &&
+                     !SelectedTopics.Exists(t => (t.Type == TopicType.TopEvent))))
                     return true;
 
                 if (SelectedObject is Widget)// && ((Widget)SelectedObject).CanCopy)
@@ -41,7 +44,11 @@ namespace Blumind.Controls.MapViews
                 if (ReadOnly)
                     return false;
 
-                if (!SelectedTopics.IsNullOrEmpty() && !SelectedTopics.Exists(t=>t.IsRoot))
+                if (!SelectedTopics.IsNullOrEmpty() &&
+                    (!SelectedTopics.Exists(t=>t.IsRoot) &&
+                     !SelectedTopics.Exists(t=>(t.Type == TopicType.Hazard)) &&
+                     !SelectedTopics.Exists(t => (t.Type == TopicType.TopEvent)))
+                    )
                     return true;
 
                 if (SelectedObject is Widget)
@@ -56,7 +63,8 @@ namespace Blumind.Controls.MapViews
         {
             get
             {
-                return !ReadOnly && Selection.Count == 1 && SelectedTopic != null;
+                return !ReadOnly && !SelectedTopics.IsNullOrEmpty() &&
+                       !SelectedTopics.Exists(t => (t.Type == TopicType.Hazard));
             }
         }
 
@@ -89,6 +97,9 @@ namespace Blumind.Controls.MapViews
 
         public override void DeleteObject()
         {
+            if (!CanDelete)
+                return;
+
             if (Selection.Count > 0)
             {
                 Delete(Selection.ToArray());
@@ -101,7 +112,7 @@ namespace Blumind.Controls.MapViews
             {
                 foreach (ChartObject mapObject in mapObjects)
                 {
-                    if (mapObject is Topic && ((Topic)mapObject).IsRoot)
+                    if (mapObject is Topic && (((Topic)mapObject).IsRoot))
                     {
                         return;
                     }
@@ -114,6 +125,9 @@ namespace Blumind.Controls.MapViews
 
         public override void Copy()
         {
+            if (!CanCopy)
+                return;
+
             if (SelectedTopics != null && SelectedTopics.Length > 0)
             {
                 var topics = SelectedTopics.OrderBy(t => t.Level).ToArray();
@@ -137,6 +151,9 @@ namespace Blumind.Controls.MapViews
 
         public override void Cut()
         {
+            if (!CanCut)
+                return;
+
             if (SelectedTopics != null && SelectedTopics.Length > 0)
             {
                 var topics = SelectedTopics.OrderBy(t => t.Level).ToArray();
