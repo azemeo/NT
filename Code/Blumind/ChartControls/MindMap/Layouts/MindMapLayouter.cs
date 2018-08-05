@@ -171,13 +171,20 @@ namespace Blumind.Controls.MapViews
             {
                 Topic sibling = siblingTopics[i];
                 int siblingRow = 0;
-                if (sibling.Type == TopicType.Barrier)
+                if (!sibling.Folded)
                 {
-                    siblingRow = CalculateMaxRow(sibling.LastChild, sibling.Children.ToArray());
+                    if (sibling.Type == TopicType.Barrier)
+                    {
+                        siblingRow = CalculateMaxRow(sibling.LastChild, sibling.Children.ToArray());
+                    }
+                    else
+                    {
+                        siblingRow = CalculateMaxRow(sibling.FirstChild, sibling.Children.ToArray()) + 1;
+                    }
                 }
                 else
                 {
-                    siblingRow = CalculateMaxRow(sibling.FirstChild, sibling.Children.ToArray()) + 1;
+                    siblingRow = 1;
                 }
                 maxRow += siblingRow;
                 if (sibling == topic)
@@ -283,14 +290,17 @@ namespace Blumind.Controls.MapViews
                         pos += space;
                     pos += items[i];
                 }
-                if (i >= index)
-                    break;
                 if (vector == Vector4.Right)
                 {
                     if (i > 0)
                         pos += space;
-                    pos += items[i];
+                    if (i < index)
+                    {
+                        pos += items[i];
+                    }
                 }
+                if (i >= index)
+                    break;
             }
             return pos;
         }
@@ -338,7 +348,7 @@ namespace Blumind.Controls.MapViews
                         }
                         else
                         {
-                            column = parentCol + subTopic.Children.Count + 1;
+                            column = parentCol + (subTopic.Folded ? 0 : subTopic.Children.Count) + 1;
                             row = parentRow + 1;
                             if (subTopic.Type == TopicType.Escalation)
                             {
