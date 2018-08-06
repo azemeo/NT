@@ -55,7 +55,11 @@ namespace Blumind
 
             Current_OpitonsChanged(null, EventArgs.Empty);
 
-            if (true)
+            LicenseForm licForm = new LicenseForm();
+            if (licForm.ShowDialog() != DialogResult.OK)
+                return;
+
+            if (false)
             {
                 // Check trial period => 10 days
                 bool bTrialExpired = true;
