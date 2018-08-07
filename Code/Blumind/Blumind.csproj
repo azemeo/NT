@@ -75,7 +75,10 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PdfSharp">
@@ -868,6 +871,7 @@
     <None Include="app.config" />
     <None Include="Blumind_1_TemporaryKey.pfx" />
     <None Include="Blumind_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
     <None Include="Resources\NativeResources.res" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
