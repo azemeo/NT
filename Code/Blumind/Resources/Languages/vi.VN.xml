@@ -48,7 +48,7 @@
     <item name="Width">Chiều rộng</item>
     <item name="Text Alignment">Căn chỉnh chữ</item>
     <item name="Expand">Mở rộng</item>
-    <item name="Toggle Folding">Inverser l'affichage</item>
+    <item name="Toggle Folding">Chuyển đổi thu gọn - mở rộng</item>
     <item name="Collapse All">Thu gọn tất cả</item>
     <item name="Expand All">Mở rộng tất cả</item>
     <item name="Zoom In">Phóng to</item>
@@ -401,6 +401,17 @@
 
 	<item name="Your trial is expired!">Bản quyền của bạn đã hết hạn.</item>
 	<item name="Your trial version will expire in {0} days.">Bạn còn {0} ngày để dùng thử phần mềm.</item>
+	
+	<item name="Finger Print">Mã máy</item>
+	<item name="Serial Key">Mã kích hoạt</item>
+	<item name="Activate">Kích hoạt</item>
+	<item name="Quit">Thoát</item>
+	<item name="Activated Successful!">Kích hoạt thành công!</item>
+	<item name="Invalid Serial Key!">Sai mã kích hoạt! Vui lòng thử lại</item>
+	
+	<item name="Open File">Mở file</item>
+	<item name="Open Containing Folder">Mở thư mục chứa file</item>
+	<item name="Close">Đóng</item>
 	
   </words>
 </dictionary>
