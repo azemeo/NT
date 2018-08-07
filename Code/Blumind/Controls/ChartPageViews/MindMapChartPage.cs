@@ -189,6 +189,8 @@ namespace Blumind.ChartPageView
             MenuAddThreat.Text = Lang._("Add Threat");
             MenuAddConsequence.Text = Lang._("Add Consequence");
             MenuAddBarrier.Text = Lang._("Add Barrier");
+            MenuAddBarrierLeft.Text = Lang._("Add Barrier Left");
+            MenuAddBarrierRight.Text = Lang._("Add Barrier Right");
             MenuAddEscalation.Text = Lang._("Add Escalation");
             MenuAdd.Text = Lang._("Add");
             MenuAddIcon.Text = Lang.GetTextWithEllipsis("Icon");
