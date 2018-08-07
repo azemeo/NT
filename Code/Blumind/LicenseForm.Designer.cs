@@ -41,9 +41,9 @@
             this.labelFingerPrint.AutoSize = true;
             this.labelFingerPrint.Location = new System.Drawing.Point(12, 16);
             this.labelFingerPrint.Name = "labelFingerPrint";
-            this.labelFingerPrint.Size = new System.Drawing.Size(82, 13);
+            this.labelFingerPrint.Size = new System.Drawing.Size(56, 13);
             this.labelFingerPrint.TabIndex = 0;
-            this.labelFingerPrint.Text = "Activation Code";
+            this.labelFingerPrint.Text = "Fingerprint";
             // 
             // labelSerialKey
             // 

@@ -400,7 +400,7 @@
 	<item name="Your trial is expired!">Bản quyền của bạn đã hết hạn.</item>
 	<item name="Your trial version will expire in {0} days.">Bạn còn {0} ngày để dùng thử phần mềm.</item>
 	
-	<item name="Finger Print">Mã máy</item>
+	<item name="Fingerprint">Mã máy</item>
 	<item name="Serial Key">Mã kích hoạt</item>
 	<item name="Activate">Kích hoạt</item>
 	<item name="Quit">Thoát</item>

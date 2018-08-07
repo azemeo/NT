@@ -20,7 +20,7 @@ namespace Blumind
         public LicenseForm()
         {
             InitializeComponent();
-            labelFingerPrint.Text = Lang._("Finger Print");
+            labelFingerPrint.Text = Lang._("Fingerprint");
             labelSerialKey.Text = Lang._("Serial Key");
             btnActive.Text = Lang._("Activate");
             btnQuit.Text = Lang._("Quit");
