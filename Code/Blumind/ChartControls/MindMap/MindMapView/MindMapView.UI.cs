@@ -127,7 +127,7 @@ namespace Blumind.Controls.MapViews
             {
                 bool hasSelected = HasSelected() && SelectedTopic != null;
 
-                TsbAddBarrier.Enabled = hasSelected && (SelectedTopic.Type == Model.MindMaps.TopicType.Consequence || SelectedTopic.Type == Model.MindMaps.TopicType.Threat || SelectedTopic.Type == Model.MindMaps.TopicType.Escalation);
+                TsbAddBarrier.Enabled = hasSelected && (SelectedTopic.Type == Model.MindMaps.TopicType.Consequence || SelectedTopic.Type == Model.MindMaps.TopicType.Threat || SelectedTopic.Type == Model.MindMaps.TopicType.Escalation || SelectedTopic.Type == Model.MindMaps.TopicType.Barrier);
                 TsbAddConsequence.Enabled = hasSelected && SelectedTopic.IsRoot;
                 TsbAddThreat.Enabled = hasSelected && SelectedTopic.IsRoot;
                 TsbAddEscalation.Enabled = hasSelected && (SelectedTopic.Type == Model.MindMaps.TopicType.Barrier);
