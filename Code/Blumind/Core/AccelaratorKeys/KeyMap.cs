@@ -161,6 +161,8 @@ namespace Blumind.Core
         public static readonly ShortcutKey Replace = new ShortcutKey("Replace", Keys.Control | Keys.H, Properties.Resources.replace);
         public static readonly ShortcutKey MoveUp = new ShortcutKey("Move Up", Keys.Control | Keys.Up, Properties.Resources.up);
         public static readonly ShortcutKey MoveDown = new ShortcutKey("Move Down", Keys.Control | Keys.Down, Properties.Resources.down);
+        public static readonly ShortcutKey MoveLeft = new ShortcutKey("Move Left", Keys.Control | Keys.Left, Properties.Resources.left);
+        public static readonly ShortcutKey MoveRight = new ShortcutKey("Move Right", Keys.Control | Keys.Right, Properties.Resources.right);
 
 
         public static readonly ShortcutKey AddThreat = new ShortcutKey("Add Threat", Keys.Enter, Properties.Resources.threat);

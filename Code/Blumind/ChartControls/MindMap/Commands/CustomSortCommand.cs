@@ -11,6 +11,7 @@ namespace Blumind.Controls.MapViews
     {
         private Topic Parent;
         private int[] NewIndices;
+        private TopicType ChildrenType; // Only use for Threat & Consequence type
 
         public CustomSortCommand(Topic[] topics, int step)
         {
@@ -21,21 +22,52 @@ namespace Blumind.Controls.MapViews
             if (Parent == null)
                 return;
 
+            ChildrenType = topics[0].Type;
+
             // get topics them have a same parent
+            XList<Topic> siblings = new XList<Topic>();
+            if (Parent.IsRoot)
+            {
+                siblings = Parent.GetChildrenByType(ChildrenType);
+            }
             List<int> moveIndices = new List<int>();
             foreach (Topic topic in topics)
             {
                 if (topic.ParentTopic == Parent)
-                    moveIndices.Add(topic.Index);
+                {
+                    if (Parent.IsRoot)
+                    {
+                        moveIndices.Add(siblings.IndexOf(topic));
+                    }
+                    else
+                    {
+                        moveIndices.Add(topic.Index);
+                    }
+                }
             }
+            XList<Topic> children = GetChildren(Parent);
 
-            NewIndices = GetNewIndices(Parent.Children.Count, moveIndices.ToArray(), step);
+            NewIndices = GetNewIndices(children.Count, moveIndices.ToArray(), step);
         }
 
         public CustomSortCommand(Topic parent, int[] newIndices)
         {
             Parent = parent;
             NewIndices = newIndices;
+        }
+
+        XList<Topic> GetChildren(Topic parent)
+        {
+            XList<Topic> children = new XList<Topic>();
+            if (parent.IsRoot)
+            {
+                children = parent.GetChildrenByType(ChildrenType);
+            }
+            else
+            {
+                children = parent.Children;
+            }
+            return children;
         }
 
         public override string Name
@@ -45,7 +77,7 @@ namespace Blumind.Controls.MapViews
 
         public override bool Rollback()
         {
-            if (Parent == null || NewIndices == null || NewIndices.Length > Parent.Children.Count)
+            if (Parent == null || NewIndices == null || NewIndices.Length > GetChildren(Parent).Count)
                 return false;
 
             // 重构旧索引
@@ -59,17 +91,17 @@ namespace Blumind.Controls.MapViews
                     return false;
             }
 
-            Parent.SortChildren(oldIndices);
+            Parent.SortChildren(oldIndices, ChildrenType);
 
             return true;
         }
 
         public override bool Execute()
         {
-            if (Parent == null || NewIndices == null || NewIndices.Length > Parent.Children.Count)
+            if (Parent == null || NewIndices == null || NewIndices.Length > GetChildren(Parent).Count)
                 return false;
 
-            Parent.SortChildren(NewIndices);
+            Parent.SortChildren(NewIndices, ChildrenType);
 
             return true;
         }

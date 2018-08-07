@@ -27,6 +27,8 @@ namespace Blumind.Controls.MapViews
             ShortcutKeys.Register(KeyMap.Paste, delegate() { if (CanPaste) { Paste(); } });
 
             ShortcutKeys.Register(KeyMap.MoveUp, delegate() { CustomSort(-1); });
+            ShortcutKeys.Register(KeyMap.MoveLeft, delegate () { CustomSort(-1); });
+            ShortcutKeys.Register(KeyMap.MoveRight, delegate () { CustomSort(1); });
             ShortcutKeys.Register(KeyMap.MoveDown, delegate() { CustomSort(1); });
 
             ShortcutKeys.Register(KeyMap.SelectAll, delegate() { SelectAll(); });

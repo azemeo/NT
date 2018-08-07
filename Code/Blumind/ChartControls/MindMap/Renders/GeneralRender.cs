@@ -330,10 +330,12 @@ namespace Blumind.Controls.MapViews
                 graphics.RotateTransform(135);
                 graphics.FillRectangle(blackBrush, patternRect);
 
-                for (int i = 0; i < 5; ++i)
+                int i = 0, rectH = rect.Height + 30;
+                while (i <= rectH)
                 {
                     graphics.TranslateTransform(30, 0);
                     graphics.FillRectangle(blackBrush, patternRect);
+                    i += 30;
                 }
                 graphics.Restore(savedState);
             }

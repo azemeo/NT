@@ -1004,6 +1004,16 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap left {
+            get {
+                object obj = ResourceManager.GetObject("left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap list_bullets {
             get {
                 object obj = ResourceManager.GetObject("list_bullets", resourceCulture);
@@ -1464,6 +1474,16 @@ namespace Blumind.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap right {
+            get {
+                object obj = ResourceManager.GetObject("right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap rotate_left {
             get {
                 object obj = ResourceManager.GetObject("rotate_left", resourceCulture);
@@ -1782,8 +1802,6 @@ namespace Blumind.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;dictionary&gt;
         ///  &lt;information id=&quot;vi-VN&quot; name=&quot;Vietnamese&quot; nature_name=&quot;Tiếng Việt&quot; stable=&quot;true&quot;&gt;
-        ///    &lt;author name=&quot;Teddy Ruin&quot; email=&quot;tedruin@gmail.com&quot;/&gt;
-        ///    &lt;author name=&quot;Daniel Poulin&quot; email=&quot;poulindaniel@hotmail.com&quot;/&gt;
         ///  &lt;/information&gt;
         ///  &lt;compatibility&gt;
         ///    &lt;culture id=&quot;vi&quot;/&gt;
@@ -1792,8 +1810,12 @@ namespace Blumind.Properties {
         ///    &lt;culture id=&quot;Tiếng Việt&quot;/&gt;
         ///  &lt;/compatibility&gt;
         ///  &lt;words&gt;
-        ///    &lt;item name=&quot;About&quot;&gt;À Propos&lt;/item&gt;
-        ///    &lt;item name=&quot;Menu&quot;&gt; [rest of string was truncated]&quot;;.
+        ///    &lt;item name=&quot;About&quot;&gt;Giới thiệu&lt;/item&gt;
+        ///    &lt;item name=&quot;Menu&quot;&gt;Thực đơn&lt;/item&gt;
+        ///    &lt;item name=&quot;Open&quot;&gt;Mở&lt;/item&gt;
+        ///    &lt;item name=&quot;New&quot;&gt;Tạo mới&lt;/item&gt;
+        ///    &lt;item name=&quot;Help&quot;&gt;Trợ giúp&lt;/item&gt;
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         public static string vi_VN {
             get {

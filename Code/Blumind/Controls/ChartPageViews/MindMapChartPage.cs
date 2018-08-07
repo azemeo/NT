@@ -589,16 +589,51 @@ namespace Blumind.ChartPageView
             }
 
             Topic topic = mindMapView1.SelectedTopic;
-            if (topic != null && !ReadOnly)
+            if (topic != null && !ReadOnly && topic.Type != TopicType.Hazard)
             {
-
+                Topic root = topic.GetRoot();
                 if (topic.ParentTopic != null && topic.ParentTopic.Children.Count > 0)
                 {
-                    if (topic.Index > 0)
-                        actions.Add(new ExtendActionInfo("Move Up", Properties.Resources.up, KeyMap.MoveUp.ToString(), MenuMoveUp_Click));
+                    int index = topic.Index;
+                    XList<Topic> children = topic.ParentTopic.Children;
+                    if (topic.ParentTopic.IsRoot)
+                    {
+                        children = topic.ParentTopic.GetChildrenByType(topic.Type);
+                        index = children.IndexOf(topic);
+                    }
+                    if (index > 0)
+                    {
+                        if (topic.Type == TopicType.Barrier)
+                        {
+                            if (topic.Left <= root.Left)
+                            {
+                                actions.Add(new ExtendActionInfo("Move Right", Properties.Resources.right, KeyMap.MoveRight.ToString(), MenuMoveDown_Click));
+                            }
+                            else
+                            {
+                                actions.Add(new ExtendActionInfo("Move Left", Properties.Resources.left, KeyMap.MoveLeft.ToString(), MenuMoveUp_Click));
+                            }
+                        }
+                        else
+                            actions.Add(new ExtendActionInfo("Move Up", Properties.Resources.up, KeyMap.MoveUp.ToString(), MenuMoveUp_Click));
+                    }
 
-                    if (topic.Index < topic.ParentTopic.Children.Count - 1)
-                        actions.Add(new ExtendActionInfo("Move Down", Properties.Resources.down, KeyMap.MoveDown.ToString(), MenuMoveDown_Click));
+                    if (index < children.Count - 1)
+                    {
+                        if (topic.Type == TopicType.Barrier)
+                        {
+                            if (topic.Left <= root.Left)
+                            {
+                                actions.Add(new ExtendActionInfo("Move Left", Properties.Resources.left, KeyMap.MoveLeft.ToString(), MenuMoveUp_Click));
+                            }
+                            else
+                            {
+                                actions.Add(new ExtendActionInfo("Move Right", Properties.Resources.right, KeyMap.MoveRight.ToString(), MenuMoveDown_Click));
+                            }
+                        }
+                        else
+                            actions.Add(new ExtendActionInfo("Move Down", Properties.Resources.down, KeyMap.MoveDown.ToString(), MenuMoveDown_Click));
+                    }
                 }
 
                 if (SelectedObjects.Length == 1 && topic.Children.Count > 1)
