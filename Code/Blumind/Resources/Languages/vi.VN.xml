@@ -397,6 +397,8 @@
 	<item name="Add Threat">Thêm nguyên nhân</item>
 	<item name="Add Consequence">Thêm hậu quả</item>
 	<item name="Add Barrier">Thêm biện pháp</item>
+  <item name="Add Barrier Left">Thêm biện pháp bên trái</item>
+  <item name="Add Barrier Right">Thêm biện pháp bên phải</item>
 	<item name="Add Escalation">Thêm yếu tố phát sinh</item>
 
 	<item name="Your trial is expired!">Bản quyền của bạn đã hết hạn.</item>

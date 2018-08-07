@@ -199,6 +199,70 @@ namespace Blumind.Controls.MapViews
             }
         }
 
+        public virtual Topic AddBarrierLeft()
+        {
+            Topic selectedTp = SelectedTopic;
+            Topic refTopic = null;
+            if (selectedTp.Type == TopicType.Barrier)
+            {
+                refTopic = SelectedTopic;
+                selectedTp = selectedTp.ParentTopic;
+                if (refTopic.Left > refTopic.GetRoot().Left)
+                {
+                    XList<Topic> siblings = refTopic.ParentTopic.Children;
+                    int index = siblings.IndexOf(refTopic) - 1;
+                    if (index >= 0)
+                    {
+                        refTopic = siblings[index];
+                    }
+                    else
+                    {
+                        refTopic = null;
+                    }
+                }
+            }
+            if (selectedTp != null && (selectedTp.Type == TopicType.Consequence || selectedTp.Type == TopicType.Threat || selectedTp.Type == TopicType.Escalation))
+            {
+                return AddSubTopic(selectedTp, refTopic, TopicType.Barrier, false);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public virtual Topic AddBarrierRight()
+        {
+            Topic selectedTp = SelectedTopic;
+            Topic refTopic = null;
+            if (selectedTp.Type == TopicType.Barrier)
+            {
+                refTopic = SelectedTopic;
+                selectedTp = selectedTp.ParentTopic;
+                if (refTopic.Left <= refTopic.GetRoot().Left)
+                {
+                    XList<Topic> siblings = refTopic.ParentTopic.Children;
+                    int index = siblings.IndexOf(refTopic) - 1;
+                    if (index >= 0)
+                    {
+                        refTopic = siblings[index];
+                    }
+                    else
+                    {
+                        refTopic = null;
+                    }
+                }
+            }
+            if (selectedTp != null && (selectedTp.Type == TopicType.Consequence || selectedTp.Type == TopicType.Threat || selectedTp.Type == TopicType.Escalation))
+            {
+                return AddSubTopic(selectedTp, refTopic, TopicType.Barrier, false);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public virtual Topic AddEscalationFactor()
         {
             if (SelectedTopic != null)

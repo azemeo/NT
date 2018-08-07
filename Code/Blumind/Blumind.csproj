@@ -952,6 +952,8 @@
     <None Include="Resources\Images\logo64.png" />
     <None Include="Resources\Images\add_topic_front.png" />
     <Content Include="Resources\Images\barrier.png" />
+    <Content Include="Resources\Images\barrier_left.png" />
+    <Content Include="Resources\Images\barrier_right.png" />
     <Content Include="Resources\Images\consequence.png" />
     <Content Include="Resources\Images\escalation.png" />
     <Content Include="Resources\Images\left.png" />
