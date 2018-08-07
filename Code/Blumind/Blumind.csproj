@@ -66,10 +66,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2A57F5ADB87ECF407D9409CD6604292AC747378E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BE3BB1E15E033637ECBA57637EF84EC748CE13D4</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Blumind_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Blumind_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -855,6 +855,7 @@
       <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Blumind_1_TemporaryKey.pfx" />
     <None Include="Blumind_TemporaryKey.pfx" />
     <None Include="Resources\NativeResources.res" />
     <None Include="Properties\Settings.settings">
@@ -942,6 +943,8 @@
     <Content Include="Resources\Images\barrier.png" />
     <Content Include="Resources\Images\consequence.png" />
     <Content Include="Resources\Images\escalation.png" />
+    <Content Include="Resources\Images\left.png" />
+    <Content Include="Resources\Images\right.png" />
     <Content Include="Resources\Images\taskbar_close_button.png" />
     <None Include="Resources\Images\underline.png" />
     <None Include="Resources\Images\tick_small.png" />

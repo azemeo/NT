@@ -50,7 +50,7 @@ namespace Blumind.Controls.MapViews
                     type = TopicType.Hazard;
                 }
 
-                XList<Topic> children = root.getChildrenByType(type);
+                XList<Topic> children = root.GetChildrenByType(type);
                 Topic[] subTopics = new Topic[children.Count];
                 for (int ti = 0, n = children.Count; ti < n; ti++)
                 {
@@ -604,7 +604,7 @@ namespace Blumind.Controls.MapViews
             }
 
             TopicLine line;
-            if (endTopic != null && beginTopic != null && endTopic.Type == TopicType.Barrier && beginTopic.IsRoot)
+            if (endTopic != null && beginTopic != null && endTopic.Type == TopicType.Barrier && (beginTopic.IsRoot || beginTopic.Type == TopicType.Barrier))
             {
                 endRect = endTopic.ContentBounds;
                 endRect.Height = endTopic.Bounds.Height;

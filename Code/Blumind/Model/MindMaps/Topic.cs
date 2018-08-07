@@ -168,7 +168,7 @@ namespace Blumind.Model.MindMaps
             }
         }
 
-        public XList<Topic> getChildrenByType(TopicType type)
+        public XList<Topic> GetChildrenByType(TopicType type)
         {
             XList<Topic> topics = new XList<Topic>();
             if (IsRoot)
@@ -1223,9 +1223,56 @@ namespace Blumind.Model.MindMaps
         /// 不要直接在代码里使用, 自定义顺序请使用CustomSortCommand
         /// </summary>
         /// <param name="newIndices"></param>
-        internal void SortChildren(int[] newIndices)
+        internal void SortChildren(int[] newIndices, TopicType childrenType)
         {
-            Children.SortAs(newIndices);
+            if (IsRoot)
+            {
+                XList<Topic> hazards = GetChildrenByType(TopicType.Hazard);
+                XList<Topic> threats = GetChildrenByType(TopicType.Threat);
+                XList<Topic> consequences = GetChildrenByType(TopicType.Consequence);
+                if (childrenType == TopicType.Hazard)
+                {
+                    hazards.SortAs(newIndices);
+                }
+                else if (childrenType == TopicType.Threat)
+                {
+                    threats.SortAs(newIndices);
+                }
+                else if (childrenType == TopicType.Consequence)
+                {
+                    consequences.SortAs(newIndices);
+                }
+                Children.Clear();
+                Children.AddRange(hazards);
+                Children.AddRange(threats);
+                Children.AddRange(consequences);
+                for (int i = 0, n = Children.Count; i < n; ++i)
+                {
+                    Children[i].Index = i;
+                }
+            }
+            else
+            {
+                Children.SortAs(newIndices);
+            }
+        }
+
+        public void SortByType() // just sort for root
+        {
+            if (IsRoot)
+            {
+                XList<Topic> hazards = GetChildrenByType(TopicType.Hazard);
+                XList<Topic> threats = GetChildrenByType(TopicType.Threat);
+                XList<Topic> consequences = GetChildrenByType(TopicType.Consequence);
+                Children.Clear();
+                Children.AddRange(hazards);
+                Children.AddRange(threats);
+                Children.AddRange(consequences);
+                for (int i = 0, n = Children.Count; i < n; ++i)
+                {
+                    Children[i].Index = i;
+                }
+            }
         }
 
         public Topic GetRoot()

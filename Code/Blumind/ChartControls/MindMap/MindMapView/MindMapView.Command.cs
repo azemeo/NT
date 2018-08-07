@@ -179,6 +179,7 @@ namespace Blumind.Controls.MapViews
 
         void DargDropTo(IEnumerable<ChartObject> chartObjects, Topic target, DragTopicsMethod dragMethod)
         {
+            return; // datnq block drag drop feature
             if (chartObjects.IsNullOrEmpty() || target == null || dragMethod == DragTopicsMethod.None)
                 return;
 
@@ -259,8 +260,19 @@ namespace Blumind.Controls.MapViews
         {
             if (SelectedTopics.Length > 0)
             {
+                Topic[] selecteds = SelectedTopics;
+                Topic root = selecteds[0].GetRoot();
+                if (selecteds[0].Type == TopicType.Barrier)
+                {
+                    if (selecteds[0].Left <= root.Left)
+                    {
+                        step = -step;
+                    }
+                }
+
                 CustomSortCommand comd = new CustomSortCommand(SelectedTopics, step);
                 ExecuteCommand(comd);
+                Select(selecteds);
             }
         }
 

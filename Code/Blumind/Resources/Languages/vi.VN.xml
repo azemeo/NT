@@ -166,6 +166,8 @@
     <item name="With Hidden Items">Bao gồm các mục bị ẩn</item>
     <item name="Move Up">Di chuyển lên</item>
     <item name="Move Down">Di chuyển xuống</item>
+    <item name="Move Left">Di chuyển trái</item>
+    <item name="Move Right">Di chuyển phải</item>
     <item name="Windows Color Schemes">Màu sắc Windows</item>
     <item name="Charts">Biểu đồ</item>
     <item name="Show Remark Icon">Hiển thị biểu tượng ghi chú</item>

@@ -739,6 +739,7 @@ namespace Blumind.Controls.MapViews
 
         void ShowDragBox(Topic[] topics, int x, int y, bool canDrag, DragTopicsMethod dragMethod)
         {
+            return; // datnq block drag drop feature
             if (DragBox.Visible && !DragBox.Bounds.IsEmpty)
                 InvalidateChart(DragBox.Bounds, true);
 
