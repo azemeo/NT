@@ -94,7 +94,7 @@
             this.multiChartsView1.Name = "multiChartsView1";
             this.multiChartsView1.SelectedIndex = -1;
             this.multiChartsView1.SelectedPage = null;
-            this.multiChartsView1.Size = new System.Drawing.Size(804, 448);
+            this.multiChartsView1.Size = new System.Drawing.Size(593, 448);
             this.multiChartsView1.TabIndex = 0;
             this.multiChartsView1.TabsMenuStrip = this.MenuStripChartTab;
             this.multiChartsView1.NewChartPage += new System.EventHandler(this.multiChartsView1_NewChartPage);
@@ -417,7 +417,7 @@
             // MenuStartTimer
             // 
             this.MenuStartTimer.Name = "MenuStartTimer";
-            this.MenuStartTimer.Size = new System.Drawing.Size(152, 22);
+            this.MenuStartTimer.Size = new System.Drawing.Size(141, 22);
             this.MenuStartTimer.Text = "Start Timer...";
             this.MenuStartTimer.Click += new System.EventHandler(this.MenuStartTimer_Click);
             // 
@@ -581,6 +581,7 @@
             this.ClientSize = new System.Drawing.Size(804, 475);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "DocumentForm";
             this.Text = "DocumentForm";
